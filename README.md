@@ -1,4 +1,4 @@
-## zebra-api 用户手册
+## zebra
 
 [![Build Status](https://travis-ci.org/dianping/zebra.svg?branch=master)](https://travis-ci.org/dianping/zebra)
 
