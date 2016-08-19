@@ -1,5 +1,7 @@
 ## zebra-api 用户手册
 
+[![Build Status](https://travis-ci.org/dianping/zebra.svg?branch=master)](https://travis-ci.org/dianping/zebra)
+
 ## 简介
 `Zebra`是在`c3p0`和`tomcat-jdbc`基础上进行包装成的点评内部使用的`动态数据源`，它具有以下的功能点：
 
