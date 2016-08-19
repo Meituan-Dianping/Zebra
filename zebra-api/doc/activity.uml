@@ -1,0 +1,19 @@
+start
+
+if  (是否使用DAL?) then (yes)
+   if (轮询查询，是否发现新写库?) then (yes)
+      : 自动切换;
+   else (no)
+         : 是否需要告警;
+         : 告警;
+         : 人工处理;
+   endif
+else (no)
+  if (连接池信息是否配置在Lion/Liger中) then (yes)
+  else (no)
+     : 修改应用配置;
+  endif
+  : 重启应用;
+endif
+
+stop

@@ -1,0 +1,10 @@
+<system-config>
+	<retry-times>0</retry-times>
+	<!-- 流控 -->
+	<!-- key值表示每条sql的唯一id，value值表示允许打到数据库的比例，100%表示不拦截 -->
+	<sql-flow-control sql-id="aaa" allow-percent="10" app="group-service" />
+	<sql-flow-control sql-id="bbb" allow-percent="90" app="global" />
+	<data-center name="dc1" ip-prefix="192.168,10.1.101"></data-center>
+	<data-center name="dc2" ip-prefix="192.168,10.1.101"></data-center>
+	<data-center name="dc3" ip-prefix="192.168,10.1.101"></data-center>
+</system-config>

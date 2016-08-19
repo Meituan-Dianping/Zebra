@@ -1,0 +1,9 @@
+<plexus>
+	<components>
+		<component>
+			<role>com.dianping.phoenix.status.ComponentStatus</role>
+			<role-hint>dal.datasource</role-hint>
+			<implementation>com.dianping.zebra.monitor.inspect.DataSourceStatus</implementation>
+		</component>
+	</components>
+</plexus>

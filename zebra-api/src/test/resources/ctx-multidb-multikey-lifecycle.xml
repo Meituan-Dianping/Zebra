@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<bean id="id0" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="jdbcUrl" value="jdbc:h2:mem:id0;MVCC=TRUE;DB_CLOSE_DELAY=-1"/>
+		<property name="driverClass" value="org.h2.Driver"/>
+		<property name="minPoolSize" value="2"/>
+		<property name="maxPoolSize" value="4"/>
+		<property name="initialPoolSize" value="2"/>
+	</bean>
+	<bean id="id1" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="jdbcUrl" value="jdbc:h2:mem:id1;MVCC=TRUE;DB_CLOSE_DELAY=-1"/>
+		<property name="driverClass" value="org.h2.Driver"/>
+		<property name="minPoolSize" value="2"/>
+		<property name="maxPoolSize" value="4"/>
+		<property name="initialPoolSize" value="2"/>
+	</bean>
+	<bean id="id2" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="jdbcUrl" value="jdbc:h2:mem:id2;MVCC=TRUE;DB_CLOSE_DELAY=-1"/>
+		<property name="driverClass" value="org.h2.Driver"/>
+		<property name="minPoolSize" value="2"/>
+		<property name="maxPoolSize" value="4"/>
+		<property name="initialPoolSize" value="2"/>
+	</bean>
+	<bean id="id3" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="jdbcUrl" value="jdbc:h2:mem:id3;MVCC=TRUE;DB_CLOSE_DELAY=-1"/>
+		<property name="driverClass" value="org.h2.Driver"/>
+		<property name="minPoolSize" value="2"/>
+		<property name="maxPoolSize" value="4"/>
+		<property name="initialPoolSize" value="2"/>
+	</bean>
+	
+	<bean id="class0" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="jdbcUrl" value="jdbc:h2:mem:class0;MVCC=TRUE;DB_CLOSE_DELAY=-1"/>
+		<property name="driverClass" value="org.h2.Driver"/>
+		<property name="minPoolSize" value="2"/>
+		<property name="maxPoolSize" value="4"/>
+		<property name="initialPoolSize" value="2"/>
+	</bean>
+	<bean id="class1" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="jdbcUrl" value="jdbc:h2:mem:class1;MVCC=TRUE;DB_CLOSE_DELAY=-1"/>
+		<property name="driverClass" value="org.h2.Driver"/>
+		<property name="minPoolSize" value="2"/>
+		<property name="maxPoolSize" value="4"/>
+		<property name="initialPoolSize" value="2"/>
+	</bean>
+	<bean id="class2" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="jdbcUrl" value="jdbc:h2:mem:class2;MVCC=TRUE;DB_CLOSE_DELAY=-1"/>
+		<property name="driverClass" value="org.h2.Driver"/>
+		<property name="minPoolSize" value="2"/>
+		<property name="maxPoolSize" value="4"/>
+		<property name="initialPoolSize" value="2"/>
+	</bean>
+	<bean id="class3" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="jdbcUrl" value="jdbc:h2:mem:class3;MVCC=TRUE;DB_CLOSE_DELAY=-1"/>
+		<property name="driverClass" value="org.h2.Driver"/>
+		<property name="minPoolSize" value="2"/>
+		<property name="maxPoolSize" value="4"/>
+		<property name="initialPoolSize" value="2"/>
+	</bean>
+	
+	<bean id="zebraDS" class="com.dianping.zebra.shard.jdbc.ShardDataSource" init-method="init">
+		<property name="dataSourcePool">
+			<map>
+				<entry key="id0" value-ref="id0"/>
+				<entry key="id1" value-ref="id1"/>
+				<entry key="id2" value-ref="id2"/>
+				<entry key="id3" value-ref="id3"/>
+				<entry key="class0" value-ref="class0"/>
+				<entry key="class1" value-ref="class1"/>
+				<entry key="class2" value-ref="class2"/>
+				<entry key="class3" value-ref="class3"/>
+			</map>	
+		</property>
+		<property name="routerFactory">
+			<bean class="com.dianping.zebra.shard.router.builder.XmlResourceRouterBuilder">
+				<constructor-arg value="router-rule-multidb-multikey-lifecycle.xml"/>
+			</bean>
+		</property>
+	</bean>
+
+</beans>
+	

@@ -1,0 +1,61 @@
+<!-- 原来的配置文件 -->
+<bean id="zebraDS" class="com.dianping.zebra.jdbc.DPDataSource"
+	init-method="init">
+	<property name="dataSourcePool">
+		<map>
+			<entry key="groupDataSource" value-ref="groupDataSource" />
+			<entry key="default" value-ref="groupDataSource" />
+		</map>
+	</property>
+	<property name="routerFactory">
+		<bean class="com.dianping.zebra.router.ClassPathXmlDataSourceRouterFactory">
+			<constructor-arg value="config/zebra-router/group-follownote-router.xml" />
+		</bean>
+	</property>
+	<property name="syncEventNotifier">
+		<bean class="com.dianping.zebra.sync.DefaultMQEventNotifier"
+			init-method="init">
+			<property name="url" value="${zebra.sync.mongodb.url}" />
+			<property name="queueName" value="zebra-sync" />
+		</bean>
+	</property>
+</bean>
+
+<!-- 新的配置文件 -->
+<bean id="zebraDS" class="com.dianping.zebra.jdbc.DPDataSource"
+	init-method="init">
+	<property name="dataSourcePool">
+		<map>
+			<entry key="groupDataSource" value-ref="groupDataSource" />
+			<entry key="default" value-ref="groupDataSource" />
+		</map>
+	</property>
+	<property name="routerFactory">
+		<bean class="com.dianping.zebra.router.ClassPathXmlDataSourceRouterFactory">
+			<constructor-arg value="config/zebra-router/group-follownote-router.xml" />
+		</bean>
+	</property>
+
+	<!-- 如果有这个，则开启同步数据任务；如果没有，则不开启 -->
+	<property name="migrateTask" ref="migrateTask"></property>
+	
+	<!-- 如果有这个，则支持动态动态的切换功能；如果没有，则不开启 -->
+	<property name="swithOn" value="false"></property>
+	<property name="originDataSource" ref="ds"></property>
+</bean>
+
+<!-- TODO 完善这个配置 -->
+<bean id="migrateTask" class="com.dianping.zebra.migrate.MigrateTask"
+	init-method="init">
+	<property name="originalDs" ref="ds0" stop="false">
+		<list>
+			<ref local="ds1" />
+			<ref local="ds2" />
+		</list>
+	</property>
+	<property name="replicatedDs" stop="false" />
+	<property name="" value=""></property>
+	<property name="" value=""></property>
+</bean>
+
+

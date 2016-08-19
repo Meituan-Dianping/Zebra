@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="gb2312"?>
+<dataset>
+	<DP_Group GroupID="100" GroupName="test group" GroupPermaLink="grouplink" Status="0"/>
+	
+	<DP_GroupNote NoteID="0" GroupID="100" NoteTitle="This is a note0" Status="1" UserID="10000"/>
+	<DP_GroupNote NoteID="1" GroupID="100" NoteTitle="This is a note1" Status="1" UserID="10000"/>
+	<DP_GroupNote NoteID="2" GroupID="100" NoteTitle="This is a note2" Status="1" UserID="10000"/>
+	<DP_GroupNote NoteID="3" GroupID="100" NoteTitle="This is a note3" Status="1" UserID="10000"/>
+	<DP_GroupNote NoteID="4" GroupID="100" NoteTitle="This is a note4" Status="1" UserID="10000"/>
+	<DP_GroupNote NoteID="5" GroupID="100" NoteTitle="This is a note5" Status="1" UserID="10000"/>
+	<DP_GroupNote NoteID="6" GroupID="100" NoteTitle="This is a note6" Status="1" UserID="10000"/>
+	<DP_GroupNote NoteID="7" GroupID="100" NoteTitle="This is a note7" Status="1" UserID="10000"/>
+	
+	<DP_GroupFollowNote_noteid0 FollowNoteID="0" NoteID="0" UserID="7" AddTime="2011-07-07 20:00:00" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_noteid0 FollowNoteID="1" NoteID="0" UserID="7" AddTime="2011-07-07 20:00:01" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	
+	<DP_GroupFollowNote_noteid1 FollowNoteID="20" NoteID="1" UserID="6" AddTime="2011-07-07 20:00:02" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_noteid1 FollowNoteID="21" NoteID="1" UserID="6" AddTime="2011-07-07 20:00:03" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	
+	<DP_GroupFollowNote_noteid2 FollowNoteID="40" NoteID="2" UserID="5" AddTime="2011-07-07 20:00:04" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_noteid2 FollowNoteID="41" NoteID="2" UserID="5" AddTime="2011-07-07 20:00:05" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	
+	<DP_GroupFollowNote_noteid3 FollowNoteID="60" NoteID="3" UserID="4" AddTime="2011-07-07 20:00:06" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_noteid3 FollowNoteID="61" NoteID="3" UserID="4" AddTime="2011-07-07 20:00:07" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	
+	<DP_GroupFollowNote_noteid4 FollowNoteID="80" NoteID="4" UserID="3" AddTime="2011-07-07 20:00:08" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_noteid4 FollowNoteID="81" NoteID="4" UserID="3" AddTime="2011-07-07 20:00:09" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	
+	<DP_GroupFollowNote_noteid5 FollowNoteID="100" NoteID="5" UserID="2" AddTime="2011-07-07 20:00:10" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_noteid5 FollowNoteID="101" NoteID="5" UserID="2" AddTime="2011-07-07 20:00:11" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	
+	<DP_GroupFollowNote_noteid6 FollowNoteID="120" NoteID="6" UserID="1" AddTime="2011-07-07 20:00:12" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_noteid6 FollowNoteID="121" NoteID="6" UserID="1" AddTime="2011-07-07 20:00:13" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	
+	<DP_GroupFollowNote_noteid7 FollowNoteID="140" NoteID="7" UserID="0" AddTime="2011-07-07 20:00:14" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_noteid7 FollowNoteID="141" NoteID="7" UserID="0" AddTime="2011-07-07 20:00:15" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	<DP_GroupFollowNote_noteid7 FollowNoteID="142" NoteID="7" UserID="0" AddTime="2011-07-07 20:00:16" LastIP="10.0.0.1" NoteClass="4" DCashNumber="11"/>
+	
+	
+	
+	<DP_GroupFollowNote_userid7 FollowNoteID="0" NoteID="0" UserID="7" AddTime="2011-07-07 20:00:00" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_userid7 FollowNoteID="1" NoteID="0" UserID="7" AddTime="2011-07-07 20:00:01" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	
+	<DP_GroupFollowNote_userid6 FollowNoteID="20" NoteID="1" UserID="6" AddTime="2011-07-07 20:00:02" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_userid6 FollowNoteID="21" NoteID="1" UserID="6" AddTime="2011-07-07 20:00:03" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	
+	<DP_GroupFollowNote_userid5 FollowNoteID="40" NoteID="2" UserID="5" AddTime="2011-07-07 20:00:04" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_userid5 FollowNoteID="41" NoteID="2" UserID="5" AddTime="2011-07-07 20:00:05" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	
+	<DP_GroupFollowNote_userid4 FollowNoteID="60" NoteID="3" UserID="4" AddTime="2011-07-07 20:00:06" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_userid4 FollowNoteID="61" NoteID="3" UserID="4" AddTime="2011-07-07 20:00:07" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	
+	<DP_GroupFollowNote_userid3 FollowNoteID="80" NoteID="4" UserID="3" AddTime="2011-07-07 20:00:08" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_userid3 FollowNoteID="81" NoteID="4" UserID="3" AddTime="2011-07-07 20:00:09" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	
+	<DP_GroupFollowNote_userid2 FollowNoteID="100" NoteID="5" UserID="2" AddTime="2011-07-07 20:00:10" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_userid2 FollowNoteID="101" NoteID="5" UserID="2" AddTime="2011-07-07 20:00:11" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	
+	<DP_GroupFollowNote_userid1 FollowNoteID="120" NoteID="6" UserID="1" AddTime="2011-07-07 20:00:12" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_userid1 FollowNoteID="121" NoteID="6" UserID="1" AddTime="2011-07-07 20:00:13" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	
+	<DP_GroupFollowNote_userid0 FollowNoteID="140" NoteID="7" UserID="0" AddTime="2011-07-07 20:00:14" LastIP="10.0.0.1" NoteClass="3" DCashNumber="11"/>
+	<DP_GroupFollowNote_userid0 FollowNoteID="141" NoteID="7" UserID="0" AddTime="2011-07-07 20:00:15" LastIP="10.0.0.1" NoteClass="1" DCashNumber="11"/>
+	<DP_GroupFollowNote_userid0 FollowNoteID="142" NoteID="7" UserID="0" AddTime="2011-07-07 20:00:16" LastIP="10.0.0.1" NoteClass="4" DCashNumber="11"/>
+	
+</dataset>

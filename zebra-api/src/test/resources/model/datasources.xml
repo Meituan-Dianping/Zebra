@@ -1,0 +1,39 @@
+<group-data-source-config filters="statFilter" router-strategy="roundrobin">
+	<data-source-config id="db1" weight="0" canRead="false" canWrite="true" active="true" type="tomcat-jdbc">
+		<test-read-only-sql>call readonly()</test-read-only-sql>
+		<time-window>1000</time-window>
+		<punish-limit>100</punish-limit>
+		<jdbc-url>jdbc:h2:mem:test;MVCC=TRUE</jdbc-url>
+		<username>sa</username>
+		<driver-class>org.h2.Driver</driver-class>
+		<password></password>
+		<idleConnectionTestPeriod>60</idleConnectionTestPeriod>
+   		<acquireRetryAttempts>50</acquireRetryAttempts>
+   		<acquireRetryDelay>300</acquireRetryDelay>
+   		<maxStatements>0</maxStatements>
+   		<maxStatementsPerConnection>100</maxStatementsPerConnection>
+	</data-source-config>
+	<data-source-config id="db2" weight="1" canRead="true" canWrite="true" active="true" type="tomcat-jdbc" tag="puma">
+		<test-read-only-sql>call readonly()</test-read-only-sql>
+		<time-window>0</time-window>
+		<punish-limit>0</punish-limit>
+		<jdbc-url>jdbc:h2:mem:test1;MVCC=TRUE</jdbc-url>
+		<username>sa</username>
+		<driver-class>org.h2.Driver</driver-class>
+		<password></password>
+	</data-source-config>
+	<data-source-config id="db3" weight="1" canRead="true" canWrite="false" active="true" type="tomcat-jdbc" tag="puma,dw">
+		<test-read-only-sql>call readonly()</test-read-only-sql>
+		<time-window>0</time-window>
+		<punish-limit>0</punish-limit>
+		<jdbc-url>jdbc:h2:mem:test2;MVCC=TRUE</jdbc-url>
+		<username>sa</username>
+		<driver-class>org.h2.Driver</driver-class>
+		<password></password>
+		<idleConnectionTestPeriod>80</idleConnectionTestPeriod>
+   		<acquireRetryAttempts>50</acquireRetryAttempts>
+   		<acquireRetryDelay>300</acquireRetryDelay>
+   		<maxStatements>1</maxStatements>
+   		<maxStatementsPerConnection>100</maxStatementsPerConnection>
+	</data-source-config>
+</group-data-source-config>
