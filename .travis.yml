@@ -1,2 +1,6 @@
 language: java
 script: mvn test
+jdk:
+   - oraclejdk7
+   - openjdk6
+
