@@ -15,14 +15,14 @@
 
 	<dependency>
     		<groupId>com.dianping.zebra</groupId>
-	    	<artifactId>zebra-api</artifactId>
+    		<artifactId>zebra-api</artifactId>
     		<version>${version}
     	</version>
 	</dependency>
 	<dependency>
 		<groupId>com.dianping.zebra</groupId>
-      		<artifactId>zebra-ds-monitor-client</artifactId>
-      		<version>${version}</version>
+		<artifactId>zebra-ds-monitor-client</artifactId>
+		<version>${version}</version>
   	</dependency>
 
 ### 第二步:通过Spring方式使用
