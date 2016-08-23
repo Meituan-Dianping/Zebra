@@ -1,8 +1,6 @@
-# zebra-dao:An asynchronous and paginated dao 
+# zebra-dao:An asynchronous and paginated dao
 
-[Readme in Chinese](https://github.com/ainilife/zebra-dao/blob/master/README_ZH.md)
-
-[![Build Status](https://travis-ci.org/ainilife/zebra-dao.svg?branch=master)](https://travis-ci.org/ainilife/zebra-dao)
+[Readme in Chinese](https://github.com/dianping/zebra/zebra-dao/blob/master/README_ZH.md)
 
 ## Introduction
 `zebra-dao` is an `asynchronous` dao built on top of `mybatis` and `mybatis-spring`，it also supports `page` feature. Now, DianPing corp intenal has already using this dao on the product environment。
@@ -16,10 +14,11 @@
 ## Preparation
 Download the source code and compile.
 
-	git clone https://github.com/ainilife/zebra-dao.git
+	git clone https://github.com/dianping/zebra.git
+	cd zebra-dao
 	mvn clean install -DskipTests
 
-Config pom.xml,add the following denpendcy. Also add Spring, Mybatis and Mybatis-Spring dependencies all by yourself. 
+Config pom.xml,add the following denpendcy. Also add Spring, Mybatis and Mybatis-Spring dependencies all by yourself.
 
 	<dependency>
 		<groupId>com.dianping.zebra</groupId>
@@ -38,7 +37,7 @@ The only difference between original `mybatis-spring` config and `zebra-dao` is 
         <!--Optional，Default is 500-->
         <property name="queueSize" value="500"></property>
     </bean>
-    
+
 	<bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource"          
         destroy-method="close">         
     	<property name="driverClass" value="com.mysql.jdbc.Driver"/>         
@@ -55,7 +54,7 @@ The only difference between original `mybatis-spring` config and `zebra-dao` is 
 		<!--Entity package-->
 		<property name="typeAliasesPackage" value="com.dianping.zebra.dao.entity" />
 	</bean>
-    
+
 ## Usage
 
 ### `Callback` for Asynchronous API
@@ -66,7 +65,7 @@ The only difference between original `mybatis-spring` config and `zebra-dao` is 
 		* Normal synchronization dao method.
 		*/
 		public UserEntity findUserById(@Param("userId") int userId);
-		
+
 		/**
 		* Asynchronous callback method. Return void and only one
 		* callback method required.
@@ -78,15 +77,15 @@ The only difference between original `mybatis-spring` config and `zebra-dao` is 
 
 	@Autowired
 	private UserMapper dao;
-	
+
 	......
-	
+
 	//asynchronous invoke
 	dao.findUserById(1, new AsyncDaoCallback<UserEntity>() {
 		@Override
 		public void onSuccess(UserEntity user) {
 			System.out.println(user);
-			
+
 			//another asynchronous invoke in the asynchronous invoke
 			dao.findUserById(2, new AsyncDaoCallback<UserEntity>() {
 				@Override
@@ -98,7 +97,7 @@ The only difference between original `mybatis-spring` config and `zebra-dao` is 
            		public void onException(Exception e) {
            		}
 			});
-			
+
 			//synchronization invoke in the  asynchronous invoke
 			UserEntity entity = dao.findUserById(3);
 			System.out.println(entity);
@@ -108,12 +107,12 @@ The only difference between original `mybatis-spring` config and `zebra-dao` is 
      	public void onException(Exception e) {
      	}
 	});
-3.Note that, asynchronous method should have the same name as the synchronization method. If you have to define a different name for 
+3.Note that, asynchronous method should have the same name as the synchronization method. If you have to define a different name for
 asynchronous method, you have to use annotation `TargetMethod ` to define according synchronization method. For example:
 
 	//synchronization invoke
 	public UserEntity findUserById(@Param("userId") int userId);
-	
+
 	//asynchronous invoke with a different method name
 	@TargetMethod(name = "findUserById")
 	public void findUserById2(@Param("userId") int userId, AsyncDaoCallback<UserEntity> callback);
@@ -128,7 +127,7 @@ asynchronous method, you have to use annotation `TargetMethod ` to define accord
 		public List<UserEntity> getAll();
 
 		/**
-		* Asynchronous future method. Return future and must have the 
+		* Asynchronous future method. Return future and must have the
 		* same params as synchronization method.
 		*/
 		@TargetMethod(name = "getAll")
@@ -139,12 +138,12 @@ asynchronous method, you have to use annotation `TargetMethod ` to define accord
 
 	@Autowired
 	private UserMapper dao;
-	
+
 	......
 
 	Future<List<UserEntity>> future = dao.getAll1();
 	List<UserEntity> list = future.get();
-	
+
 	for(UserEntity user : list){
 		System.out.println(user);
 	}
@@ -162,7 +161,7 @@ In `HeartbeatMapper.xml`
 In `HeartbeatMapper.java`, `RowBounds` can define both `offset` and `limit`：
 
 	List<HeartbeatEntity> getAll(RowBounds rb);
-	
+
 #### Physical Pagination
 Physical Pagination loads paged data from database by using different sql. Different database vendor may has different implementation。`zebra-dao` implements an `Interceptor` of mybatis to achieve physical pagination feature. For example：
 
@@ -199,7 +198,7 @@ In `HeartbeatMapper.java`, `PageModel` can define both `page` and `pageSize`. Af
 
 	// must return void
 	void getAll(PageModel page);
-	
+
 
 #### Asynchronous Pagination
 1.By using `RowBounds`，both `Callback` and `Future` are supported.
@@ -218,21 +217,3 @@ In `HeartbeatMapper.java`, `PageModel` can define both `page` and `pageSize`. Af
 		public void onException(Exception e) {
 		}
 	});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-    

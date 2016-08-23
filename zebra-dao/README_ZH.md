@@ -12,7 +12,8 @@
 ## 准备工作
 下载源代码和编译
 
-	git clone https://github.com/ainilife/zebra-dao.git
+	git clone https://github.com/dianping/zebra.git
+	cd zebra-dao
 	mvn clean install -DskipTests
 
 配置pom，引入zebra-dao。自行添加Spring，Mybatis以及Mybatis-Spring相关依赖。
@@ -34,7 +35,7 @@
         <!--Optional，Default is 500-->
         <property name="queueSize" value="500"></property>
     </bean>
-    
+
 	<bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource"          
         destroy-method="close">         
     	<property name="driverClass" value="com.mysql.jdbc.Driver"/>         
@@ -51,7 +52,7 @@
 		<!--Entity package-->
 		<property name="typeAliasesPackage" value="com.dianping.zebra.dao.entity" />
 	</bean>
-    
+
 ## 如何使用
 
 ### `Callback` for Asynchronous API
@@ -62,7 +63,7 @@
 		* Normal synchronization dao method.
 		*/
 		public UserEntity findUserById(@Param("userId") int userId);
-		
+
 		/**
 		* Asynchronous callback method. Return void and only one
 		* callback method required.
@@ -74,15 +75,15 @@
 
 	@Autowired
 	private UserMapper dao;
-	
+
 	......
-	
+
 	//asynchronous invoke
 	dao.findUserById(1, new AsyncDaoCallback<UserEntity>() {
 		@Override
 		public void onSuccess(UserEntity user) {
 			System.out.println(user);
-			
+
 			//another asynchronous invoke in the asynchronous invoke
 			dao.findUserById(2, new AsyncDaoCallback<UserEntity>() {
 				@Override
@@ -94,7 +95,7 @@
            		public void onException(Exception e) {
            		}
 			});
-			
+
 			//synchronization invoke in the  asynchronous invoke
 			UserEntity entity = dao.findUserById(3);
 			System.out.println(entity);
@@ -108,7 +109,7 @@
 
 	//synchronization invoke
 	public UserEntity findUserById(@Param("userId") int userId);
-	
+
 	//asynchronous invoke with a different method name
 	@TargetMethod(name = "findUserById")
 	public void findUserById2(@Param("userId") int userId, AsyncDaoCallback<UserEntity> callback);
@@ -123,7 +124,7 @@
 		public List<UserEntity> getAll();
 
 		/**
-		* Asynchronous future method. Return future and must have the 
+		* Asynchronous future method. Return future and must have the
 		* same params as synchronization method.
 		*/
 		@TargetMethod(name = "getAll")
@@ -134,12 +135,12 @@
 
 	@Autowired
 	private UserMapper dao;
-	
+
 	......
 
 	Future<List<UserEntity>> future = dao.getAll1();
 	List<UserEntity> list = future.get();
-	
+
 	for(UserEntity user : list){
 		System.out.println(user);
 	}
@@ -157,7 +158,7 @@
 在HeartbeatMapper.java中，使用`RowBounds`中定义分页的`offset`和`limit`：
 
 	List<HeartbeatEntity> getAll(RowBounds rb);
-	
+
 #### 物理分页
 物理分页指的是在SQL查询过程中实现分页，依托与不同的数据库厂商，实现也会不同。zebra-dao扩展了一个拦截器，实现了改写SQL达到了物理分页的功能。下面举例说明如何使用：
 
@@ -214,20 +215,3 @@ zebra-dao支持在一个dao调用中同时获得总条数和数据。举例来�
 		public void onException(Exception e) {
 		}
 	});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-    
