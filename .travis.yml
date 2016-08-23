@@ -1,5 +1,6 @@
 language: java
 before_install: echo "MAVEN_OPTS='-Xms512M -Xmx512M -XX:PermSize=256M -XX:MaxPermSize=512M'" > ~/.mavenrc
+sudo: required
 script: 
-   mvn test -B -fae -X
+   mvn test -B -fae
 
