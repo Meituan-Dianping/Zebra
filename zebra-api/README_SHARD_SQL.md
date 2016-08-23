@@ -8,6 +8,9 @@
 
 * INSERT INTO User WHERE (Id, Name, CityId) VALUES (1, 'test', 2)
 
+#### Batch INSERT
+仅支持Values后的多行记录是确定到某个库某张表上的。暂不支持Values后的多条记录落到不同的库和表。
+
 #### UPDATE & DELETE
 
 ##### 更新操作最好指定主维度，这样性能高
@@ -49,19 +52,22 @@
   * SELECT Id, Name, CityId FROM User WHERE Id <> 1
   * SELECT Id, Name, CityId FROM User WHERE Name LIKE '%test%'
 
-
 ##### LIMIT, OFFSET, ORDER BY 都支持，性能差
 
   * SELECT Id, Name, CityId FROM User ORDER BY CityId LIMIT 1 OFFSET 1
 
-
 ##### 支持子查询，但无法识别子查询中的分区字段，性能差
 
   * SELECT Id, Name, CityId FROM User WHERE Id IN (SELECT Id FROM User WHERE CityId = 1)
-
 
 ##### 支持 GROUP BY, COUNT, MAX, MIN 都支持，AVG 不支持，性能差，另外必须加字段别名
 
   * SELECT CityId, MAX(Id) as MaxId FROM User GROUP BY CityId
   * SELECT CityId, MIN(Id) as MinId FROM User GROUP BY CityId
   * SELECT CityId, COUNT(Id) as AllId FROM User GROUP BY CityId
+
+##### IN语句支持
+指定主维度在IN语句内，因为使用了并发查询，性能极佳。不建议IN语句里面有太多的数据。
+SELECT Id, Name, CityId FROM User WHERE Id IN (1,2,3,4)
+UPDATE User SET Name = 'new name' WHERE Id IN (1,2,3,4,5)
+DELETE FROM User WHERE Id IN (1,2,3,4,5)

@@ -3,13 +3,35 @@
 [![Build Status](https://travis-ci.org/dianping/zebra.svg?branch=master)](https://travis-ci.org/dianping/zebra)
 
 ## 简介
-`Zebra`是在`c3p0`和`tomcat-jdbc`基础上进行包装成的点评内部使用的`动态数据源`，它具有以下的功能点：
+`Zebra`是点评内部使用的`数据库访问层`中间件，它具有以下的功能点：
 
-1. 对业务隐藏数据源相关配置，比如主库或者从库的位置、用户名以及密码等
-2. 实时响应配置变化，应用自刷新无需重启
-3. 读写分离，支持多种场景的自定义路由策略
-4. 支持分库分表，具体接入请[参考文档](/arch/zebra/blob/master/zebra-api/README_SHARD.md)
-5. 底层多数据源支持:`c3p0`或者`tomcat-jdbc`或者`druid`
-6. 丰富的监控信息在`CAT`上展现
-7. 支持DBA方便的对数据库进行维护，如写库切换，读库上线下线，用户名密码变更等
-8. 支持SQL流控，DBA可以在后台按照比例对指定SQL语句进行限制访问
+1. 配置集中管理，动态刷新     
+2. 支持读写分离、分库分表
+3. 丰富的监控信息在`CAT`上展现
+
+其中的三个组件的功能分别是：
+
+ - zebra-api : 最主要的访问层中间件
+ - zebra-ds-monitor-client：基于CAT的监控(可选)
+ - zebra-dao：基于MyBatis的异步化的DAO组件(可选)
+
+## 编译
+
+    1. git clone https://github.com/dianping/zebra.git
+    2. git checkout mvn-repo
+    3. 拷贝里面的mvn依赖到本地仓库（第2和3步骤主要是为了使用zebra-ds-monitor-client中的CAT监控）
+    4. mvn clean install -DskipTests
+
+## 使用
+
+ - zebra-api : 文档
+ - zebra-ds-monitor-client：文档
+ - zebra-dao：文档
+
+## Copyright and License
+
+Copyright 2016 DianPing, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
