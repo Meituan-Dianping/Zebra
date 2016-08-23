@@ -24,9 +24,9 @@
 
 ## 使用
 
- - zebra-api : [文档](https://github.com/dianping/zebra/zebra-api/blob/master/README.md)
+ - zebra-api : [文档](https://github.com/dianping/zebra/blob/master/zebra-api/README.md)
  - zebra-ds-monitor-client
- - zebra-dao：[文档](https://github.com/dianping/zebra/zebra-dao/blob/master/README_ZH.md)
+ - zebra-dao：[文档](https://github.com/dianping/zebra/blob/master/zebra-dao/README_ZH.md)
 
 ## Copyright and License
 
