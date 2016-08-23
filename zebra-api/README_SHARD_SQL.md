@@ -68,6 +68,6 @@
 
 ##### IN语句支持
 指定主维度在IN语句内，因为使用了并发查询，性能极佳。不建议IN语句里面有太多的数据。
-SELECT Id, Name, CityId FROM User WHERE Id IN (1,2,3,4)
-UPDATE User SET Name = 'new name' WHERE Id IN (1,2,3,4,5)
-DELETE FROM User WHERE Id IN (1,2,3,4,5)
+  * SELECT Id, Name, CityId FROM User WHERE Id IN (1,2,3,4)
+  * UPDATE User SET Name = 'new name' WHERE Id IN (1,2,3,4,5)
+  * DELETE FROM User WHERE Id IN (1,2,3,4,5)
