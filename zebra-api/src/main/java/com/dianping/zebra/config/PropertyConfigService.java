@@ -81,6 +81,7 @@ public class PropertyConfigService implements ConfigService {
 			updateTask.setName("Thread-" + ConfigPeroidCheckerTask.class.getName());
 			updateTask.start();
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error("fail to initilize Local Config Manager for DAL", e);
 			throw new ZebraConfigException(e);
 		}
