@@ -50,7 +50,7 @@ import org.w3c.dom.NodeList;
  */
 public abstract class SingleDBBaseTestCase extends DBTestCase {
 
-	private List<CreateTableScriptEntry> createdTableList = new ArrayList<CreateTableScriptEntry>();
+	private List<SingleCreateTableScriptEntry> createdTableList = new ArrayList<SingleCreateTableScriptEntry>();
 	
 	protected ApplicationContext context;
 
@@ -98,7 +98,7 @@ public abstract class SingleDBBaseTestCase extends DBTestCase {
 				IBatchStatement statement = statementFactory.createBatchStatement(connection);
 				try {
 					int count = 0;
-					for (CreateTableScriptEntry entry : createdTableList) {
+					for (SingleCreateTableScriptEntry entry : createdTableList) {
 						statement.addBatch(entry.getCreateTableScript());
 						count++;
 					}
@@ -128,7 +128,7 @@ public abstract class SingleDBBaseTestCase extends DBTestCase {
 
 				try {
 					int count = 0;
-					for (CreateTableScriptEntry entry : createdTableList) {
+					for (SingleCreateTableScriptEntry entry : createdTableList) {
 						statement.addBatch("drop table " + entry.getTableName());
 						count++;
 					}
@@ -161,7 +161,7 @@ public abstract class SingleDBBaseTestCase extends DBTestCase {
 		NodeList tableScriptList = (NodeList) xpath.compile("/tables/table").evaluate(configDoc,
 				XPathConstants.NODESET);
 		for (int i = 0; i < tableScriptList.getLength(); i++) {
-			CreateTableScriptEntry entry = new CreateTableScriptEntry();
+			SingleCreateTableScriptEntry entry = new SingleCreateTableScriptEntry();
 			Element ele = (Element) tableScriptList.item(i);
 			entry.setTableName(ele.getAttribute("name"));
 			entry.setCreateTableScript(ele.getTextContent());

@@ -1,6 +1,6 @@
 package com.dianping.zebra.shard.jdbc.base;
 
-public class CreateTableScriptEntry {
+public class SingleCreateTableScriptEntry {
 	private String tableName;
 	private String createTableScript;
 

@@ -42,9 +42,9 @@ import java.util.Map;
  */
 public abstract class MultiDBBaseTestCase {
 
-	private List<CreateTableScriptEntry> createdTableList = new ArrayList<CreateTableScriptEntry>();
-	
-	protected static ApplicationContext context;
+	private List<MultiCreateTableScriptEntry> createdTableList = new ArrayList<MultiCreateTableScriptEntry>();
+
+	protected ApplicationContext context;
 
 	protected abstract String getDBBaseUrl();
 
@@ -76,7 +76,7 @@ public abstract class MultiDBBaseTestCase {
 	@After
 	public void tearDown() throws Exception {
 		Class.forName(getDriverClassName());
-		for (CreateTableScriptEntry entry : createdTableList) {
+		for (MultiCreateTableScriptEntry entry : createdTableList) {
 			Connection conn = null;
 			Statement stmt = null;
 			try {
@@ -180,7 +180,7 @@ public abstract class MultiDBBaseTestCase {
 
 	private void createTables() throws Exception {
 		Class.forName(getDriverClassName());
-		for (CreateTableScriptEntry entry : createdTableList) {
+		for (MultiCreateTableScriptEntry entry : createdTableList) {
 			Connection conn = null;
 			Statement stmt = null;
 			try {
@@ -225,7 +225,7 @@ public abstract class MultiDBBaseTestCase {
 		NodeList databaseList = (NodeList) xpath.compile("/databases/database").evaluate(configDoc,
 				XPathConstants.NODESET);
 		for (int i = 0; i < databaseList.getLength(); i++) {
-			CreateTableScriptEntry entry = new CreateTableScriptEntry();
+			MultiCreateTableScriptEntry entry = new MultiCreateTableScriptEntry();
 			Element ele = (Element) databaseList.item(i);
 			entry.setDbName(ele.getAttribute("name"));
 			NodeList tableList = (NodeList) xpath.compile("tables/table").evaluate(ele, XPathConstants.NODESET);
@@ -237,77 +237,5 @@ public abstract class MultiDBBaseTestCase {
 			entry.setTableNameScriptMapping(map);
 			createdTableList.add(entry);
 		}
-	}
-
-	private static class CreateTableScriptEntry {
-		private String dbName;
-		private Map<String, String> tableNameScriptMapping;
-
-		/**
-		 * @return the dbName
-		 */
-		public String getDbName() {
-			return dbName;
-		}
-
-		/**
-		 * @param dbName
-		 *            the dbName to set
-		 */
-		public void setDbName(String dbName) {
-			this.dbName = dbName;
-		}
-
-		/**
-		 * @return the tableNameScriptMapping
-		 */
-		public Map<String, String> getTableNameScriptMapping() {
-			return tableNameScriptMapping;
-		}
-
-		/**
-		 * @param tableNameScriptMapping
-		 *            the tableNameScriptMapping to set
-		 */
-		public void setTableNameScriptMapping(Map<String, String> tableNameScriptMapping) {
-			this.tableNameScriptMapping = tableNameScriptMapping;
-		}
-
-	}
-
-	private static class DBDataEntry {
-		private String dbName;
-		private List<String> scripts;
-
-		/**
-		 * @return the dbName
-		 */
-		public String getDbName() {
-			return dbName;
-		}
-
-		/**
-		 * @param dbName
-		 *            the dbName to set
-		 */
-		public void setDbName(String dbName) {
-			this.dbName = dbName;
-		}
-
-		/**
-		 * @return the scripts
-		 */
-		public List<String> getScripts() {
-			return scripts;
-		}
-
-		/**
-		 * @param scripts
-		 *            the scripts to set
-		 */
-		public void setScripts(List<String> scripts) {
-			this.scripts = scripts;
-		}
-
 	}
 }
