@@ -11,18 +11,19 @@
 
 ### 第一步:添加POM依赖
 
-目前的最新版本为`2.8.3`，并配合数据监控组件`zebra-ds-monitor-client`一起使用
+目前的最新版本为`2.8.3`，并配合数据监控组件`zebra-ds-monitor-client`一起使用
 
 	<dependency>
-    	<groupId>com.dianping.zebra</groupId>
-	    <artifactId>zebra-api</artifactId>
-    	<version>${version}</version>
+    		<groupId>com.dianping.zebra</groupId>
+	    	<artifactId>zebra-api</artifactId>
+    		<version>${version}
+    	</version>
 	</dependency>
-  <dependency>
-      <groupId>com.dianping.zebra</groupId>
-      <artifactId>zebra-ds-monitor-client</artifactId>
-      <version>${version}</version>
-  </dependency>
+	<dependency>
+		<groupId>com.dianping.zebra</groupId>
+      		<artifactId>zebra-ds-monitor-client</artifactId>
+      		<version>${version}</version>
+  	</dependency>
 
 ### 第二步:通过Spring方式使用
 
