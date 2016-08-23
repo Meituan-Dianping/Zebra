@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/dianping/zebra.svg?branch=master)](https://travis-ci.org/dianping/zebra)
 
 ## 简介
-`Zebra`是点评内部使用的`数据库访问层`中间件，它具有以下的功能点：
+`Zebra`是点评内部使用的`数据库访问层`中间件，它具有以下的功能点：
 
 1. 配置集中管理，动态刷新     
 2. 支持读写分离、分库分表
