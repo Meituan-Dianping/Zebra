@@ -1,4 +1,4 @@
-package com.dianping.zebra.group.filter;
+package com.dianping.zebra.group.performance;
 
 import com.dianping.zebra.Constants;
 import com.dianping.zebra.group.jdbc.GroupDataSource;

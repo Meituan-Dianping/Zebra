@@ -10,6 +10,7 @@ import java.util.concurrent.Future;
 
 import org.junit.Test;
 
+import com.dianping.zebra.group.jdbc.DataSourceEntry;
 import com.dianping.zebra.group.jdbc.GroupDataSource;
 import com.dianping.zebra.group.jdbc.MultiDatabaseTestCase;
 import com.dianping.zebra.group.util.SqlAliasManager;

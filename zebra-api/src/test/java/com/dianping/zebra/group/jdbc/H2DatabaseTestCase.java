@@ -7,9 +7,12 @@ import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.h2.tools.RunScript;
 import org.junit.Before;
+import org.mockito.Mockito;
 
+import com.dianping.zebra.filter.DefaultJdbcFilter;
+import com.dianping.zebra.filter.FilterManager;
+import com.dianping.zebra.filter.FilterManagerFactory;
 import com.dianping.zebra.filter.JdbcFilter;
-import com.dianping.zebra.group.filter.MockFilterHelper;
 
 public abstract class H2DatabaseTestCase {
 	protected static final String JDBC_DRIVER = org.h2.Driver.class.getName();
@@ -42,8 +45,9 @@ public abstract class H2DatabaseTestCase {
 
 	@Before
 	public void mockFilter() {
-		MockFilterHelper.injectMockFilter();
-		mockedFilter = MockFilterHelper.getMockedFilter();
+		mockedFilter = Mockito.spy(new DefaultJdbcFilter());
+		FilterManager manager = FilterManagerFactory.getFilterManager();
+		manager.addFilter("mock", mockedFilter);
 	}
 
 	private IDataSet readDataSet() throws Exception {

@@ -30,6 +30,7 @@ import com.dianping.zebra.shard.router.DataSourceRouterImplTest;
 import com.dianping.zebra.shard.router.XmlDataSourceRouterFactoryTest;
 import com.dianping.zebra.shard.router.rule.GroovyRuleEngineTest;
 import com.dianping.zebra.shard.router.rule.SimpleDataSourceProviderTest;
+import com.dianping.zebra.shard.router.rule.engine.RuleEngineBaseTest;
 import com.dianping.zebra.shard.util.ShardColumnValueUtilTest;
 
 @RunWith(Suite.class)
@@ -37,11 +38,12 @@ import com.dianping.zebra.shard.util.ShardColumnValueUtilTest;
         //config
         XmlDataSourceRouterConfigLoaderTest.class,
 
-        //jdbc
+        //jdbc.specification
         DataSourceTest.class,
         ConnectionTest.class,
         StatementTest.class,
         
+        //jdbc
         MultiDBLifeCycleTest.class,
         MultiDBPreparedStatementLifeCycleTest.class,
         ResultSetTest.class,
@@ -55,6 +57,7 @@ import com.dianping.zebra.shard.util.ShardColumnValueUtilTest;
         ShardPreparedStatementMultiKeyTest.class,
         ShardSupportedCaseTest.class,
         
+        //jdbc.parallel
         SQLThreadPoolExecutorTest.class,
         
         //merge
@@ -71,6 +74,7 @@ import com.dianping.zebra.shard.util.ShardColumnValueUtilTest;
         GroovyRuleEngineTest.class,
         SimpleDataSourceProviderTest.class,
         XmlDataSourceRouterFactoryTest.class,
+        RuleEngineBaseTest.class,
         
         //util
         ShardColumnValueUtilTest.class

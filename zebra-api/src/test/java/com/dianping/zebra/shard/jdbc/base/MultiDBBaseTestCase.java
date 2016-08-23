@@ -43,6 +43,7 @@ import java.util.Map;
 public abstract class MultiDBBaseTestCase {
 
 	private List<CreateTableScriptEntry> createdTableList = new ArrayList<CreateTableScriptEntry>();
+	
 	protected static ApplicationContext context;
 
 	protected abstract String getDBBaseUrl();
@@ -74,7 +75,6 @@ public abstract class MultiDBBaseTestCase {
 
 	@After
 	public void tearDown() throws Exception {
-
 		Class.forName(getDriverClassName());
 		for (CreateTableScriptEntry entry : createdTableList) {
 			Connection conn = null;
@@ -113,7 +113,6 @@ public abstract class MultiDBBaseTestCase {
 	}
 
 	private List<DBDataEntry> parseDataFile() throws Exception {
-
 		List<DBDataEntry> datas = new ArrayList<DBDataEntry>();
 
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -142,7 +141,6 @@ public abstract class MultiDBBaseTestCase {
 	}
 
 	private void loadDatas(List<DBDataEntry> datas) throws Exception {
-
 		Class.forName(getDriverClassName());
 		for (DBDataEntry entry : datas) {
 			Connection conn = null;

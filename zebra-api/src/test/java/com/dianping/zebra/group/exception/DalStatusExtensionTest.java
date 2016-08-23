@@ -7,6 +7,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import com.dianping.zebra.Constants;
+import com.dianping.zebra.group.jdbc.DataSourceEntry;
 import com.dianping.zebra.group.jdbc.MultiDatabaseTestCase;
 import com.dianping.zebra.group.util.DaoContextHolder;
 

@@ -7,7 +7,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeoutException;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 import com.dianping.zebra.shard.jdbc.parallel.MockCallable.MockType;
@@ -16,8 +16,8 @@ import junit.framework.Assert;
 
 public class SQLThreadPoolExecutorTest {
 
-	@BeforeClass
-	public static void prepare() {
+	@Before
+	public  void prepare() {
 		SQLThreadPoolExecutor.corePoolSize = 3;
 		SQLThreadPoolExecutor.maxPoolSize = 3;
 		SQLThreadPoolExecutor.executeTimeOut = 1000L;

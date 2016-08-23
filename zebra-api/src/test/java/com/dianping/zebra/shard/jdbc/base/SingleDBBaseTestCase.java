@@ -15,6 +15,16 @@
  */
 package com.dianping.zebra.shard.jdbc.base;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
+
 import org.dbunit.DBTestCase;
 import org.dbunit.DatabaseUnitException;
 import org.dbunit.PropertiesBasedJdbcDatabaseTester;
@@ -33,15 +43,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathFactory;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 
  * @author Leo Liang
@@ -50,6 +51,7 @@ import java.util.List;
 public abstract class SingleDBBaseTestCase extends DBTestCase {
 
 	private List<CreateTableScriptEntry> createdTableList = new ArrayList<CreateTableScriptEntry>();
+	
 	protected ApplicationContext context;
 
 	protected abstract String getDataSetFilePath();
@@ -167,39 +169,5 @@ public abstract class SingleDBBaseTestCase extends DBTestCase {
 		}
 	}
 
-	private static class CreateTableScriptEntry {
-		private String tableName;
-		private String createTableScript;
-
-		/**
-		 * @return the tableName
-		 */
-		public String getTableName() {
-			return tableName;
-		}
-
-		/**
-		 * @param tableName
-		 *            the tableName to set
-		 */
-		public void setTableName(String tableName) {
-			this.tableName = tableName;
-		}
-
-		/**
-		 * @return the createTableScript
-		 */
-		public String getCreateTableScript() {
-			return createTableScript;
-		}
-
-		/**
-		 * @param createTableScript
-		 *            the createTableScript to set
-		 */
-		public void setCreateTableScript(String createTableScript) {
-			this.createTableScript = createTableScript;
-		}
-
-	}
+	
 }

@@ -12,7 +12,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 import com.dianping.zebra.shard.exception.ShardParseException;
@@ -23,9 +23,9 @@ import com.dianping.zebra.shard.router.RouterResult.RouterTarget;
 import com.dianping.zebra.shard.router.builder.XmlResourceRouterBuilder;
 
 public class DataSourceRouterImplTest {
-	private static ShardRouter router;
+	private ShardRouter router;
 
-	private static Map<String, DataSource> createDataSourcePool() {
+	private Map<String, DataSource> createDataSourcePool() {
 		Map<String, DataSource> dsPool = new HashMap<String, DataSource>();
 
 		dsPool.put("Group_00", createMockDataSource("Group_00"));
@@ -37,15 +37,17 @@ public class DataSourceRouterImplTest {
 		return dsPool;
 	}
 
-	private static DataSource createMockDataSource(String identity) {
+	private DataSource createMockDataSource(String identity) {
 		return new MockDataSource(identity);
 	}
 
-	@BeforeClass
-	public static void setUp() {
-		DataSourceRepository.getInstance().init(createDataSourcePool());
-		RouterBuilder routerFactory = new XmlResourceRouterBuilder("db-router-rule.xml");
-		router = routerFactory.build();
+	@Before
+	public void setUp() {
+		if(router == null){
+			DataSourceRepository.getInstance().init(createDataSourcePool());
+			RouterBuilder routerFactory = new XmlResourceRouterBuilder("db-router-rule.xml");
+			router = routerFactory.build();
+		}
 	}
 
 	public void baseTest(String sql, List<Object> params) {

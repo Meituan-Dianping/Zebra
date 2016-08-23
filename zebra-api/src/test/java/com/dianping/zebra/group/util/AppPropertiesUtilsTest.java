@@ -8,6 +8,6 @@ public class AppPropertiesUtilsTest {
 
 	@Test
 	public void test(){
-		Assert.assertEquals("zebra-test", AppPropertiesUtils.getAppName());
+		Assert.assertEquals("zebra-ut", AppPropertiesUtils.getAppName());
 	}
 }
