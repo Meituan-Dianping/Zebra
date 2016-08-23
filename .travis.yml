@@ -1,4 +1,5 @@
 language: java
+sudo: required
 script: 
    mvn test -B -fae -X
 
