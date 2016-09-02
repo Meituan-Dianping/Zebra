@@ -1,6 +1,6 @@
 # zebra-dao:An asynchronous and paginated dao
 
-[Readme in Chinese](https://github.com/dianping/zebra/zebra-dao/blob/master/README_ZH.md)
+[Readme in Chinese](https://github.com/dianping/zebra/blob/master/zebra-dao/README_ZH.md)
 
 ## Introduction
 `zebra-dao` is an `asynchronous` dao built on top of `mybatis` and `mybatis-spring`，it also supports `page` feature. Now, DianPing corp intenal has already using this dao on the product environment。
