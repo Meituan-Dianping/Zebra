@@ -251,4 +251,4 @@
     </router-rule>
 
 1. 有关配置的格式说明：[文档](https://github.com/dianping/zebra/blob/master/zebra-api/README_SHARD.md)
-2. 有关支持的SQL说明：[文档](https://github.com/dianping/zebra/blob/master/zebra-api/README_SHARD.md_SQL.md)
+2. 有关支持的SQL说明：[文档](https://github.com/dianping/zebra/blob/master/zebra-api/README_SHARD_SQL.md)
