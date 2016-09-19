@@ -65,3 +65,4 @@
 
 6.	tbSuffix: 是表的后缀命名规则，分`everydb`和`alldb`。everydb指任何库上的表名都相同。例如`everydb:[0,9]`，意味着分着的10个库上，每个库上的表名均为welife_users0到welife_users9。而`alldb`是指10表名在十个库上都不一样，同样的例子如果使用`alldb`的方式应该配成`alldb:[0,99]`。此时在库`welife0`上的表名为`welife_users[0-9]`，在`welife1`上的表名为`welife_users[10-19]`......在`welife9`上的表名为`welife_users[89-99]`。`建议使用alldb的方式`，这样清晰，方便定位。
 7.	generatedPK: 表中唯一识别一行的主键字段，这里是uid。
+8.	isMaster: 表明该维度是否是主维度，也就说说一个分表可以有多个维度，但只有主维度支持写，其他辅助维度只能进行读。点评内部是通过binlog的方式进行复制的方式，将主维度的数据自动的复制到辅助维度上去。
