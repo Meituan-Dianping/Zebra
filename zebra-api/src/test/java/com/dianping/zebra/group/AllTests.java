@@ -1,5 +1,7 @@
 package com.dianping.zebra.group;
 
+import com.dianping.zebra.group.exception.DalStatusExtensionTest;
+import com.dianping.zebra.group.jdbc.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -13,16 +15,10 @@ import com.dianping.zebra.group.datasources.LoadBalancedDataSourceTest;
 import com.dianping.zebra.group.filter.DefaultFilterManagerTest;
 import com.dianping.zebra.group.filter.FilterChainTest;
 import com.dianping.zebra.group.filter.wall.WallFilterTest;
-import com.dianping.zebra.group.jdbc.DPGroupConnectionTestCase;
-import com.dianping.zebra.group.jdbc.DPGroupPreparedStatementTest;
-import com.dianping.zebra.group.jdbc.DPGroupStatementTest;
-import com.dianping.zebra.group.jdbc.GroupDataSourceTest;
-import com.dianping.zebra.group.jdbc.SingleAndGroupC3P0FieldTest;
 import com.dianping.zebra.group.router.CustomizedReadWriteStrategyWrapperTest;
 import com.dianping.zebra.group.router.DataCenterAwareRouterTest;
 import com.dianping.zebra.group.router.GroupDataSourceRouterTest;
 import com.dianping.zebra.group.router.LocalContextReadWriteStrategyTest;
-import com.dianping.zebra.group.router.ReadWriteStrategyServiceLoaderTest;
 import com.dianping.zebra.group.util.AppPropertiesUtilsTest;
 import com.dianping.zebra.group.util.SmoothReloadTest;
 import com.dianping.zebra.group.util.SqlUtilsTest;
@@ -40,6 +36,9 @@ import com.dianping.zebra.group.util.SqlUtilsTest;
 	  FailoverDataSourceTest.class,
 	  LoadBalancedDataSourceTest.class,
 
+	  //exception
+	  DalStatusExtensionTest.class,
+
 	  //filter
 	  DefaultFilterManagerTest.class,
 	  FilterChainTest.class,
@@ -56,7 +55,6 @@ import com.dianping.zebra.group.util.SqlUtilsTest;
 	  CustomizedReadWriteStrategyWrapperTest.class,
 	  LocalContextReadWriteStrategyTest.class,
 	  GroupDataSourceRouterTest.class,
-	  ReadWriteStrategyServiceLoaderTest.class,
 	  DataCenterAwareRouterTest.class,
 
 	  //util
