@@ -1,32 +1,12 @@
 package com.dianping.zebra.group.config.datasource.transform;
 
-import static com.dianping.zebra.group.config.datasource.Constants.ATTR_ACTIVE;
-import static com.dianping.zebra.group.config.datasource.Constants.ATTR_CANREAD;
-import static com.dianping.zebra.group.config.datasource.Constants.ATTR_CANWRITE;
-import static com.dianping.zebra.group.config.datasource.Constants.ATTR_FILTERS;
-import static com.dianping.zebra.group.config.datasource.Constants.ATTR_FORCE_WRITE_ON_LOGIN;
-import static com.dianping.zebra.group.config.datasource.Constants.ATTR_ID;
-import static com.dianping.zebra.group.config.datasource.Constants.ATTR_ROUTER_STRATEGY;
-import static com.dianping.zebra.group.config.datasource.Constants.ATTR_TAG;
-import static com.dianping.zebra.group.config.datasource.Constants.ATTR_TYPE;
-import static com.dianping.zebra.group.config.datasource.Constants.ATTR_WEIGHT;
-import static com.dianping.zebra.group.config.datasource.Constants.ELEMENT_DRIVER_CLASS;
-import static com.dianping.zebra.group.config.datasource.Constants.ELEMENT_JDBC_URL;
-import static com.dianping.zebra.group.config.datasource.Constants.ELEMENT_PASSWORD;
-import static com.dianping.zebra.group.config.datasource.Constants.ELEMENT_PUNISH_LIMIT;
-import static com.dianping.zebra.group.config.datasource.Constants.ELEMENT_TEST_READ_ONLY_SQL;
-import static com.dianping.zebra.group.config.datasource.Constants.ELEMENT_TIME_WINDOW;
-import static com.dianping.zebra.group.config.datasource.Constants.ELEMENT_USERNAME;
-import static com.dianping.zebra.group.config.datasource.Constants.ELEMENT_WARMUP_TIME;
-import com.dianping.zebra.group.config.datasource.entity.Any;
-import static com.dianping.zebra.group.config.datasource.Constants.ENTITY_DATA_SOURCE_CONFIG;
-import static com.dianping.zebra.group.config.datasource.Constants.ENTITY_DATA_SOURCE_CONFIGS;
-import static com.dianping.zebra.group.config.datasource.Constants.ENTITY_GROUP_DATA_SOURCE_CONFIG;
-
 import com.dianping.zebra.group.config.datasource.IEntity;
 import com.dianping.zebra.group.config.datasource.IVisitor;
+import com.dianping.zebra.group.config.datasource.entity.Any;
 import com.dianping.zebra.group.config.datasource.entity.DataSourceConfig;
 import com.dianping.zebra.group.config.datasource.entity.GroupDataSourceConfig;
+
+import static com.dianping.zebra.group.config.datasource.Constants.*;
 
 public class DefaultXmlBuilder implements IVisitor {
 
@@ -67,7 +47,8 @@ public class DefaultXmlBuilder implements IVisitor {
    protected String escape(Object value) {
       return escape(value, false);
    }
-   
+
+
    protected String escape(Object value, boolean text) {
       if (value == null) {
          return null;

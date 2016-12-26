@@ -1,10 +1,10 @@
 package com.dianping.zebra.group.config;
 
+import org.junit.Test;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
-
-import org.junit.Test;
 
 public class ConfigManagerTest {
 
@@ -36,6 +36,6 @@ public class ConfigManagerTest {
 			}
 		});
 
-		System.in.read();
+//		System.in.read();
 	}
 }

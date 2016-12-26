@@ -12,7 +12,7 @@ public class ConfigServiceFactory {
 
 			return configService;
 		} else if (Constants.CONFIG_MANAGER_TYPE_REMOTE.equalsIgnoreCase(configManagerType)) {
-			return RemoteConfigService.getInstance();
+			return LionConfigService.getInstance();
 		} else {
 			throw new ZebraConfigException(String.format("illegal configServiceType[%s]", configManagerType));
 		}

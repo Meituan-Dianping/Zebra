@@ -1,15 +1,14 @@
 package com.dianping.zebra.group.config;
 
+import com.dianping.zebra.config.ConfigService;
+import com.dianping.zebra.log.LoggerLoader;
+import com.dianping.zebra.util.StringUtils;
+import org.apache.logging.log4j.Logger;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-
-import org.apache.logging.log4j.Logger;
-
-import com.dianping.zebra.config.ConfigService;
-import com.dianping.zebra.log.LoggerLoader;
-import com.dianping.zebra.util.StringUtils;
 
 public abstract class AbstractConfigManager {
 
@@ -30,6 +29,8 @@ public abstract class AbstractConfigManager {
 	public void close() {
 		configService.removePropertyChangeListener(innerPropertyChangeListener);
 	}
+
+	//TODO T getProperty(String key);
 
 	public boolean getProperty(String key, boolean defaultValue) {
 		String value = configService.getProperty(key);

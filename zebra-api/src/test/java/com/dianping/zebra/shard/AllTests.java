@@ -1,22 +1,7 @@
 package com.dianping.zebra.shard;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
-
 import com.dianping.zebra.shard.config.XmlDataSourceRouterConfigLoaderTest;
-import com.dianping.zebra.shard.jdbc.MultiDBLifeCycleTest;
-import com.dianping.zebra.shard.jdbc.MultiDBPreparedStatementLifeCycleTest;
-import com.dianping.zebra.shard.jdbc.ResultSetTest;
-import com.dianping.zebra.shard.jdbc.ShardConnectionTest;
-import com.dianping.zebra.shard.jdbc.ShardPreparedStatementMultiKeyTest;
-import com.dianping.zebra.shard.jdbc.ShardPreparedStatementTest;
-import com.dianping.zebra.shard.jdbc.ShardStatementTest;
-import com.dianping.zebra.shard.jdbc.ShardSupportedCaseTest;
-import com.dianping.zebra.shard.jdbc.SingleDBLifeCycleTest;
-import com.dianping.zebra.shard.jdbc.SingleDBPreparedStatementGroupFollowNoteIntegrationTest;
-import com.dianping.zebra.shard.jdbc.SingleDBPreparedStatementLifeCycleTest;
-import com.dianping.zebra.shard.jdbc.SpecialSQLTest;
+import com.dianping.zebra.shard.jdbc.*;
 import com.dianping.zebra.shard.jdbc.merge.DistinctTest;
 import com.dianping.zebra.shard.jdbc.merge.LimitTest;
 import com.dianping.zebra.shard.jdbc.parallel.SQLThreadPoolExecutorTest;
@@ -31,7 +16,9 @@ import com.dianping.zebra.shard.router.XmlDataSourceRouterFactoryTest;
 import com.dianping.zebra.shard.router.rule.GroovyRuleEngineTest;
 import com.dianping.zebra.shard.router.rule.SimpleDataSourceProviderTest;
 import com.dianping.zebra.shard.router.rule.engine.RuleEngineBaseTest;
-import com.dianping.zebra.shard.util.ShardColumnValueUtilTest;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
@@ -77,7 +64,7 @@ import com.dianping.zebra.shard.util.ShardColumnValueUtilTest;
         RuleEngineBaseTest.class,
         
         //util
-        ShardColumnValueUtilTest.class
+//        ShardColumnValueUtilTest.class
 })
 public class AllTests {
 

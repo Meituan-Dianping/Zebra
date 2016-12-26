@@ -58,6 +58,10 @@
 			<artifactId>gson</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>com.dianping.lion</groupId>
+			<artifactId>lion-client</artifactId>
+		</dependency>
 		<!-- for test -->
 		<dependency>
 			<groupId>junit</groupId>

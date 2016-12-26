@@ -1,6 +1,6 @@
 package com.dianping.zebra.shard.router.builder;
 
-import com.dianping.zebra.config.RemoteConfigService;
+import com.dianping.zebra.config.LionConfigService;
 import com.dianping.zebra.config.LionKey;
 import com.dianping.zebra.shard.config.RouterRuleConfig;
 import com.dianping.zebra.shard.config.TableShardDimensionConfig;
@@ -15,7 +15,7 @@ public class LionRouterBuilder extends AbstractRouterBuilder implements RouterBu
 	private final RouterRuleConfig routerConfig;
 
 	public LionRouterBuilder(String ruleName) {
-		RemoteConfigService configService = RemoteConfigService.getInstance();
+		LionConfigService configService = LionConfigService.getInstance();
 
 		this.routerConfig = new Gson().fromJson(configService.getProperty(LionKey.getShardConfigKey(ruleName)),
 		      RouterRuleConfig.class);

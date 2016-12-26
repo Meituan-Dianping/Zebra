@@ -125,7 +125,7 @@
                         <artifactId>slf4j-log4j12</artifactId>
                     </exclusion>
                 </exclusions>
-                <version>0.5.4</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>javax.servlet</groupId>
@@ -226,7 +226,7 @@
             <dependency>
                 <groupId>com.dianping.cat</groupId>
                 <artifactId>cat-client</artifactId>
-                <version>1.4.4</version>
+                <version>1.4.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -328,9 +328,23 @@
              <url>http://repo1.maven.org/maven2</url>
         </repository>
         <repository>
+            <id>pdd.release</id>
+            <url>http://maven-pdd.corp.yiran.com:8081/repository/maven-releases/</url>
+        </repository>
+        <repository>
             <id>zebra.repo</id>
             <url>https://raw.github.com/dianping/zebra/mvn-repo</url>
         </repository>
     </repositories>
 
+    <distributionManagement>
+        <repository>
+            <id>pdd.releases.repo</id>
+            <url>http://maven-pdd.corp.yiran.com:8081/repository/maven-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>pdd.snapshots.repo</id>
+            <url>http://maven-pdd.corp.yiran.com:8081/repository/maven-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

@@ -87,7 +87,7 @@ public class PerformanceTest {
 					execute("insert into `app` (`name`) values ('test')");
 					execute("update `app` set `name` = 'test2'");
 					execute("delete from `app`");
-					execute("select 1");
+					execute("select 1 from `app`");
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
