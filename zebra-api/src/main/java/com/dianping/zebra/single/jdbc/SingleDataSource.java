@@ -74,7 +74,7 @@ public class SingleDataSource extends C3P0StyleDataSource implements DataSourceL
 		mergeDataSourceConfig();
 
 		this.dataSource = initDataSource(this.config);
-		this.filters = FilterManagerFactory.getFilterManager().loadFilters("cat,mtrace");
+		this.filters = FilterManagerFactory.getFilterManager().loadFilters("cat");
 	}
 
 	private void mergeDataSourceConfig() {

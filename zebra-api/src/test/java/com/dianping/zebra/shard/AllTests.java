@@ -16,6 +16,7 @@ import com.dianping.zebra.shard.router.XmlDataSourceRouterFactoryTest;
 import com.dianping.zebra.shard.router.rule.GroovyRuleEngineTest;
 import com.dianping.zebra.shard.router.rule.SimpleDataSourceProviderTest;
 import com.dianping.zebra.shard.router.rule.engine.RuleEngineBaseTest;
+import com.dianping.zebra.shard.util.ShardColumnValueUtilTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -64,7 +65,7 @@ import org.junit.runners.Suite.SuiteClasses;
         RuleEngineBaseTest.class,
         
         //util
-//        ShardColumnValueUtilTest.class
+        ShardColumnValueUtilTest.class
 })
 public class AllTests {
 

@@ -293,8 +293,7 @@ public class DefaultDataSourceConfigManager extends AbstractConfigManager implem
 				validateConfig(groupDsConfig.getDataSourceConfigs());
 			}
 
-			groupDsConfig.setFilters(getProperty(
-			      String.format("%s.default.filters", Constants.DEFAULT_DATASOURCE_ZEBRA_PRFIX), null));
+			groupDsConfig.setFilters("cat,wall");
 		}
 	}
 }
