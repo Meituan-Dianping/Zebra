@@ -37,7 +37,7 @@ public final class Constants {
 
 	public static final String DEFAULT_DATASOURCE_SINGLE_PRFIX = "ds";
 
-	public static final String DEFAULT_DATASOURCE_LION_PREFIX = "datasource.";
+	public static final String DEFAULT_DATASOURCE_LION_PREFIX = "data-source.";
 
 	// GroupDataSource
 	public final static String SPRING_PROPERTY_FILTER = "filter";
