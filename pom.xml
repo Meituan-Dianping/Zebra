@@ -20,7 +20,7 @@
         <groovy.version>2.3.9</groovy.version>
     </properties>
     <modules>
-        <module>zebra-api</module
+        <module>zebra-api</module>
         <module>zebra-ds-monitor-client</module>
         <module>zebra-dao</module>
     </modules>
