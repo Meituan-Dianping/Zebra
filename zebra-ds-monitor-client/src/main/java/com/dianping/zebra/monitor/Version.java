@@ -7,5 +7,5 @@
 package com.dianping.zebra.monitor;
 
 public final class Version {
-	public static final String ZEBRA_VERSION = "2.8.4";
+	public static final String ZEBRA_VERSION = "2.8.5";
 }

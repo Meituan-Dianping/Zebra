@@ -9,7 +9,7 @@ package com.dianping.zebra;
 import com.dianping.zebra.util.AppPropertiesUtils;
 
 public final class Constants {
-	public static final String ZEBRA_VERSION = "2.8.4";
+	public static final String ZEBRA_VERSION = "2.8.5";
 
 	public static final String SQL_FORCE_WRITE_HINT = "/*+zebra:w*/";
 	

@@ -4,17 +4,17 @@
     <parent>
         <groupId>com.dianping.zebra</groupId>
         <artifactId>zebra-all</artifactId>
-        <version>2.8.4-SNAPSHOT</version>
+        <version>2.8.5</version>
     </parent>
     <artifactId>zebra-ds-monitor-client</artifactId>
-    <version>2.8.4-SNAPSHOT</version>
+    <version>2.8.5</version>
     <name>zebra-ds-monitor-client</name>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>com.dianping.zebra</groupId>
             <artifactId>zebra-api</artifactId>
-            <version>2.8.4-SNAPSHOT</version>
+            <version>2.8.5</version>
         </dependency>
         <dependency>
             <groupId>com.dianping.cat</groupId>
