@@ -1,0 +1,20 @@
+{
+  "regions" : [
+    {"region" : "region1", "centers" : [
+      {"center":"center1","priority":2, "idcs":[
+        {"idc" : "idc1", "desc" : "机房1"},
+        {"idc" : "idc2", "desc" : "机房2"},
+        {"idc" : "idc3", "desc" : "机房3"}
+      ]},
+      {"center":"center2","priority":1,"idcs":[
+        {"idc" : "idc4", "desc" : "机房4"}
+      ]}
+    ]},
+    {"region" : "region2", "centers" : [
+      {"center":"center3","priority":1,"idcs":[
+        {"idc" : "idc5", "desc" : "机房5"},
+        {"idc" : "idc6", "desc" : "机房6"}
+      ]}
+    ]}
+  ]
+}

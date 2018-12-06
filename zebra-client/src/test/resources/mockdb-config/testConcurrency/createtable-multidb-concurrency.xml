@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="gb2312"?>
+<databases>
+    <database name="database0">
+        <tables>
+            <table name="Tb0">
+                <![CDATA[
+                    CREATE TABLE Tb0(
+                        id   IDENTITY,
+                        uid INT,
+                        name VARCHAR(32)
+                    )
+		        ]]>
+            </table>
+            <table name="Tb1">
+                <![CDATA[
+                    CREATE TABLE Tb1(
+                        id   IDENTITY,
+                        uid INT,
+                        name VARCHAR(32)
+                    )
+		        ]]>
+            </table>
+            <table name="Tb2">
+                <![CDATA[
+                    CREATE TABLE Tb2(
+                        id   IDENTITY,
+                        uid INT,
+                        name VARCHAR(32)
+                    )
+		        ]]>
+            </table>
+            <table name="Tb3">
+                <![CDATA[
+                    CREATE TABLE Tb3(
+                        id   IDENTITY,
+                        uid INT,
+                        name VARCHAR(32)
+                    )
+		        ]]>
+            </table>
+        </tables>
+    </database>
+    <database name="database1">
+        <tables>
+            <table name="Tb4">
+                <![CDATA[
+                    CREATE TABLE Tb4(
+                        id   IDENTITY,
+                        uid INT,
+                        name VARCHAR(32)
+                    )
+		        ]]>
+            </table>
+            <table name="Tb5">
+                <![CDATA[
+                    CREATE TABLE Tb5(
+                        id   IDENTITY,
+                        uid INT,
+                        name VARCHAR(32)
+                    )
+		        ]]>
+            </table>
+            <table name="Tb6">
+                <![CDATA[
+                    CREATE TABLE Tb6(
+                        id   IDENTITY,
+                        uid INT,
+                        name VARCHAR(32)
+                    )
+		        ]]>
+            </table>
+            <table name="Tb7">
+                <![CDATA[
+                    CREATE TABLE Tb7(
+                        id   IDENTITY,
+                        uid INT,
+                        name VARCHAR(32)
+                    )
+		        ]]>
+            </table>
+        </tables>
+    </database>
+</databases>

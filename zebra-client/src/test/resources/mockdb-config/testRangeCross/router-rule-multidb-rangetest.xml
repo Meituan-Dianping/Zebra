@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<router-rule>
+    <table-shard-rule table="TestTable" generatedPK="pk">
+        <shard-dimension dbRule="shardByMonth(#createtime#, 'yyyy-MM-dd', '2015-01-10', '2016-12-20', 3, 2, 4, 0, 4, false)"
+                         dbIndexes="database[0-1]"
+                         tbSuffix="everydb:[0,3]&amp;database0:[$]"
+                         isMaster="true">
+        </shard-dimension>
+    </table-shard-rule>
+</router-rule>
+

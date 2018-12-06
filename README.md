@@ -1,37 +1,40 @@
-## zebra
+# Zebra
 
-[![Build Status](https://travis-ci.org/dianping/zebra.svg?branch=master)](https://travis-ci.org/dianping/zebra)
+[![Build Status](https://travis-ci.org/Meituan-Dianping/Zebra.svg?branch=master)](https://travis-ci.org/Meituan-Dianping/Zebra)
 
-## 简介
-`Zebra`是点评内部使用的`数据库访问层`中间件，它具有以下的功能点：
-
-1. 配置集中管理，动态刷新     
-2. 支持读写分离、分库分表
-3. 丰富的监控信息在`CAT`上展现
-
-其中的三个组件的功能分别是：
-
- - zebra-api : 最主要的访问层中间件
- - zebra-ds-monitor-client：基于CAT的监控(可选)
- - zebra-dao：基于MyBatis的异步化的DAO组件(可选)
-
-## 编译
-
-    1. git clone https://github.com/dianping/zebra.git
-    2. git checkout mvn-repo
-    3. 拷贝里面的mvn依赖到本地仓库（第2和3步骤主要是为了使用zebra-ds-monitor-client中的CAT监控）
-    4. mvn clean install -DskipTests
-
-## 使用
-
- - zebra-api : [文档](https://github.com/dianping/zebra/blob/master/zebra-api/README.md)
- - zebra-ds-monitor-client
- - zebra-dao：[文档](https://github.com/dianping/zebra/blob/master/zebra-dao/README_ZH.md)
-
-## Copyright and License
-
-Copyright 2016 DianPing, Inc.
-
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
-http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+## Introduction
+ Zebra是一个基于JDBC API协议上开发出的高可用、高性能的数据库访问层解决方案，是美团点评内部使用的数据库访问层中间件。具有以下的功能点：
+ - 配置集中管理，动态刷新
+ - 支持读写分离、分库分表
+ - 丰富的监控信息在CAT上展现
+ - 异步化数据库请求，多数据源支持
+ 
+## Core Value
+ - 简化了读写分离、分库分表的开发工作，使得业务方在分库分库、读写分离的情况下，依然可以像操作单个库那样去操作，屏蔽底层实现的复杂性，对业务透明。
+ 提供了从读写分离到分库分表全生命周期的技术支持。
+ - 完善的监控体系帮助开发掌控数据库请求的整个链路，快速定位问题。
+ - dao层扩展功能
+ 
+## Modules
+ - zebra-client（核心） : 除了监控外，几乎zebra所有核心功能，如读写分离、分库分表、就近路由、流量控制  
+ - zebra-cat-client（可选）: 提供端到端的监控，将监控信息上报到[CAT监控平台](https://github.com/dianping/cat)    
+ - zebra-dao(可选)：对mybatis的轻量级封装，兼容mybatis原有的功能，并额外提供了异步化接口、分页插件、多数据源等功能  
+ - zebra-admin-web：zebra配置管理平台 用于管理zk和保存在zk中的zebra配置  
+ - zebra-sample: zebra客户端使用的demo
+ 
+## Quick Start
+ - [快速开始](https://github.com/Meituan-Dianping/Zebra/wiki/QuickStart)
+ 
+## Project Design
+ - [Zebra客户端设计](https://github.com/Meituan-Dianping/Zebra/wiki/Zebra%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1)
+ 
+## License
+ - [Apache2.0 License](https://github.com/Meituan-Dianping/Zebra/blob/master/LICENSE)
+ 
+## Company
+ ![](./image/white.jpeg)
+ 接入Zebra的公司欢迎在此[接入公司](https://github.com/Meituan-Dianping/Zebra/issues/18)留下联系方式, 谢谢。
+ 
+## Contact us
+ - Mail: [zebra@sankuai.com](zebra@sankuai.com)
+ - Issues : [https://github.com/Meituan-Dianping/Zebra/issues](https://github.com/Meituan-Dianping/Zebra/issues)

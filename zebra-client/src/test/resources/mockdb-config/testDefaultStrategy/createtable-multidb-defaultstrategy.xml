@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="gb2312"?>
+<databases>
+    <database name="DefaultTestDb">
+        <tables>
+            <table name="ShardTable0">
+                <![CDATA[
+                    CREATE TABLE ShardTable0(
+                        id   IDENTITY,
+                        uid INT,
+                        name VARCHAR(32),
+                        age INT,
+                        createtime TIMESTAMP
+                    )
+		        ]]>
+            </table>
+            <table name="ShardTable1">
+                <![CDATA[
+                    CREATE TABLE ShardTable1(
+                        id   IDENTITY,
+                        uid INT,
+                        name VARCHAR(32),
+                        age INT,
+                        createtime TIMESTAMP
+                    )
+		        ]]>
+            </table>
+            <table name="DefaultTable">
+                <![CDATA[
+                    CREATE TABLE DefaultTable(
+                        id   IDENTITY,
+                        uid INT,
+                        name VARCHAR(32)
+                    )
+		        ]]>
+            </table>
+
+        </tables>
+    </database>
+</databases>

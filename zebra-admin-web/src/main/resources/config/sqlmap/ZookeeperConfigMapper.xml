@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dianping.zebra.administrator.dao.ZookeeperConfigMapper">
+    <select id="findZKConfig" resultType="ZookeeperConfigEntity">
+        SELECT `Id`,`Host`,`Name`,`Description` FROM ZookeeperConfig
+    </select>
+
+    <select id="getZKName" resultType="java.lang.String">
+        SELECT `Name` FROM ZookeeperConfig
+    </select>
+
+    <insert id="addZKConfig" parameterType="ZookeeperConfigEntity">
+        INSERT INTO ZookeeperConfig(`Host`,`Name`,`Description`) VALUES(#{host},#{name},#{description})
+    </insert>
+
+    <delete id="deleteZKConfig" parameterType="map">
+        DELETE FROM ZookeeperConfig WHERE Id=#{id}
+    </delete>
+
+    <update id="updateZKConfig" parameterType="ZookeeperConfigEntity">
+        UPDATE `ZookeeperConfig` SET `Host`=#{host},`Name`=#{name},`Description`=#{description}
+    </update>
+
+    <select id="getHostByName" parameterType="map" resultType="java.lang.String">
+        SELECT `Host` FROM `ZookeeperConfig` WHERE `Name`=#{ZKName}
+    </select>
+</mapper>

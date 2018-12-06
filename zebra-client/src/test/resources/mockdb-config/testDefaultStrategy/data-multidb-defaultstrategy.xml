@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="gb2312"?>
+<dataset>
+    <database name="DefaultTestDb">
+        <script>
+            <![CDATA[
+		        insert into ShardTable0 (id, uid, name, age, createtime)
+		        values (1, 1, 'shard-1', 1, '2010-01-01'), (2, 3, 'shard-3', 3, '2010-01-01')
+		    ]]>
+        </script>
+
+        <script>
+            <![CDATA[
+		        insert into ShardTable1 (id, uid, name, age, createtime)
+		        values (1, 2, 'shard-2', 2, '2010-01-01'), (2, 4, 'shard-4', 4, '2010-01-01');
+		    ]]>
+        </script>
+
+        <script>
+            <![CDATA[
+		        insert into DefaultTable (id, uid, name)
+		        values (1, 1, 'default-1'), (2, 2, 'default-2');
+		    ]]>
+        </script>
+
+
+    </database>
+
+</dataset>

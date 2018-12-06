@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="gb2312"?>
+<databases>
+	<database name="id0">
+		<tables>
+			<table name="test_0">
+		    <![CDATA[
+		    CREATE TABLE test_0(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="test_1">
+		    <![CDATA[
+		    CREATE TABLE test_1(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="age">
+		    <![CDATA[
+		    CREATE TABLE age(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	age INT
+		    )
+		    ]]>
+			</table>
+			<table name="people_0">
+		    <![CDATA[
+		    CREATE TABLE people_0(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="people_1">
+		    <![CDATA[
+		    CREATE TABLE people_1(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+		</tables>
+	</database>
+	<database name="id1">
+		<tables>
+			<table name="test_2">
+		    <![CDATA[
+		    CREATE TABLE test_2(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="test_3">
+		    <![CDATA[
+		    CREATE TABLE test_3(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="age">
+		    <![CDATA[
+		    CREATE TABLE age(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	age INT
+		    )
+		    ]]>
+			</table>
+			<table name="people_2">
+		    <![CDATA[
+		    CREATE TABLE people_2(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="people_3">
+		    <![CDATA[
+		    CREATE TABLE people_3(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+		</tables>
+	</database>
+	<database name="id2">
+		<tables>
+			<table name="test_4">
+		    <![CDATA[
+		    CREATE TABLE test_4(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="test_5">
+		    <![CDATA[
+		    CREATE TABLE test_5(
+		   		pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="age">
+		    <![CDATA[
+		    CREATE TABLE age(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	age INT
+		    )
+		    ]]>
+			</table>
+			<table name="people_4">
+		    <![CDATA[
+		    CREATE TABLE people_4(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="people_5">
+		    <![CDATA[
+		    CREATE TABLE people_5(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+		</tables>
+	</database>
+	<database name="id3">
+		<tables>
+			<table name="test_6">
+		    <![CDATA[
+		    CREATE TABLE test_6(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="test_7">
+		    <![CDATA[
+		    CREATE TABLE test_7(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="age">
+		    <![CDATA[
+		    CREATE TABLE age(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	age INT
+		    )
+		    ]]>
+			</table>
+			<table name="people_6">
+		    <![CDATA[
+		    CREATE TABLE people_6(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="people_7">
+		    <![CDATA[
+		    CREATE TABLE people_7(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+		</tables>
+	</database>
+</databases>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<router-rule>
+    <table-shard-rule table="Tb" generatedPK="id">
+        <shard-dimension dbRule="(#uid#.intdiv(2))%2"
+                         dbIndexes="database[0-1]"
+                         tbRule="#uid#%2"
+                         tbSuffix="everydb:[0,1]"
+                         isMaster="true">
+        </shard-dimension>
+        <shard-dimension dbRule="(#tid#)%2"
+                         dbIndexes="database[0-1]"
+                         tbRule="(#tid#.intdiv(2))%2"
+                         tbSuffix="everydb:[0,1]"
+                         isMaster="false">
+        </shard-dimension>
+        <shard-dimension dbRule="((#uid#+#tid#).intdiv(2))%2"
+                         dbIndexes="database[0-1]"
+                         tbRule="(#uid#+#tid#)%2"
+                         tbSuffix="everydb:[_bak0,_bak1]"
+                         isMaster="false">
+        </shard-dimension>
+    </table-shard-rule>
+
+    <table-shard-rule table="Tbut" generatedPK="id">
+        <shard-dimension dbRule="(#uid#)%2"
+                         dbIndexes="database[0-1]"
+                         tbRule="(#tid#)%2"
+                         tbSuffix="everydb:[0,1]"
+                         isMaster="false">
+        </shard-dimension>
+        <shard-dimension dbRule="(#uid#.intdiv(2))%2"
+                         dbIndexes="database[0-1]"
+                         tbRule="#uid#%2"
+                         tbSuffix="everydb:[0,1]"
+                         isMaster="true">
+        </shard-dimension>
+    </table-shard-rule>
+</router-rule>

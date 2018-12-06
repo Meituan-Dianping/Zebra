@@ -1,3 +1,21 @@
+/*
+ * Copyright (c) 2011-2018, Meituan Dianping. All Rights Reserved.
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.dianping.zebra.dao;
 
 import java.lang.reflect.Method;
@@ -18,22 +36,26 @@ public class AsyncMapperExecutor {
 
 	private static volatile ThreadPoolExecutor executorService = null;
 
-	public static void init() {
+	private static void init() {
 		if (executorService == null) {
-			executorService = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, 60L, TimeUnit.SECONDS,
-					new LinkedBlockingQueue<Runnable>(MAX_QUEUE_SIZE), new ThreadFactory() {
+			synchronized (AsyncMapperExecutor.class) {
+				if (executorService == null) {
+					executorService = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, 60L, TimeUnit.SECONDS,
+					      new LinkedBlockingQueue<Runnable>(MAX_QUEUE_SIZE), new ThreadFactory() {
 
-						private AtomicInteger counter = new AtomicInteger(1);
+						      private AtomicInteger counter = new AtomicInteger(1);
 
-						@Override
-						public Thread newThread(Runnable r) {
-							Thread t = new Thread(r);
-							t.setName("Zebra-Dao-Executor-" + counter.getAndIncrement());
-							t.setDaemon(true);
+						      @Override
+						      public Thread newThread(Runnable r) {
+							      Thread t = new Thread(r);
+							      t.setName("Zebra-Dao-Executor-" + counter.getAndIncrement());
+							      t.setDaemon(true);
 
-							return t;
-						}
-					});
+							      return t;
+						      }
+					      });
+				}
+			}
 		}
 	}
 
@@ -41,31 +63,22 @@ public class AsyncMapperExecutor {
 		CORE_POOL_SIZE = corePoolSize;
 		MAX_POOL_SIZE = maxPoolSize;
 		MAX_QUEUE_SIZE = queueSize;
-
-		init();
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static void executeRunnable(Object mapper, Method method, Object[] args, AsyncDaoCallback callback) {
-		checkNull();
-
-		AsyncDaoRunnableExecutor executor = new AsyncDaoRunnableExecutor(mapper, method, args, callback);
+	public static <T> void executeRunnable(Class<?> mapperInterface, Object mapper, Method method, Object[] args,
+	      AsyncDaoCallback<T> callback) {
+		init();
+		AsyncDaoRunnableExecutor<T> executor = new AsyncDaoRunnableExecutor<T>(mapperInterface, mapper, method, args,
+		      callback);
 
 		executorService.execute(executor);
 	}
 
-	public static Future<?> submitCallback(Object mapper, Method method, Object[] args) {
-		checkNull();
-
-		AsyncDaoCallableExecutor executor = new AsyncDaoCallableExecutor(mapper, method, args);
+	public static Future<?> submitCallback(Class<?> mapperInterface, Object mapper, Method method, Object[] args) {
+		init();
+		AsyncDaoCallableExecutor executor = new AsyncDaoCallableExecutor(mapperInterface, mapper, method, args);
 
 		return executorService.submit(executor);
-	}
-
-	private static void checkNull() {
-		if (executorService == null) {
-			throw new AsyncDaoException("AsyncMapperExecutor has not been init yet.");
-		}
 	}
 
 	public static void setCorePoolSize(int corePoolSize) {

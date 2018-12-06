@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<router-rule>
+    <table-shard-rule table="Feed" generatedPK="id">
+        <shard-dimension dbRule="(#uid#.toLong()) % 4"
+                         dbIndexes="ds[0-3]"
+                         tbRule="(#uid#.toLong()).intdiv(4)%2"
+                         tbSuffix="alldb:[0,7]"
+                         isMaster="true">
+        </shard-dimension>
+    </table-shard-rule>
+
+</router-rule>
+

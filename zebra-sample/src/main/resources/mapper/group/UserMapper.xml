@@ -1,0 +1,28 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mapper.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dianping.zebra.sample.dao.group.UserDao">
+
+    <insert id="insert" parameterType="UserEntity"
+            useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO `User`
+		(
+		`Name`,
+		`Mis`,
+		`Email`,
+		`UpdateTime`,
+		`CreateTime`)
+		VALUES
+		(
+		#{name},
+		#{mis},
+		#{email},
+		NOW(),
+		NOW())
+	</insert>
+
+	<select id="searchUserById" resultType="UserEntity" parameterType="map">
+		select * from `User` where id=#{id};
+	</select>
+</mapper>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<router-rule>
+	<table-shard-rule table="test" generatedPK="pk">
+		<shard-dimension dbRule="(#id#.intValue() % 4).intdiv(2)" 
+			dbIndexes="id0,id1" 
+			tbRule="#id#.intValue() % 2" 
+			tbSuffix="alldb:[_0,_3]"
+			isMaster="true">
+		</shard-dimension>
+	</table-shard-rule>
+</router-rule>
+

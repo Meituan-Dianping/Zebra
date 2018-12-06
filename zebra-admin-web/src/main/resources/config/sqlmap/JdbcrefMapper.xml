@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dianping.zebra.administrator.dao.JdbcrefMapper">
+	<select id="findByEnv" parameterType="map" resultType="JdbcrefEntity">
+		SELECT `Jdbcref`,`Env`,`Owner`,`UpdateTime` FROM `Jdbcref` WHERE `Env`=#{env}
+	</select>
+
+	<delete id="removeJdbcref" parameterType="map">
+		DELETE from `Jdbcref` WHERE `Jdbcref`=#{jdbcref} AND `Env`=#{env}
+	</delete>
+
+	<insert id="addJdbcref" parameterType="JdbcrefEntity">
+		INSERT INTO Jdbcref(Jdbcref,Status,Env,Owner,Description) VALUES(#{jdbcref},#{status},#{env},#{owner},#{description})
+	</insert>
+</mapper>

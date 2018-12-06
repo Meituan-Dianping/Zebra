@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="gb2312"?>
+<databases>
+	<database name="test01m">
+		<tables>
+			<table name="test_0">
+		    <![CDATA[
+		    CREATE TABLE test_0(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="test_1">
+		    <![CDATA[
+		    CREATE TABLE test_1(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+		</tables>
+	</database>
+	<database name="test01s">
+		<tables>
+			<table name="test_0">
+		    <![CDATA[
+		    CREATE TABLE test_0(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="test_1">
+		    <![CDATA[
+		    CREATE TABLE test_1(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+		</tables>
+	</database>
+	<database name="test02m">
+		<tables>
+			<table name="test_2">
+		    <![CDATA[
+		    CREATE TABLE test_2(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="test_3">
+		    <![CDATA[
+		    CREATE TABLE test_3(
+		   		pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+		</tables>
+	</database>
+	<database name="test02s">
+		<tables>
+			<table name="test_2">
+		    <![CDATA[
+		    CREATE TABLE test_2(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+			<table name="test_3">
+		    <![CDATA[
+		    CREATE TABLE test_3(
+		    	pk IDENTITY,
+		    	name VARCHAR(255),
+		    	id   INT,
+		    	score INT,
+		    	type VARCHAR(255),
+		    	classid INT
+		    )
+		    ]]>
+			</table>
+		</tables>
+	</database>
+</databases>

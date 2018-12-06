@@ -1,0 +1,33 @@
+<group-data-source-config filters="statFilter" router-strategy="roundrobin" with-circuit-break-enable="false" circuit-break-time-window-in-seconds="60"
+						  circuit-break-fail-count="5" force-write-on-login="true">
+	<data-source-config id="db-n1-write" weight="0" canRead="false" canWrite="true" active="true">
+		<time-window>0</time-window>
+		<punish-limit>0</punish-limit>
+		<jdbc-url>jdbc:h2:mem:test;MVCC=TRUE</jdbc-url>
+		<username>sa</username>
+		<driver-class>org.h2.Driver</driver-class>
+		<initialPoolSize>2</initialPoolSize>
+		<maxStatementsPerConnection>100</maxStatementsPerConnection>
+		<password></password>
+	</data-source-config>
+	<data-source-config id="db-n2-read" weight="1" canRead="true" canWrite="false" active="true" tag="">
+		<time-window>0</time-window>
+		<punish-limit>0</punish-limit>
+		<jdbc-url>jdbc:h2:mem:test1;MVCC=TRUE</jdbc-url>
+		<username>sa</username>
+		<initialPoolSize>2</initialPoolSize>
+		<driver-class>org.h2.Driver</driver-class>
+		<maxStatementsPerConnection>100</maxStatementsPerConnection>
+		<password></password>
+	</data-source-config>
+	<data-source-config id="db-n3-read" weight="1" canRead="true" canWrite="false" active="true" tag="">
+		<time-window>0</time-window>
+		<punish-limit>0</punish-limit>
+		<jdbc-url>jdbc:h2:mem:test2;MVCC=TRUE</jdbc-url>
+		<username>sa</username>
+		<driver-class>org.h2.Driver</driver-class>
+		<initialPoolSize>2</initialPoolSize>
+		<maxStatementsPerConnection>100</maxStatementsPerConnection>
+		<password></password>
+	</data-source-config>
+</group-data-source-config>

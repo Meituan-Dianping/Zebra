@@ -1,3 +1,21 @@
+/*
+ * Copyright (c) 2011-2018, Meituan Dianping. All Rights Reserved.
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.dianping.zebra.dao.mybatis;
 
 import static org.springframework.util.Assert.notNull;
@@ -6,6 +24,7 @@ import java.lang.annotation.Annotation;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.beans.BeansException;
@@ -29,8 +48,8 @@ import org.springframework.util.StringUtils;
 
 import com.dianping.zebra.dao.AsyncMapperExecutor;
 
-public class ZebraMapperScannerConfigurer
-		implements BeanDefinitionRegistryPostProcessor, InitializingBean, ApplicationContextAware, BeanNameAware {
+public class ZebraMapperScannerConfigurer implements BeanDefinitionRegistryPostProcessor, InitializingBean,
+      ApplicationContextAware, BeanNameAware {
 
 	private String basePackage;
 
@@ -56,24 +75,25 @@ public class ZebraMapperScannerConfigurer
 
 	private BeanNameGenerator nameGenerator;
 
+	// add by hao.zhu
 	private int corePoolSize = 20;
 
 	private int maxPoolSize = 200;
 
 	private int queueSize = 500;
 
+	public ZebraMapperScannerConfigurer() {
+	}
+
 	/**
-	 * This property lets you set the base package for your mapper interface
-	 * files.
+	 * This property lets you set the base package for your mapper interface files.
 	 * <p>
-	 * You can set more than one package by using a semicolon or comma as a
-	 * separator.
+	 * You can set more than one package by using a semicolon or comma as a separator.
 	 * <p>
-	 * Mappers will be searched for recursively starting in the specified
-	 * package(s).
+	 * Mappers will be searched for recursively starting in the specified package(s).
 	 *
 	 * @param basePackage
-	 *            base package name
+	 *           base package name
 	 */
 	public void setBasePackage(String basePackage) {
 		this.basePackage = basePackage;
@@ -92,13 +112,12 @@ public class ZebraMapperScannerConfigurer
 	/**
 	 * This property specifies the annotation that the scanner will search for.
 	 * <p>
-	 * The scanner will register all interfaces in the base package that also
-	 * have the specified annotation.
+	 * The scanner will register all interfaces in the base package that also have the specified annotation.
 	 * <p>
 	 * Note this can be combined with markerInterface.
 	 *
 	 * @param annotationClass
-	 *            annotation class
+	 *           annotation class
 	 */
 	public void setAnnotationClass(Class<? extends Annotation> annotationClass) {
 		this.annotationClass = annotationClass;
@@ -107,22 +126,20 @@ public class ZebraMapperScannerConfigurer
 	/**
 	 * This property specifies the parent that the scanner will search for.
 	 * <p>
-	 * The scanner will register all interfaces in the base package that also
-	 * have the specified interface class as a parent.
+	 * The scanner will register all interfaces in the base package that also have the specified interface class as a parent.
 	 * <p>
 	 * Note this can be combined with annotationClass.
 	 *
 	 * @param superClass
-	 *            parent class
+	 *           parent class
 	 */
 	public void setMarkerInterface(Class<?> superClass) {
 		this.markerInterface = superClass;
 	}
 
 	/**
-	 * Specifies which {@code SqlSessionTemplate} to use in the case that there
-	 * is more than one in the spring context. Usually this is only needed when
-	 * you have more than one datasource.
+	 * Specifies which {@code SqlSessionTemplate} to use in the case that there is more than one in the spring context. Usually this
+	 * is only needed when you have more than one datasource.
 	 * <p>
 	 * Use {@link #setSqlSessionTemplateBeanName(String)} instead
 	 *
@@ -134,27 +151,23 @@ public class ZebraMapperScannerConfigurer
 	}
 
 	/**
-	 * Specifies which {@code SqlSessionTemplate} to use in the case that there
-	 * is more than one in the spring context. Usually this is only needed when
-	 * you have more than one datasource.
+	 * Specifies which {@code SqlSessionTemplate} to use in the case that there is more than one in the spring context. Usually this
+	 * is only needed when you have more than one datasource.
 	 * <p>
-	 * Note bean names are used, not bean references. This is because the
-	 * scanner loads early during the start process and it is too early to build
-	 * mybatis object instances.
-	 *
-	 * @since 1.1.0
+	 * Note bean names are used, not bean references. This is because the scanner loads early during the start process and it is too
+	 * early to build mybatis object instances.
 	 *
 	 * @param sqlSessionTemplateName
-	 *            Bean name of the {@code SqlSessionTemplate}
+	 *           Bean name of the {@code SqlSessionTemplate}
+	 * @since 1.1.0
 	 */
 	public void setSqlSessionTemplateBeanName(String sqlSessionTemplateName) {
 		this.sqlSessionTemplateBeanName = sqlSessionTemplateName;
 	}
 
 	/**
-	 * Specifies which {@code SqlSessionFactory} to use in the case that there
-	 * is more than one in the spring context. Usually this is only needed when
-	 * you have more than one datasource.
+	 * Specifies which {@code SqlSessionFactory} to use in the case that there is more than one in the spring context. Usually this
+	 * is only needed when you have more than one datasource.
 	 * <p>
 	 * Use {@link #setSqlSessionFactoryBeanName(String)} instead.
 	 *
@@ -166,28 +179,23 @@ public class ZebraMapperScannerConfigurer
 	}
 
 	/**
-	 * Specifies which {@code SqlSessionFactory} to use in the case that there
-	 * is more than one in the spring context. Usually this is only needed when
-	 * you have more than one datasource.
+	 * Specifies which {@code SqlSessionFactory} to use in the case that there is more than one in the spring context. Usually this
+	 * is only needed when you have more than one datasource.
 	 * <p>
-	 * Note bean names are used, not bean references. This is because the
-	 * scanner loads early during the start process and it is too early to build
-	 * mybatis object instances.
-	 *
-	 * @since 1.1.0
+	 * Note bean names are used, not bean references. This is because the scanner loads early during the start process and it is too
+	 * early to build mybatis object instances.
 	 *
 	 * @param sqlSessionFactoryName
-	 *            Bean name of the {@code SqlSessionFactory}
+	 *           Bean name of the {@code SqlSessionFactory}
+	 * @since 1.1.0
 	 */
 	public void setSqlSessionFactoryBeanName(String sqlSessionFactoryName) {
 		this.sqlSessionFactoryBeanName = sqlSessionFactoryName;
 	}
 
 	/**
-	 *
-	 * @since 1.1.1
-	 *
 	 * @param processPropertyPlaceHolders
+	 * @since 1.1.1
 	 */
 	public void setProcessPropertyPlaceHolders(boolean processPropertyPlaceHolders) {
 		this.processPropertyPlaceHolders = processPropertyPlaceHolders;
@@ -221,7 +229,7 @@ public class ZebraMapperScannerConfigurer
 	 * Sets beanNameGenerator to be used while running the scanner.
 	 *
 	 * @param nameGenerator
-	 *            the beanNameGenerator to set
+	 *           the beanNameGenerator to set
 	 * @since 1.2.0
 	 */
 	public void setNameGenerator(BeanNameGenerator nameGenerator) {
@@ -244,24 +252,27 @@ public class ZebraMapperScannerConfigurer
 		// left intentionally blank
 	}
 
-	public int getCorePoolSize() {
-		return corePoolSize;
+	public String getCorePoolSize() {
+		return String.valueOf(corePoolSize);
 	}
 
 	public void setCorePoolSize(String corePoolSize) {
 		this.corePoolSize = Integer.parseInt(corePoolSize);
+
+		AsyncMapperExecutor.setCorePoolSize(this.corePoolSize);
 	}
 
-	public int getMaxPoolSize() {
-		return maxPoolSize;
+	public String getMaxPoolSize() {
+		return String.valueOf(maxPoolSize);
 	}
 
 	public void setMaxPoolSize(String maxPoolSize) {
 		this.maxPoolSize = Integer.parseInt(maxPoolSize);
+		AsyncMapperExecutor.setMaximumPoolSize(this.maxPoolSize);
 	}
 
-	public int getQueueSize() {
-		return queueSize;
+	public String getQueueSize() {
+		return String.valueOf(queueSize);
 	}
 
 	public void setQueueSize(String queueSize) {
@@ -270,12 +281,20 @@ public class ZebraMapperScannerConfigurer
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @since 1.0.2
 	 */
 	public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
 		if (this.processPropertyPlaceHolders) {
 			processPropertyPlaceHolders();
+		}
+		String[] beanDefinitionNames = registry.getBeanDefinitionNames();
+		for (String beanDefinitionName : beanDefinitionNames) {
+			BeanDefinition beanDefinition = registry.getBeanDefinition(beanDefinitionName);
+			String beanClassName = beanDefinition.getBeanClassName();
+			if (SqlSessionFactoryBean.class.getName().equals(beanClassName)) {
+				beanDefinition.setBeanClassName(FixedSqlSessionFactoryBean.class.getName());
+			}
 		}
 
 		ZebraClassPathMapperScanner scanner = new ZebraClassPathMapperScanner(registry);
@@ -290,24 +309,22 @@ public class ZebraMapperScannerConfigurer
 		scanner.setBeanNameGenerator(this.nameGenerator);
 		scanner.registerFilters();
 		scanner.scan(StringUtils.tokenizeToStringArray(this.basePackage,
-				ConfigurableApplicationContext.CONFIG_LOCATION_DELIMITERS));
+		      ConfigurableApplicationContext.CONFIG_LOCATION_DELIMITERS));
 	}
 
 	/*
-	 * BeanDefinitionRegistries are called early in application startup, before
-	 * BeanFactoryPostProcessors. This means that PropertyResourceConfigurers
-	 * will not have been loaded and any property substitution of this class'
-	 * properties will fail. To avoid this, find any PropertyResourceConfigurers
-	 * defined in the context and run them on this class' bean definition. Then
+	 * BeanDefinitionRegistries are called early in application startup, before BeanFactoryPostProcessors. This means that
+	 * PropertyResourceConfigurers will not have been loaded and any property substitution of this class' properties will fail. To
+	 * avoid this, find any PropertyResourceConfigurers defined in the context and run them on this class' bean definition. Then
 	 * update the values.
 	 */
 	private void processPropertyPlaceHolders() {
 		Map<String, PropertyResourceConfigurer> prcs = applicationContext
-				.getBeansOfType(PropertyResourceConfigurer.class);
+		      .getBeansOfType(PropertyResourceConfigurer.class);
 
 		if (!prcs.isEmpty() && applicationContext instanceof GenericApplicationContext) {
 			BeanDefinition mapperScannerBean = ((GenericApplicationContext) applicationContext).getBeanFactory()
-					.getBeanDefinition(beanName);
+			      .getBeanDefinition(beanName);
 
 			// PropertyResourceConfigurer does not expose any methods to
 			// explicitly perform

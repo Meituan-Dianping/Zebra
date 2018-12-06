@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="database0" class="com.dianping.zebra.group.jdbc.GroupDataSource"  init-method="init" destroy-method="close">
+        <property name="jdbcRef" value="defaultStrategy-gds"/>
+        <property name="driverClass" value="org.h2.Driver"/>
+        <property name="configManagerType" value="local"/>
+        <property name="minPoolSize" value="2"/>
+        <property name="maxPoolSize" value="4"/>
+        <property name="initialPoolSize" value="2"/>
+
+    </bean>
+
+    <bean id="zebraDS" class="com.dianping.zebra.shard.jdbc.ShardDataSource" init-method="init">
+        <property name="dataSourcePool">
+            <map>
+                <entry key="database" value-ref="database0"/>
+            </map>
+        </property>
+        <property name="routerFactory">
+            <bean class="com.dianping.zebra.shard.router.builder.XmlResourceRouterBuilder">
+                <constructor-arg value="mockdb-config/testDefaultStrategy/router-multidb-defaultstrategy.xml"/>
+                <constructor-arg value="database"/>
+            </bean>
+        </property>
+    </bean>
+
+</beans>

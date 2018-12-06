@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="gb2312"?>
+<dataset>
+    <database name="database0">
+        <script>
+            <![CDATA[
+		        insert into table1 (id, name, age, address) values (2, 'man_2', 22, 'shanghai_2,china')
+		    ]]>
+        </script>
+        <script>
+            <![CDATA[
+		        insert into table0 (id, name, age, address) values (4, 'man_4', 24, 'shanghai_4,china')
+		    ]]>
+        </script>
+        <script>
+            <![CDATA[
+		        insert into table1 (id, name, age, address) values (6, 'man_6', 26, 'shanghai_6,china')
+		    ]]>
+        </script>
+        <script>
+            <![CDATA[
+		        insert into table0 (id, name, age, address) values (8, 'man_8', 28, 'shanghai_8,china')
+		    ]]>
+        </script>
+    </database>
+
+    <database name="database1">
+        <script>
+            <![CDATA[
+		        insert into table0 (id, name, age, address) values (1, 'man_1', 21, 'shanghai_1,china')
+		    ]]>
+        </script>
+        <script>
+            <![CDATA[
+		        insert into table1 (id, name, age, address) values (3, 'man_3', 23, 'shanghai_3,china')
+		    ]]>
+        </script>
+        <script>
+            <![CDATA[
+		        insert into table0 (id, name, age, address) values (5, 'man_5', 25, 'shanghai_5,china')
+		    ]]>
+        </script>
+        <script>
+            <![CDATA[
+		        insert into table1 (id, name, age, address) values (7, 'man_7', 27, 'shanghai_7,china')
+		    ]]>
+        </script>
+    </database>
+
+</dataset>

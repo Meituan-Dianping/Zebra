@@ -1,0 +1,19 @@
+<Configuration status="warn">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy/MM/dd HH:mm:ss.SSS} %t [%p] %c{1} (%F:%L) %msg%n" />
+        </Console>
+        <RollingFile name="RollingFile" fileName="${sys:zebra.logger.dir}/zebra.logger"
+            filePattern="${sys:zebra.logger.dir}/zebra.logger.%d{yyyy-MM-dd}.gz">
+            <PatternLayout pattern="%d{yyyy/MM/dd HH:mm:ss.SSS} %t [%p] %c{1} (%F:%L) %msg%n" />
+            <TimeBasedTriggeringPolicy />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.dianping.zebra" additivity="true">
+            <AppenderRef ref="Console" level="info" />
+            <AppenderRef ref="RollingFile" level="info" />
+        </Logger>
+        <root level="info"></root>
+    </Loggers>
+</Configuration>

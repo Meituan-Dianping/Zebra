@@ -1,3 +1,21 @@
+/*
+ * Copyright (c) 2011-2018, Meituan Dianping. All Rights Reserved.
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.dianping.zebra.dao.plugin.page;
 
 import java.lang.reflect.InvocationTargetException;
@@ -7,6 +25,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.dianping.zebra.group.util.DaoContextHolder;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -38,6 +57,8 @@ public class PageInterceptor implements Interceptor {
 
 	private static final Map<String, MappedStatement> COUNT_MAPPED_STATS = new ConcurrentHashMap<String, MappedStatement>();
 
+	private static final Map<String, String> MAPPED_ID = new ConcurrentHashMap<String, String>();
+
 	private Dialect dialect;
 
 	@Override
@@ -65,7 +86,6 @@ public class PageInterceptor implements Interceptor {
 		Object rowBound = args[2];
 
 		MappedStatement ms = (MappedStatement) args[0];
-
 		if (rowBound != null) {
 			RowBounds rb = (RowBounds) rowBound;
 
@@ -73,7 +93,7 @@ public class PageInterceptor implements Interceptor {
 			if (rb.getOffset() == RowBounds.NO_ROW_OFFSET && rb.getLimit() == RowBounds.NO_ROW_LIMIT) {
 				return invocation.proceed();
 			} else {
-				BoundSql boundSql = ms.getBoundSql(args);
+				BoundSql boundSql = ms.getBoundSql(args[1]);
 
 				if (rowBound instanceof PageModel) {
 					// physical pagination with PageModel
@@ -87,13 +107,32 @@ public class PageInterceptor implements Interceptor {
 					return null;
 				} else {
 					// physical pagination with RowBounds
-					return queryLimit(invocation, args, ms, boundSql, (RowBounds) rowBound);
+					return queryLimit(invocation, args, ms, boundSql, rb);
 				}
 			}
 		} else {
 			// without pagination
 			return invocation.proceed();
 		}
+	}
+
+	private String buildDaoName(String id) {
+		String daoName = MAPPED_ID.get(id);
+
+		if (daoName == null) {
+			String[] splits = id.split("\\.");
+			int len = splits.length;
+
+			if (len < 2) {
+				daoName = id;
+			} else {
+				daoName = splits[len - 2] + "." + splits[len - 1];
+			}
+
+			MAPPED_ID.put(id, daoName);
+		}
+
+		return daoName;
 	}
 
 	private Object queryCount(Invocation invocation, Object[] args, MappedStatement ms, BoundSql boundSql)
@@ -106,6 +145,8 @@ public class PageInterceptor implements Interceptor {
 					boundSql.getParameterObject());
 			MetaObject mo = (MetaObject) ReflectionUtils.getFieldValue(boundSql, "metaParameters");
 			ReflectionUtils.setFieldValue(newBoundSql, "metaParameters", mo);
+			Object additionalParameters = ReflectionUtils.getFieldValue(boundSql, "additionalParameters");
+			ReflectionUtils.setFieldValue(newBoundSql, "additionalParameters", additionalParameters);
 			List<ResultMap> resultMaps = new ArrayList<ResultMap>();
 			ResultMap resultMap = new ResultMap.Builder(ms.getConfiguration(), ms.getId(), int.class,
 					EMPTY_RESULTMAPPING).build();
@@ -118,7 +159,12 @@ public class PageInterceptor implements Interceptor {
 		args[2] = new RowBounds();
 		args[3] = null;
 
-		return invocation.proceed();
+		try {
+			DaoContextHolder.setSqlName(buildDaoName(ms.getId()) + "_COUNT");
+			return invocation.proceed();
+		} finally {
+			DaoContextHolder.clearSqlName();
+		}
 	}
 
 	private Object queryLimit(Invocation invocation, Object[] args, MappedStatement ms, BoundSql boundSql, RowBounds rb)
@@ -134,7 +180,12 @@ public class PageInterceptor implements Interceptor {
 		args[2] = new RowBounds();
 		args[3] = null;
 
-		return invocation.proceed();
+		try {
+			DaoContextHolder.setSqlName(buildDaoName(ms.getId()) + "_LIMIT");
+			return invocation.proceed();
+		} finally {
+			DaoContextHolder.clearSqlName();
+		}
 	}
 
 	public MappedStatement buildMappedStatement(MappedStatement ms, SqlSource newSqlSource, String id,

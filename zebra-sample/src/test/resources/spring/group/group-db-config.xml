@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.dianping.zebra.sample.dao"/>
+
+    <bean id="mapperScannerConfigurer" class="com.dianping.zebra.dao.mybatis.ZebraMapperScannerConfigurer">
+        <property name="basePackage" value="com.dianping.zebra.sample.dao.group"/>
+        <!--Optional，Default is 20 -->
+        <property name="corePoolSize" value="20"></property>
+        <!--Optional，Default is 200-->
+        <property name="maxPoolSize" value="200"></property>
+        <!--Optional，Default is 500-->
+        <property name="queueSize" value="500"></property>
+    </bean>
+
+    <bean id="dataSource" class="com.dianping.zebra.group.jdbc.GroupDataSource"
+          destroy-method="close" init-method="init">
+        <property name="jdbcRef" value="zebra"/>
+        <property name="configManagerType" value="local"/>
+        <property name="poolType" value="druid"/>
+        <property name="minPoolSize" value="5"/>
+        <property name="maxPoolSize" value="20"/>
+        <property name="initialPoolSize" value="5"/>
+        <property name="checkoutTimeout" value="1000"/>
+        <property name="maxIdleTime" value="1800"/>
+        <property name="acquireRetryAttempts" value="3"/>
+        <property name="idleConnectionTestPeriod" value="60"/>
+        <property name="acquireRetryDelay" value="300"/>
+        <property name="maxStatements" value="0"/>
+        <property name="maxStatementsPerConnection" value="100"/>
+        <property name="numHelperThreads" value="6"/>
+        <property name="maxAdministrativeTaskTime" value="5"/>
+        <property name="extraJdbcUrlParams" value="useSSL=false"/>
+        <property name="preferredTestQuery" value="SELECT 1"/>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--datasource-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--Mapper files-->
+        <property name="mapperLocations" value="classpath*:mapper/group/*.xml"/>
+        <!--Entity package-->
+        <property name="typeAliasesPackage" value="com.dianping.zebra.sample.entity.group"/>
+    </bean>
+</beans>
+	

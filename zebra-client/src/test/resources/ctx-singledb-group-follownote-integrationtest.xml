@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<bean id="groupdb" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="jdbcUrl" value="jdbc:h2:mem:zebra_ut;DB_CLOSE_DELAY=-1"/>
+		<property name="driverClass" value="org.h2.Driver"/>
+		<property name="minPoolSize" value="2"/>
+		<property name="maxPoolSize" value="4"/>
+		<property name="initialPoolSize" value="2"/>
+	</bean>
+	
+	
+	
+	<bean id="zebraDS" class="com.dianping.zebra.shard.jdbc.ShardDataSource" init-method="init">
+		<property name="dataSourcePool">
+			<map>
+				<entry key="groupdb" value-ref="groupdb"/>
+			</map>	
+		</property>
+		<property name="routerFactory">
+			<bean class="com.dianping.zebra.shard.router.builder.XmlResourceRouterBuilder">
+				<constructor-arg value="router-rule-singledb-group-follownote-integrationtest.xml"/>
+			</bean>
+		</property>
+	</bean>
+
+</beans>
+	

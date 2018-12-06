@@ -1,0 +1,23 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mapper.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dianping.zebra.sample.dao.shard.FeedDao">
+
+    <insert id="insert" parameterType="FeedEntity"
+            useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO `Feed`
+		(
+		`Uid`,
+		`UpdateTime`
+		)
+		VALUES
+		(
+		#{uid},
+		NOW())
+	</insert>
+
+    <select id="searchUserById" resultType="FeedEntity" parameterType="map">
+		select * from `Feed` where Uid=#{uid};
+	</select>
+</mapper>

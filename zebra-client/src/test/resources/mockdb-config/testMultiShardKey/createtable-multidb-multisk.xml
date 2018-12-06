@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="gb2312"?>
+<databases>
+    <database name="database0">
+        <tables>
+            <table name="Tb0">
+                <![CDATA[
+                    CREATE TABLE Tb0(
+                        id   IDENTITY,
+                        uid INT,
+                        tid INT,
+                        name VARCHAR(32),
+                        createtime TIMESTAMP
+                    )
+		        ]]>
+            </table>
+            <table name="Tb1">
+                <![CDATA[
+                    CREATE TABLE Tb1(
+                        id   IDENTITY,
+                        uid INT,
+                        tid INT,
+                        name VARCHAR(32),
+                        createtime TIMESTAMP
+                    )
+		        ]]>
+            </table>
+            <table name="Tb_bak0">
+                <![CDATA[
+                    CREATE TABLE Tb_bak0(
+                        id   IDENTITY,
+                        uid INT,
+                        tid INT,
+                        name VARCHAR(32),
+                        createtime TIMESTAMP
+                    )
+		        ]]>
+            </table>
+            <table name="Tb_bak1">
+                <![CDATA[
+                    CREATE TABLE Tb_bak1(
+                        id   IDENTITY,
+                        uid INT,
+                        tid INT,
+                        name VARCHAR(32),
+                        createtime TIMESTAMP
+                    )
+		        ]]>
+            </table>
+            <table name="Tbut0">
+                <![CDATA[
+                    CREATE TABLE Tbut0(
+                        id   IDENTITY,
+                        uid INT,
+                        tid INT,
+                        name VARCHAR(32),
+                        createtime TIMESTAMP
+                    )
+		        ]]>
+            </table>
+            <table name="Tbut1">
+                <![CDATA[
+                    CREATE TABLE Tbut1(
+                        id   IDENTITY,
+                        uid INT,
+                        tid INT,
+                        name VARCHAR(32),
+                        createtime TIMESTAMP
+                    )
+		        ]]>
+            </table>
+        </tables>
+    </database>
+    <database name="database1">
+        <tables>
+            <table name="Tb0">
+                <![CDATA[
+                    CREATE TABLE Tb0(
+                        id   IDENTITY,
+                        uid INT,
+                        tid INT,
+                        name VARCHAR(32),
+                        createtime TIMESTAMP
+                    )
+		        ]]>
+            </table>
+            <table name="Tb1">
+                <![CDATA[
+                    CREATE TABLE Tb1(
+                        id   IDENTITY,
+                        uid INT,
+                        tid INT,
+                        name VARCHAR(32),
+                        createtime TIMESTAMP
+                    )
+                ]]>
+            </table>
+            <table name="Tb_bak0">
+                <![CDATA[
+                    CREATE TABLE Tb_bak0(
+                        id   IDENTITY,
+                        uid INT,
+                        tid INT,
+                        name VARCHAR(32),
+                        createtime TIMESTAMP
+                    )
+		        ]]>
+            </table>
+            <table name="Tb_bak1">
+                <![CDATA[
+                    CREATE TABLE Tb_bak1(
+                        id   IDENTITY,
+                        uid INT,
+                        tid INT,
+                        name VARCHAR(32),
+                        createtime TIMESTAMP
+                    )
+		        ]]>
+            </table>
+            <table name="Tbut0">
+                <![CDATA[
+                    CREATE TABLE Tbut0(
+                        id   IDENTITY,
+                        uid INT,
+                        tid INT,
+                        name VARCHAR(32),
+                        createtime TIMESTAMP
+                    )
+		        ]]>
+            </table>
+            <table name="Tbut1">
+                <![CDATA[
+                    CREATE TABLE Tbut1(
+                        id   IDENTITY,
+                        uid INT,
+                        tid INT,
+                        name VARCHAR(32),
+                        createtime TIMESTAMP
+                    )
+		        ]]>
+            </table>
+        </tables>
+    </database>
+</databases>

@@ -39,6 +39,7 @@
 
 # Logs and databases #
 ######################
+*.logger
 *.log
 *.sqlite
 
@@ -64,6 +65,7 @@ Thumbs.db
 target/
 classes/
 bin/
+node_modules/
 *.*~
 
 # Intellij project files #

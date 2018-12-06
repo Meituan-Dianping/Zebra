@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="gb2312"?>
+<dataset>
+	<database name="test01m">
+		<script>
+		<![CDATA[
+		insert into test_0 (id, name, score, type, classid) values (0, 'test_0_m', 1, 'a', 0)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_1 (id, name, score, type, classid) values (1, 'test_1_m', 2, 'a', 1)
+		]]>
+		</script>
+	</database>
+
+	<database name="test01s">
+		<script>
+		<![CDATA[
+		insert into test_0 (id, name, score, type, classid) values (0, 'test_0_s', 1, 'a', 0)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_1 (id, name, score, type, classid) values (1, 'test_1_s', 2, 'a', 1)
+		]]>
+		</script>
+	</database>
+
+	<database name="test02m">
+		<script>
+		<![CDATA[
+		insert into test_2 (id, name, score, type, classid) values (2, 'test_2_m', 3, 'a', 2)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_3 (id, name, score, type, classid) values (3, 'test_3_m', 4, 'a', 3)
+		]]>
+		</script>
+	</database>
+
+	<database name="test02s">
+		<script>
+		<![CDATA[
+		insert into test_2 (id, name, score, type, classid) values (2, 'test_2_s', 3, 'a', 2)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_3 (id, name, score, type, classid) values (3, 'test_3_s', 4, 'a', 3)
+		]]>
+		</script>
+	</database>
+</dataset>

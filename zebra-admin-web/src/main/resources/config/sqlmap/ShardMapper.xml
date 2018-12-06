@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dianping.zebra.administrator.dao.ShardMapper">
+    <insert id="createRule" parameterType="ShardEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT IGNORE INTO `Shard`
+        (
+		`RuleName`,
+		`Status`,
+		`Env`,
+		`Description`,
+		`Owner`,
+		`UpdateTime`
+		)
+		VALUES
+		(
+		#{ruleName},
+		#{status},
+		#{env},
+		#{description},
+		#{owner},
+		NOW())
+    </insert>
+
+    <select id="findByEnv" parameterType="map" resultType="ShardEntity">
+		SELECT RuleName,Env,Owner,Description,UpdateTime from `Shard` WHERE Env=#{env}
+	</select>
+
+    <select id="findByRuleNames" parameterType="map" resultType="ShardEntity">
+        SELECT * from `Shard` WHERE RuleName IN
+        <foreach collection="list" separator="," open="(" close=")" item="item">
+            #{item}
+        </foreach>
+        AND `Env` = #{env}
+    </select>
+
+	<delete id="deleteRuleName" parameterType="map">
+		DELETE FROM `Shard` WHERE RuleName=#{ruleName} AND env=#{env}
+	</delete>
+
+</mapper>

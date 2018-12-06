@@ -1,0 +1,38 @@
+CREATE TABLE `user` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `Name` varchar(32) DEFAULT NULL,
+  `Mis` varchar(20) NOT NULL DEFAULT 'mtdp',
+  `Email` varchar(64) DEFAULT NULL,
+  `UpdateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `CrateTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `IX_Alias` (`Mis`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `Feed0` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `Uid` varchar(30) NOT NULL DEFAULT '',
+  `UpdateTime` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `Feed1` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `Uid` varchar(30) NOT NULL DEFAULT '',
+  `UpdateTime` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `Feed2` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `Uid` varchar(30) NOT NULL DEFAULT '',
+  `UpdateTime` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `Feed3` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `Uid` varchar(30) NOT NULL DEFAULT '',
+  `UpdateTime` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

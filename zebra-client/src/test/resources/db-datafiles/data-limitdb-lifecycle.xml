@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="gb2312"?>
+<dataset>
+	<database name="id0">
+		<script>
+		<![CDATA[
+		insert into test_0 (id, name, score, type, classid) values (0, 'conan0', 1, 'a', 0)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_0 (id, name, score, type, classid) values (1, 'conan1', 2, 'a', 0)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_0 (id, name, score, type, classid) values (2, 'conan2', 2, 'a', 0)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_0 (id, name, score, type, classid) values (3, 'conan3', 4, 'a', 0)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_1 (id, name, score, type, classid) values (0, 'conan0', 2, 'a', 1)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_1 (id, name, score, type, classid) values (1, 'conan1', 3, 'a', 1)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_1 (id, name, score, type, classid) values (2, 'conan2', 5, 'a', 1)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_1 (id, name, score, type, classid) values (3, 'conan3', 5, 'a', 1)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_1 (id, name, score, type, classid) values (4, 'conan4', 6, 'a', 1)
+		]]>
+		</script>
+	</database>
+
+	<database name="id1">
+		<script>
+		<![CDATA[
+		insert into test_2 (id, name, score, type, classid) values (0, 'conan0', 3, 'a', 2)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_2 (id, name, score, type, classid) values (1, 'conan1', 3, 'a', 2)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_2 (id, name, score, type, classid) values (2, 'conan2', 3, 'a', 2)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_2 (id, name, score, type, classid) values (3, 'conan3', 6, 'a', 2)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_3 (id, name, score, type, classid) values (0, 'conan0', 3, 'a', 3)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_3 (id, name, score, type, classid) values (1, 'conan1', 5, 'a', 3)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_3 (id, name, score, type, classid) values (2, 'conan2', 7, 'a', 3)
+		]]>
+		</script>
+	</database>
+
+	<database name="id2">
+		<script>
+		<![CDATA[
+		insert into test_4 (id, name, score, type, classid) values (0, 'conan0', 1, 'a', 4)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_4 (id, name, score, type, classid) values (1, 'conan1', 3, 'a', 4)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_4 (id, name, score, type, classid) values (2, 'conan2', 7, 'a', 4)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_4 (id, name, score, type, classid) values (3, 'conan3', 8, 'a', 4)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_4 (id, name, score, type, classid) values (4, 'conan4', 9, 'a', 4)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_4 (id, name, score, type, classid) values (5, 'conan5', 12, 'a', 4)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_5 (id, name, score, type, classid) values (0, 'conan0', 6, 'b', 5)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_5 (id, name, score, type, classid) values (1, 'conan1', 7, 'b', 5)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_5 (id, name, score, type, classid) values (2, 'conan2', 8, 'b', 5)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_5 (id, name, score, type, classid) values (3, 'conan3', 9, 'b', 5)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_5 (id, name, score, type, classid) values (4, 'conan4', 10, 'b', 5)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_5 (id, name, score, type, classid) values (5, 'conan5', 11, 'b', 5)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_5 (id, name, score, type, classid) values (6, 'conan6', 12, 'b', 5)
+		]]>
+		</script>
+	</database>
+
+	<database name="id3">
+		<script>
+		<![CDATA[
+		insert into test_6 (id, name, score, type, classid) values (0, 'conan0', 7, 'b', 6)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_6 (id, name, score, type, classid) values (1, 'conan1', 8, 'b', 6)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_6 (id, name, score, type, classid) values (2, 'conan2', 11, 'b', 6)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_7 (id, name, score, type, classid) values (0, 'conan0', 8, 'b', 7)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_7 (id, name, score, type, classid) values (1, 'conan1', 9, 'b', 7)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_7 (id, name, score, type, classid) values (2, 'conan2', 10, 'b', 7)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_7 (id, name, score, type, classid) values (3, 'conan3', 20, 'b', 7)
+		]]>
+		</script>
+	</database>
+
+	<database name="class0">
+		<script>
+		<![CDATA[
+		insert into test_class0 (id, name, score, type, classid) values (0, 'leo0', 1, 'a', 0)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_class0 (id, name, score, type, classid) values (1, 'leo0', 1, 'a', 0)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_class1 (id, name, score, type, classid) values (0, 'leo1', 2, 'a', 1)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_class1 (id, name, score, type, classid) values (1, 'leo1', 2, 'a', 1)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_class1 (id, name, score, type, classid) values (2, 'leo0', 1, 'a', 1)
+		]]>
+		</script>
+	</database>
+
+	<database name="class1">
+		<script>
+		<![CDATA[
+		insert into test_class2 (id, name, score, type, classid) values (0, 'leo2', 3, 'a', 2)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_class2 (id, name, score, type, classid) values (1, 'leo2', 3, 'a', 2)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_class3 (id, name, score, type, classid) values (2, 'leo3', 20, 'a', 3)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_class3 (id, name, score, type, classid) values (3, 'leo3', 4, 'a', 3)
+		]]>
+		</script>
+	</database>
+
+	<database name="class2">
+		<script>
+		<![CDATA[
+		insert into test_class4 (id, name, score, type, classid) values (0, 'leo4', 5, 'a', 4)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_class4 (id, name, score, type, classid) values (1, 'leo4', 5, 'a', 4)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_class5 (id, name, score, type, classid) values (0, 'leo5', 6, 'b', 5)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_class5 (id, name, score, type, classid) values (1, 'leo5', 6, 'b', 5)
+		]]>
+		</script>
+	</database>
+
+	<database name="class3">
+		<script>
+		<![CDATA[
+		insert into test_class6 (id, name, score, type, classid) values (0, 'leo6', 7, 'b', 6)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_class6 (id, name, score, type, classid) values (1, 'leo6', 7, 'b', 6)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_class7 (id, name, score, type, classid) values (0, 'leo7', 8, 'b', 7)
+		]]>
+		</script>
+		<script>
+		<![CDATA[
+		insert into test_class7 (id, name, score, type, classid) values (1, 'leo7', 8, 'b', 7)
+		]]>
+		</script>
+	</database>
+</dataset>
+<!--
+本地测试建表和数据sql
+CREATE TABLE `test` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tableName` varchar(16) DEFAULT NULL,
+  `tableId` int(11) DEFAULT NULL,
+  `name` varchar(16) DEFAULT NULL,
+  `score` int(11) DEFAULT NULL,
+  `type` varchar(8) DEFAULT NULL,
+  `classid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `test` (`id`, `tableName`, `tableId`, `name`, `score`, `type`, `classid`)
+VALUES
+	(3, 'test_0', 0, 'conan0', 1, 'a', 0),
+	(4, 'test_0', 1, 'conan1', 2, 'a', 0),
+	(5, 'test_0', 2, 'conan2', 2, 'a', 0),
+	(6, 'test_0', 3, 'conan3', 4, 'a', 0),
+	(7, 'test_1', 0, 'conan0', 2, 'a', 1),
+	(8, 'test_1', 1, 'conan1', 3, 'a', 1),
+	(9, 'test_1', 2, 'conan2', 5, 'a', 1),
+	(10, 'test_1', 3, 'conan3', 5, 'a', 1),
+	(11, 'test_1', 4, 'conan4', 6, 'a', 1),
+	(12, 'test_2', 0, 'conan0', 3, 'a', 2),
+	(13, 'test_2', 1, 'conan1', 3, 'a', 2),
+	(14, 'test_2', 2, 'conan2', 3, 'a', 2),
+	(15, 'test_2', 3, 'conan3', 6, 'a', 2),
+	(16, 'test_3', 0, 'conan0', 3, 'a', 3),
+	(17, 'test_3', 1, 'conan1', 5, 'a', 3),
+	(18, 'test_3', 2, 'conan2', 7, 'a', 3),
+	(19, 'test_4', 0, 'conan0', 1, 'a', 4),
+	(20, 'test_4', 1, 'conan1', 3, 'a', 4),
+	(21, 'test_4', 2, 'conan2', 7, 'a', 4),
+	(22, 'test_4', 3, 'conan3', 8, 'a', 4),
+	(23, 'test_4', 4, 'conan4', 9, 'a', 4),
+	(24, 'test_4', 5, 'conan5', 12, 'a', 4),
+	(25, 'test_5', 0, 'conan0', 6, 'b', 5),
+	(26, 'test_5', 1, 'conan1', 7, 'b', 5),
+	(27, 'test_5', 2, 'conan2', 8, 'b', 5),
+	(28, 'test_5', 3, 'conan3', 9, 'b', 5),
+	(29, 'test_5', 4, 'conan4', 10, 'b', 5),
+	(30, 'test_5', 5, 'conan5', 11, 'b', 5),
+	(31, 'test_5', 6, 'conan6', 12, 'b', 5),
+	(32, 'test_6', 0, 'conan0', 7, 'b', 6),
+	(33, 'test_6', 1, 'conan1', 8, 'b', 6),
+	(34, 'test_6', 2, 'conan2', 11, 'b', 6),
+	(35, 'test_7', 0, 'conan0', 8, 'b', 7),
+	(36, 'test_7', 1, 'conan1', 9, 'b', 7),
+	(37, 'test_7', 2, 'conan2', 10, 'b', 7),
+	(38, 'test_7', 3, 'conan3', 20, 'b', 7); 
+ -->

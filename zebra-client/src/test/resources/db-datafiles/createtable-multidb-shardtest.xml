@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="gb2312"?>
+<databases>
+    <database name="database0">
+        <tables>
+            <table name="table0">
+                <![CDATA[
+                    CREATE TABLE table0(
+                        pk IDENTITY,
+                        id   INT,
+                        name VARCHAR(32),
+                        age INT,
+                        address VARCHAR(128)
+                    )
+		        ]]>
+            </table>
+            <table name="table1">
+                <![CDATA[
+                    CREATE TABLE table1(
+                        pk IDENTITY,
+                        id   INT,
+                        name VARCHAR(32),
+                        age INT,
+                        address VARCHAR(128)
+                    )
+		        ]]>
+            </table>
+        </tables>
+    </database>
+    <database name="database1">
+        <tables>
+            <table name="table0">
+                <![CDATA[
+                    CREATE TABLE table0(
+                        pk IDENTITY,
+                        id   INT,
+                        name VARCHAR(32),
+                        age INT,
+                        address VARCHAR(128)
+                    )
+		        ]]>
+            </table>
+            <table name="table1">
+                <![CDATA[
+                    CREATE TABLE table1(
+                        pk IDENTITY,
+                        id   INT,
+                        name VARCHAR(32),
+                        age INT,
+                        address VARCHAR(128)
+                    )
+                ]]>
+            </table>
+        </tables>
+    </database>
+</databases>
