@@ -29,17 +29,14 @@ public class ZebraRegionManagerLoader {
 		if (regionManager == null) {
 			synchronized (ZebraRegionManagerLoader.class) {
 				if (regionManager == null) {
-					ZebraRegionManager manager = new LocalRegionManager();
-					manager.init();
-
-					// ZebraRegionManager manager = null;
-					// if (Constants.CONFIG_MANAGER_TYPE_LOCAL.equalsIgnoreCase(configManagerType)) {
-					// manager = new LocalRegionManager();
-					// manager.init();
-					// } else {
-					// manager = new RemoteRegionManager(configManagerType, configService);
-					// manager.init();
-					// }
+					ZebraRegionManager manager = null;
+					if (Constants.CONFIG_MANAGER_TYPE_LOCAL.equalsIgnoreCase(configManagerType)) {
+						manager = new LocalRegionManager();
+						manager.init();
+					} else {
+						manager = new RemoteRegionManager(configManagerType, configService);
+						manager.init();
+					}
 
 					regionManager = manager;
 				}
