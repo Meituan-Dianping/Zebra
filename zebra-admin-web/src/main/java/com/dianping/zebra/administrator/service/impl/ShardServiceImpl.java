@@ -54,7 +54,6 @@ public class ShardServiceImpl extends BaseServiceImpl implements ShardService {
         for (TableShardConfigDto tsConfigDto : shardConfigDto.getTableShardConfigs()) {
             TableShardConfig tsConfig = new TableShardConfig();
             tsConfig.setTableName(tsConfigDto.getTableName());
-            tsConfig.setGlobal(tsConfigDto.isGlobal());
 
             DimensionConfigs dimensionConfigs = new DimensionConfigs();
             dimensionConfigs.setDimensionConfig(tsConfigDto.getDimensionConfigs());

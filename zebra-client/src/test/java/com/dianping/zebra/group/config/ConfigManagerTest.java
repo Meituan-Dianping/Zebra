@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.Map;
 
 import com.dianping.zebra.Constants;
+import com.dianping.zebra.config.ConfigService;
+import com.dianping.zebra.config.ConfigServiceFactory;
 import com.dianping.zebra.config.ServiceConfigBuilder;
 import org.junit.Test;
 
@@ -16,8 +18,8 @@ public class ConfigManagerTest {
 		String resourceName = "sample.ds.v2";
 		Map<String, Object> configs = ServiceConfigBuilder.newInstance()
 		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, resourceName).getConfigs();
-		SystemConfigManager systemConfigManager = SystemConfigManagerFactory
-		      .getConfigManger(Constants.CONFIG_MANAGER_TYPE_LOCAL, configs);
+		ConfigService configService = ConfigServiceFactory.getConfigService(Constants.CONFIG_MANAGER_TYPE_LOCAL, configs);
+		SystemConfigManager systemConfigManager = SystemConfigManagerFactory.getConfigManger(Constants.CONFIG_MANAGER_TYPE_LOCAL, configService);
 
 		System.out.println(systemConfigManager.getSystemConfig());
 
@@ -31,7 +33,7 @@ public class ConfigManagerTest {
 		});
 
 		DataSourceConfigManager dataSourceConfigManager = DataSourceConfigManagerFactory
-		      .getConfigManager(Constants.CONFIG_MANAGER_TYPE_LOCAL, configs);
+		      .getConfigManager(resourceName, configService);
 
 		System.out.println(dataSourceConfigManager.getGroupDataSourceConfig().getDataSourceConfigs());
 		dataSourceConfigManager.addListerner(new PropertyChangeListener() {

@@ -21,6 +21,8 @@ package com.dianping.zebra.group.router.region;
 public interface ZebraRegionManager {
 	String NO_CENTER = "NoCenter";
 
+	void init();
+
 	boolean isInSameIdc(String address1, String address2);
 
 	boolean isInLocalRegion(String address);
@@ -36,4 +38,5 @@ public interface ZebraRegionManager {
 	int getCenterPriority(String centerName);
 
 	String getLocalCenter();
+
 }

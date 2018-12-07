@@ -21,7 +21,7 @@
           destroy-method="close" init-method="init">
         <property name="jdbcRef" value="zebra"/>
         <property name="configManagerType" value="local"/>
-        <property name="poolType" value="druid"/>
+        <property name="poolType" value="hikaricp"/>
         <property name="minPoolSize" value="5"/>
         <property name="maxPoolSize" value="20"/>
         <property name="initialPoolSize" value="5"/>

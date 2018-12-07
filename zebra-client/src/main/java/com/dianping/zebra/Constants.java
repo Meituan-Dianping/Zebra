@@ -77,6 +77,8 @@ public final class Constants {
 
 	public static final String ROUTER_CENTER_CONFIG_LION_KEY = "zebra-router.center.config";
 
+	public static final String ROUTER_REGION_CONFIG_LION_KEY = "zebra-router.region.config";
+
 	public static final String ROUTER_STRATEGY_LION_KEY_PATTERN = "zebra-router.%s.router";
 
 	public static final String ROUTER_STRATEGY_IDC_AWARE_ROUTER = "IdcAwareRouter"; // 机房优先路由

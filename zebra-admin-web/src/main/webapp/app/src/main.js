@@ -42,9 +42,9 @@ const router = new VueRouter({
 
 const store = new Vuex.Store({
   state:{
-    init : true,
-    currentEnv : 'test',
-    envs : ["test"],
+    init : false,
+    currentEnv : null,
+    envs : [],
     user:'',
     staredJdbcrefs:[],
     staredShards:[],

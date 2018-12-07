@@ -46,11 +46,11 @@ public class ZookeeperConfigService implements ConfigService {
 
 	protected List<PropertyChangeListener> listeners = new CopyOnWriteArrayList<PropertyChangeListener>();
 
-	protected volatile boolean init = false;
+	protected static volatile boolean init = false;
 
 	@Override
 	public synchronized void init(Map<String, Object> serviceConfigs) {
-		if (!init) {
+		if (!this.init) {
 			try {
 				clientManager = ZookeeperClientManager.getInstance();
 				this.init = true;
@@ -86,7 +86,7 @@ public class ZookeeperConfigService implements ConfigService {
 
 	private String getConfigPath(String key) {
 		String pathKey = key.replace('.', Constants.DEFAULT_PATH_SEPARATOR.charAt(0));
-		return Constants.DEFAULT_PATH + Constants.DEFAULT_PATH_SEPARATOR + pathKey;
+		return Constants.DEFAULT_PATH_SEPARATOR + pathKey;
 	}
 
 	private String loadKeyWithWatcher(final String key) throws Exception {

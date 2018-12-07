@@ -79,16 +79,15 @@
                 this.isStaredShard();
             },
             init: function () {
-                let _this = this;
-                if (_this.$store.state.init && !_this.dataInit) {
-                    _this.envs = _this.$store.state.envs;
-                    _this.env = _this.env ? _this.env : _this.$store.state.currentEnv;
-                    _this.dataInit = true;
+                if (this.$store.state.init && !this.dataInit) {
+                    this.envs = this.$store.state.envs;
+                    this.env = this.env ? this.env : this.$store.state.currentEnv;
+                    this.dataInit = true;
                 }
             },
             env: function () {
-                let _this = this;
-                _this.loadData();
+                this.changeEnv(this.env);
+                this.loadData();
             }
         },
         methods: {
@@ -123,11 +122,8 @@
             createConfig: function () {
                 this.shardRule = [{
                     tableName: 'table_new',
-                    generatedPK: '',
-                    global: false,
                     dimensionConfigs: [{
                         isMaster: false,
-                        needSync: false,
                         dbRule: '',
                         dbIndexes: '',
                         tbRule: '',
@@ -152,11 +148,8 @@
             handleTabsAdd() {
                 var rule = {
                     tableName: 'table_new',
-                    generatedPK: '',
-                    global: false,
                     dimensionConfigs: [{
                         isMaster: false,
-                        needSync: false,
                         dbRule: '',
                         dbIndexes: '',
                         tbRule: '',
@@ -193,15 +186,15 @@
         },
         created() {
             if (this.$store.state.init && !this.dataInit) {
-                let _this = this;
-                _this.loadData();
-                _this.dataInit = true;
+                this.loadData();
+                this.dataInit = true;
             }
         },
         data: function () {
             return {
                 theme: 'light',
                 env: this.$store.state.currentEnv,
+                envs : this.$store.state.envs,
                 ruleName: this.$route.params.ruleName,
                 stared: false,
                 dataInit: false,

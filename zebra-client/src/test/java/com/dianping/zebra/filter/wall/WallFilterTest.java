@@ -14,6 +14,9 @@ import com.dianping.zebra.config.ServiceConfigBuilder;
 import com.dianping.zebra.filter.DefaultJdbcFilterChain;
 import com.dianping.zebra.filter.JdbcFilter;
 import com.dianping.zebra.filter.SQLProcessContext;
+import com.dianping.zebra.group.config.AbstractConfigManager;
+import com.dianping.zebra.group.config.DefaultSystemConfigManager;
+import com.dianping.zebra.group.config.SystemConfigManager;
 import org.junit.Test;
 
 import com.dianping.zebra.filter.wall.WallFilter;
@@ -23,10 +26,11 @@ import com.dianping.zebra.group.util.DaoContextHolder;
 import junit.framework.Assert;
 
 public class WallFilterTest {
+
 	@Test
 	public void test_addId_to_Sql() throws SQLException {
 		Map<String, Object> configs = ServiceConfigBuilder.newInstance()
-		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, "samole.ds.v2").getConfigs();
+		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, DefaultSystemConfigManager.DEFAULT_LOCAL_CONFIG).getConfigs();
 		WallFilter filter = new MockWallFilter(0);
 		filter.setConfigManager(Constants.CONFIG_MANAGER_TYPE_LOCAL, configs);
 		filter.init();
@@ -54,9 +58,9 @@ public class WallFilterTest {
 
 	@Test(expected = SQLException.class)
 	public void test_sql_rejected_by_flow_control() throws SQLException {
-		Map<String, Object> configs = ServiceConfigBuilder.newInstance()
-		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, "samole.ds.v2").getConfigs();
 		WallFilter filter = new MockWallFilter(11);
+		Map<String, Object> configs = ServiceConfigBuilder.newInstance()
+		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, DefaultSystemConfigManager.DEFAULT_LOCAL_CONFIG).getConfigs();
 		filter.setConfigManager(Constants.CONFIG_MANAGER_TYPE_LOCAL, configs);
 		filter.init();
 
@@ -84,6 +88,9 @@ public class WallFilterTest {
 	@Test
 	public void test_sql_not_reject_by_flow_control() throws SQLException {
 		WallFilter filter = new MockWallFilter(9);
+		Map<String, Object> configs = ServiceConfigBuilder.newInstance()
+				.putValue(Constants.CONFIG_SERVICE_NAME_KEY, DefaultSystemConfigManager.DEFAULT_LOCAL_CONFIG).getConfigs();
+		filter.setConfigManager(Constants.CONFIG_MANAGER_TYPE_LOCAL, configs);
 		filter.init();
 
 		List<JdbcFilter> filters = new ArrayList<JdbcFilter>();
@@ -111,7 +118,7 @@ public class WallFilterTest {
 	public void test_load_flow_control_from_config() throws SQLException {
 		WallFilter filter = new MockWallFilter(0);
 		Map<String, Object> configs = ServiceConfigBuilder.newInstance()
-		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, "samole.ds.v2").getConfigs();
+		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, DefaultSystemConfigManager.DEFAULT_LOCAL_CONFIG).getConfigs();
 		filter.setConfigManager(Constants.CONFIG_MANAGER_TYPE_LOCAL, configs);
 		filter.init();
 

@@ -18,6 +18,7 @@
  */
 package com.dianping.zebra.group.router;
 
+import com.dianping.zebra.config.ConfigService;
 import com.dianping.zebra.group.config.datasource.entity.DataSourceConfig;
 import com.dianping.zebra.group.router.region.ZebraRegionManager;
 import com.dianping.zebra.group.router.region.ZebraRegionManagerLoader;
@@ -38,14 +39,15 @@ public class IdcAwareRouter implements DataSourceRouter {
 
 	private WeightDataSourceRouter remoteIdcWeightedRouter;
 
-	public IdcAwareRouter(Map<String, DataSourceConfig> dataSourceConfigs, String configManagerType) {
-		this(dataSourceConfigs, NetworkUtils.IpHelper.INSTANCE.getLocalHostAddress(), configManagerType);
+	public IdcAwareRouter(Map<String, DataSourceConfig> dataSourceConfigs, String configManagerType,
+	      ConfigService configService) {
+		this(dataSourceConfigs, NetworkUtils.IpHelper.INSTANCE.getLocalHostAddress(), configManagerType, configService);
 	}
 
 	// for test purpose
 	protected IdcAwareRouter(Map<String, DataSourceConfig> dataSourceConfigs, String localIpAddress,
-	      String configManagerType) {
-		this.regionManager = ZebraRegionManagerLoader.getRegionManager(configManagerType);
+	      String configManagerType, ConfigService configService) {
+		this.regionManager = ZebraRegionManagerLoader.getRegionManager(configManagerType, configService);
 		Map<String, DataSourceConfig> localIdcDataSourceConfigs = new HashMap<String, DataSourceConfig>();
 		Map<String, DataSourceConfig> remoteIdcDataSourceConfigs = new HashMap<String, DataSourceConfig>();
 

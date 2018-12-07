@@ -18,6 +18,7 @@
  */
 package com.dianping.zebra.group.router;
 
+import com.dianping.zebra.config.ConfigService;
 import com.dianping.zebra.group.config.datasource.entity.DataSourceConfig;
 
 import java.util.Map;
@@ -25,8 +26,8 @@ import java.util.Map;
 public class BackupDataSourceRouter extends RegionAwareRouter {
 	private Map<String, DataSourceConfig> dataSourceConfigs;
 
-	public BackupDataSourceRouter(Map<String, DataSourceConfig> dataSourceConfigs, String configManagerType, String routerStrategy) {
-		super(dataSourceConfigs, configManagerType, routerStrategy);
+	public BackupDataSourceRouter(Map<String, DataSourceConfig> dataSourceConfigs, String configManagerType, ConfigService configService, String routerStrategy) {
+		super(dataSourceConfigs, configManagerType, configService, routerStrategy);
 		this.dataSourceConfigs = dataSourceConfigs;
 	}
 

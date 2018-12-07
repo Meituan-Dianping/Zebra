@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.dianping.zebra.Constants;
+import com.dianping.zebra.config.ConfigService;
+import com.dianping.zebra.config.ConfigServiceFactory;
 import com.dianping.zebra.config.ServiceConfigBuilder;
 import com.dianping.zebra.group.config.datasource.entity.GroupConfig;
 import com.dianping.zebra.group.config.datasource.entity.SingleConfig;
@@ -46,8 +48,9 @@ public class DataSourceConfigManagerTest {
 		String dataSourceResourceId = "sample.ds.v2";
 		Map<String, Object> configs = ServiceConfigBuilder.newInstance()
 		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, dataSourceResourceId).getConfigs();
+		ConfigService configService = ConfigServiceFactory.getConfigService(Constants.CONFIG_MANAGER_TYPE_LOCAL, configs);
 		DataSourceConfigManager dataSourceConfigManager = DataSourceConfigManagerFactory
-		      .getConfigManager(Constants.CONFIG_MANAGER_TYPE_LOCAL, configs);
+		      .getConfigManager(dataSourceResourceId, configService);
 		Map<String, DataSourceConfig> config = dataSourceConfigManager.getGroupDataSourceConfig().getDataSourceConfigs();
 
 		Map<String, DataSourceConfig> dataSourceConfigs = DefaultSaxParser

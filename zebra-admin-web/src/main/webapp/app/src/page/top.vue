@@ -11,20 +11,22 @@
         </div>
         <div class="layout-nav">
             <div class="header-nav-list">
-                <a href="https://github.com/Meituan-Dianping/zebra/wiki" class="ivu-menu-item" target="view_window" style="text-align: center;font-size: 14px;">
+                <a href="https://github.com/Meituan-Dianping/zebra/wiki" class="ivu-menu-item" target="view_window"
+                   style="text-align: center;font-size: 14px;">
                     文档
                 </a>
-                <a href="https://github.com/Meituan-Dianping/zebra" class="ivu-menu-item" target="view_window" style="text-align: center;font-size: 14px;">
+                <a href="https://github.com/Meituan-Dianping/zebra" class="ivu-menu-item" target="view_window"
+                   style="text-align: center;font-size: 14px;">
                     帮助&支持
                 </a>
                 <!--<Submenu name="3">-->
-                    <!--<template slot="title">-->
-                        <!--<Avatar :src="headUrl" /> {{name}}-->
-                    <!--</template>-->
-                    <!--<a href="/logout" class="ivu-menu-item" style="text-align: center">-->
-                        <!--<Icon type="log-out"></Icon>-->
-                        <!--登出-->
-                    <!--</a>-->
+                <!--<template slot="title">-->
+                <!--<Avatar :src="headUrl" /> {{name}}-->
+                <!--</template>-->
+                <!--<a href="/logout" class="ivu-menu-item" style="text-align: center">-->
+                <!--<Icon type="log-out"></Icon>-->
+                <!--登出-->
+                <!--</a>-->
                 <!--</Submenu>-->
             </div>
         </div>
@@ -35,7 +37,6 @@
     let axios = require('axios');
     export default {
         props: ['message'],
-
         //data加载于created之前，只执行一次
         data: function () {
             return {
@@ -54,6 +55,9 @@
                 var show = this.message.showSide;
                 this.message.showSide = !show;
             }
+        },
+        created() {
+            this.initEnv();
         }
     }
 </script>

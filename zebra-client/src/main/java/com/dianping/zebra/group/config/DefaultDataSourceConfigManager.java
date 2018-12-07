@@ -34,8 +34,6 @@ import java.util.Map.Entry;
 
 public class DefaultDataSourceConfigManager extends AbstractConfigManager implements DataSourceConfigManager {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(DefaultDataSourceConfigManager.class);
-
 	private final char keyValueSeparator = '=';
 
 	private final char pairSeparator = '&';

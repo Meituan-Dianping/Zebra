@@ -22,6 +22,7 @@ import com.dianping.zebra.Constants;
 import com.dianping.zebra.config.ConfigService;
 import com.dianping.zebra.config.ConfigServiceFactory;
 import com.dianping.zebra.config.RemoteConfigService;
+import com.dianping.zebra.config.ServiceConfigBuilder;
 import com.dianping.zebra.exception.ZebraConfigException;
 
 import java.util.Map;
@@ -32,17 +33,24 @@ public final class SystemConfigManagerFactory {
 	 * SystemConfigManagerFactory has only one instance of SystemConfigManager <br>
 	 * which differs from DataSourceConfigManagerFactory who has its own DataSourceConfigManager for each GroupDataSource
 	 */
-	private static SystemConfigManager systemConfigManager;
+	private volatile static SystemConfigManager systemConfigManager;
 
 	private SystemConfigManagerFactory() {
 	}
 
-	public static SystemConfigManager getConfigManger(String configManagerType, Map<String, Object> serviceConfigs) {
+	public static SystemConfigManager getConfigManger(String configServiceType, ConfigService configService) {
 		if (systemConfigManager == null) {
 			synchronized (SystemConfigManagerFactory.class) {
 				if (systemConfigManager == null) {
-					ConfigService configService = ConfigServiceFactory.getConfigService(configManagerType, serviceConfigs);
-					systemConfigManager = new DefaultSystemConfigManager(configService);
+					if (Constants.CONFIG_MANAGER_TYPE_LOCAL.equalsIgnoreCase(configServiceType)) {
+						Map<String, Object> configs = ServiceConfigBuilder.newInstance()
+						      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, DefaultSystemConfigManager.DEFAULT_LOCAL_CONFIG)
+						      .getConfigs();
+						ConfigService systemConfigService = ConfigServiceFactory.getConfigService(configServiceType, configs);
+						systemConfigManager = new DefaultSystemConfigManager(systemConfigService);
+					} else {
+						systemConfigManager = new DefaultSystemConfigManager(configService);
+					}
 					systemConfigManager.init();
 				}
 

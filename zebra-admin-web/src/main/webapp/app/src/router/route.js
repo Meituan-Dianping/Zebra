@@ -27,15 +27,6 @@ export default [
     path: '/jdbcrefOverview',
     component: jdbcrefOverview
   },
-  // {
-  //   name : 'jdbcref',
-  //   path : '/jdbcref/:jdbcref',
-  //   component: jdbcref,
-  //   children : [
-  //     {path: '/' , redirect : '/jdbcref/:jdbcref/info'},
-  //     {path: '/jdbcref/:jdbcref/info', component : jdbcrefInfo}
-  //   ]
-  // },
   {
     path: '/shardOverview',
     component: shardOverview

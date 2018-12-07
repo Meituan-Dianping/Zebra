@@ -19,6 +19,7 @@
 package com.dianping.zebra.group.router;
 
 import com.dianping.zebra.Constants;
+import com.dianping.zebra.config.ConfigService;
 import com.dianping.zebra.group.config.datasource.entity.DataSourceConfig;
 import com.dianping.zebra.group.router.region.ZebraRegionManager;
 import com.dianping.zebra.group.router.region.ZebraRegionManagerLoader;
@@ -39,8 +40,8 @@ public class RegionAwareRouter implements DataSourceRouter {
 	private DataSourceRouter remoteRegionRouter;
 
 	public RegionAwareRouter(Map<String, DataSourceConfig> dataSourceConfigs, String configManagerType,
-	      String routerStrategy) {
-		this.regionManager = ZebraRegionManagerLoader.getRegionManager(configManagerType);
+	      ConfigService configService, String routerStrategy) {
+		this.regionManager = ZebraRegionManagerLoader.getRegionManager(configManagerType, configService);
 
 		Map<String, DataSourceConfig> localRegionDataSourceConfigs = new HashMap<String, DataSourceConfig>();
 		Map<String, DataSourceConfig> remoteRegionDataSourceConfigs = new HashMap<String, DataSourceConfig>();
@@ -88,10 +89,10 @@ public class RegionAwareRouter implements DataSourceRouter {
 				idcAware = true;
 			}
 			if (localRegionDataSourceConfigs.size() > 0) {
-				this.localRegionRouter = new CenterAwareRouter(localRegionDataSourceConfigs, configManagerType, idcAware);
+				this.localRegionRouter = new CenterAwareRouter(localRegionDataSourceConfigs, configManagerType, configService, idcAware);
 			}
 			if (remoteRegionDataSourceConfigs.size() > 0) {
-				this.remoteRegionRouter = new CenterAwareRouter(remoteRegionDataSourceConfigs, configManagerType, idcAware);
+				this.remoteRegionRouter = new CenterAwareRouter(remoteRegionDataSourceConfigs, configManagerType, configService, idcAware);
 			}
 		}
 	}

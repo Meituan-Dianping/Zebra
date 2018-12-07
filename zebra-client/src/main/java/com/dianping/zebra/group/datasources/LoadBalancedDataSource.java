@@ -23,6 +23,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.*;
 
+import com.dianping.zebra.config.ConfigService;
 import com.dianping.zebra.exception.ZebraException;
 import com.dianping.zebra.filter.JdbcFilter;
 import com.dianping.zebra.group.config.datasource.entity.DataSourceConfig;
@@ -55,20 +56,21 @@ public class LoadBalancedDataSource extends AbstractDataSource {
 
 	private volatile DataSourceRouter router;
 
-	private String configManagerType;
-
 	private SystemConfig systemConfig;
+
+	private ConfigService configService;
 
 	private volatile String routerStrategy;
 
 	public LoadBalancedDataSource(Map<String, DataSourceConfig> loadBalancedConfigMap, List<JdbcFilter> filters,
-	      SystemConfig systemConfig, String configManagerType, String routerStrategy) {
+	      SystemConfig systemConfig, String configManagerType, ConfigService configService, String routerStrategy) {
 		this.dataSources = new HashMap<String, SingleDataSource>();
 		this.loadBalancedConfigMap = loadBalancedConfigMap;
 		this.filters = filters;
 		this.configManagerType = configManagerType;
 		this.systemConfig = systemConfig;
 		this.routerStrategy = routerStrategy;
+		this.configService = configService;
 	}
 
 	public void close() throws SQLException {
@@ -154,7 +156,7 @@ public class LoadBalancedDataSource extends AbstractDataSource {
 			this.dataSources.put(config.getId(), dataSource);
 		}
 
-		this.router = new BackupDataSourceRouter(loadBalancedConfigMap, configManagerType, routerStrategy);
+		this.router = new BackupDataSourceRouter(loadBalancedConfigMap, configManagerType, configService, routerStrategy);
 	}
 
 	private void checkConfig(DataSourceConfig config) {
@@ -178,7 +180,7 @@ public class LoadBalancedDataSource extends AbstractDataSource {
 	}
 
 	public synchronized void buildRouter(String routerStrategy) {
-		this.router = new BackupDataSourceRouter(loadBalancedConfigMap, configManagerType, routerStrategy);
+		this.router = new BackupDataSourceRouter(loadBalancedConfigMap, configManagerType, configService, routerStrategy);
 		this.routerStrategy = routerStrategy;
 	}
 
@@ -246,7 +248,7 @@ public class LoadBalancedDataSource extends AbstractDataSource {
 
 		this.dataSources = targetDataSourceMap;
 		this.loadBalancedConfigMap = newLoadBalancedConfigMap;
-		this.router = new BackupDataSourceRouter(loadBalancedConfigMap, configManagerType, routerStrategy);
+		this.router = new BackupDataSourceRouter(loadBalancedConfigMap, configManagerType, configService, routerStrategy);
 
 		// close after
 		for (Map.Entry<String, SingleDataSource> entry : needRemoveDataSources.entrySet()) {

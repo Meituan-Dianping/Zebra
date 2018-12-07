@@ -80,6 +80,8 @@ public class GroupDataSource extends C3p0DataSourceAdapter implements GroupDataS
 
 	protected GroupDataSourceConfig groupConfig = new GroupDataSourceConfig();
 
+	protected ConfigService configService;
+
 	protected SystemConfigManager systemConfigManager;
 
 	protected DataSourceConfigManager dataSourceConfigManager;
@@ -502,9 +504,10 @@ public class GroupDataSource extends C3p0DataSourceAdapter implements GroupDataS
 	}
 
 	protected void initConfig() {
-		this.dataSourceConfigManager = DataSourceConfigManagerFactory.getConfigManager(configManagerType, serviceConfigs);
+		this.configService = ConfigServiceFactory.getConfigService(configManagerType, serviceConfigs);
+		this.dataSourceConfigManager = DataSourceConfigManagerFactory.getConfigManager(jdbcRef, configService);
 		this.dataSourceConfigManager.addListerner(new GroupDataSourceConfigChangedListener());
-		this.systemConfigManager = SystemConfigManagerFactory.getConfigManger(configManagerType, serviceConfigs);
+		this.systemConfigManager = SystemConfigManagerFactory.getConfigManger(configManagerType, configService);
 		this.groupConfig = buildGroupConfig();
 
 		if (this.groupConfig != null && this.useCustomRouterConfig) {
@@ -517,7 +520,7 @@ public class GroupDataSource extends C3p0DataSourceAdapter implements GroupDataS
 	private void initDataSources() {
 		try {
 			this.readDataSource = new LoadBalancedDataSource(getLoadBalancedConfig(groupConfig.getDataSourceConfigs()),
-			      this.filters, systemConfigManager.getSystemConfig(), this.configManagerType,
+			      this.filters, systemConfigManager.getSystemConfig(), this.configManagerType, this.configService,
 			      groupConfig.getRouterStrategy());
 			this.readDataSource.init();
 			this.writeDataSource = new FailOverDataSource(getFailoverConfig(groupConfig.getDataSourceConfigs()),

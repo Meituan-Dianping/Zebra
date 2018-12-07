@@ -19,65 +19,59 @@
 package com.dianping.zebra.group.router.region;
 
 import com.dianping.zebra.Constants;
+import com.dianping.zebra.config.ConfigService;
+import com.dianping.zebra.exception.ZebraException;
+import com.dianping.zebra.util.StringUtils;
 
 public class RemoteRegionManager extends AbstractZebraRegionManager {
-	private volatile static RemoteRegionManager instance = null;
 
-	public static RemoteRegionManager getInstance() {
-		if (instance == null) {
-			synchronized (LocalRegionManager.class) {
-				if (instance == null) {
-					instance = new RemoteRegionManager();
-				}
+	public RemoteRegionManager(String routerManagerType, ConfigService configService) {
+		super(routerManagerType, configService);
+	}
+
+	public void init() {
+		try {
+			String centerConfig = getCenterConfig();
+
+			if (StringUtils.isNotBlank(centerConfig)) {
+				parseCenterConfig(centerConfig);
 			}
+
+			String regionConfig = getRegionConfig();
+
+			if (StringUtils.isNotBlank(regionConfig)) {
+				parseRegionConfig(regionConfig);
+			}
+		} catch (Exception e) {
+			new ZebraException("init RemoteRegionManager file", e);
+		}
+	}
+
+	private String getCenterConfig() {
+		if (remoteConfigServce == null) {
+			throw new ZebraException("RemoteRegionManager ConfigService won't be null");
 		}
 
-		return instance;
-	}
+		try {
+			return remoteConfigServce.getProperty(Constants.ROUTER_CENTER_CONFIG_LION_KEY);
+		} catch (Exception e) {
+			LOGGER.warn("Read router center connfig from remote failed! " + e.getMessage());
+		}
 
-	// TODO customize this method to get config from remote
-	private RemoteRegionManager() {
-		super(Constants.CONFIG_MANAGER_TYPE_REMOTE, null);
-	}
-
-	// TODO customize this method to get config from remote
-	@Override
-	public boolean isInSameIdc(String address1, String address2) {
-		return true;
-	}
-
-	// TODO customize this method to get config from remote
-	@Override
-	public boolean isInLocalRegion(String address) {
-		return true;
-	}
-
-	// TODO customize this method to get config from remote
-	@Override
-	public boolean isInLocalIdc(String address) {
-		return true;
-	}
-
-	// TODO customize this method to get config from remote
-	@Override
-	public String getIdc(String address) {
 		return null;
 	}
 
-	// TODO customize this method to get config from remote
-	@Override
-	public String findCenter(String address) {
+	private String getRegionConfig() {
+		if (remoteConfigServce == null) {
+			throw new ZebraException("RemoteRegionManager ConfigService won't be null");
+		}
+
+		try {
+			return remoteConfigServce.getProperty(Constants.ROUTER_REGION_CONFIG_LION_KEY);
+		} catch (Exception e) {
+			LOGGER.warn("Read router region connfig from remote failed! " + e.getMessage());
+		}
+
 		return null;
-	}
-
-	// TODO customize this method to get config from remote
-	@Override
-	public boolean isInLocalCenter(String address) {
-		return true;
-	}
-
-	// TODO customize this method to get config from remote
-	public boolean isInSameCenter(String address1, String address2) {
-		return true;
 	}
 }

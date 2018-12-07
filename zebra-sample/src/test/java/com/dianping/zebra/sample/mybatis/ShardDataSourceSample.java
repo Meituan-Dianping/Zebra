@@ -1,4 +1,4 @@
-package com.dianping.zebra.sample;
+package com.dianping.zebra.sample.mybatis;
 
 import com.dianping.zebra.sample.dao.group.UserDao;
 import com.dianping.zebra.sample.dao.shard.FeedDao;

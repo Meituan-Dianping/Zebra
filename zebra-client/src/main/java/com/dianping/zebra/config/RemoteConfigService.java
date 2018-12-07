@@ -31,7 +31,7 @@ public class RemoteConfigService implements ConfigService {
 
 	protected static final Logger logger = LoggerFactory.getLogger(RemoteConfigService.class);
 
-	protected volatile boolean init = false;
+	protected static volatile boolean init = false;
 
 	private List<PropertyChangeListener> listeners = new CopyOnWriteArrayList<PropertyChangeListener>();
 

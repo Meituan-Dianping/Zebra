@@ -29,10 +29,8 @@ public final class DataSourceConfigManagerFactory {
 	private DataSourceConfigManagerFactory() {
 	}
 
-	public static DataSourceConfigManager getConfigManager(String configManagerType, Map<String, Object> configs) {
-		ConfigService configService = ConfigServiceFactory.getConfigService(configManagerType, configs);
-		String name = String.valueOf(configs.get(Constants.CONFIG_SERVICE_NAME_KEY));
-		DataSourceConfigManager dataSourceConfigManager = new DefaultDataSourceConfigManager(name, configService);
+	public static DataSourceConfigManager getConfigManager(String jdbcref, ConfigService configService) {
+		DataSourceConfigManager dataSourceConfigManager = new DefaultDataSourceConfigManager(jdbcref, configService);
 
 		dataSourceConfigManager.init();
 

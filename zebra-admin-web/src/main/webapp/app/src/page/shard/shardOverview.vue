@@ -69,14 +69,6 @@
                 </FormItem>
             </Form>
         </Modal>
-        <Modal
-            v-model="removeRuleNameModal"
-            @on-ok="ok"
-            @on-cancel="cancel">
-            <p>Content of dialog</p>
-            <p>Content of dialog</p>
-            <p>Content of dialog</p>
-        </Modal>
     </Row>
 </template>
 
@@ -98,10 +90,9 @@
                 }
             },
             env: function () {
-                let _this = this;
-                _this.currentPage = 1;
-                _this.searchData(_this.currentPage);
-                _this.$store.state.currentEnv = this.env;
+                this.currentPage = 1;
+                this.searchData(this.currentPage);
+                this.changeEnv(this.env);
             }
         },
         methods: {
@@ -212,31 +203,22 @@
         created() {
             if (this.$store.state.init && !this.dataInit) {
                 let _this = this;
-                axios.get('/i/zkConfig/getEnv').then(function (response) {
-                    _this.envs = response.data;
-                    _this.env = _this.envs[0];
-                    axios.get('/i/shard/findRuleNameByEnv', {
-                        params: {
-                            env: _this.env,
-                            page: _this.currentPage,
-                            size: _this.pageSize
-                        }
-                    }).then(function (response) {
-                        _this.shardList = response.data.shardList;
-                        _this.total = response.data.total;
-                    }).catch(function (e) {
-                        console.error(e.message);
-                        _this.$Notice.error({
-                            title: '获取ruleName列表失败',
-                            desc: e.message
-                        });
-                    })
+                axios.get('/i/shard/findRuleNameByEnv', {
+                    params: {
+                        env: _this.env,
+                        page: _this.currentPage,
+                        size: _this.pageSize
+                    }
+                }).then(function (response) {
+                    _this.shardList = response.data.shardList;
+                    _this.total = response.data.total;
                 }).catch(function (e) {
+                    console.error(e.message);
                     _this.$Notice.error({
-                        title: '加载Zookeeper地址列表失败',
+                        title: '获取ruleName列表失败',
                         desc: e.message
                     });
-                });
+                })
                 _this.dataInit = true;
             }
         },
@@ -246,8 +228,8 @@
                 total: 0,
                 currentPage: 1,
                 pageSize: 15,
-                env: null,
-                envs: [],
+                env: this.$store.state.currentEnv,
+                envs: this.$store.state.envs,
                 ruleName: null,
                 shardList: [],
                 rowChosed: '',

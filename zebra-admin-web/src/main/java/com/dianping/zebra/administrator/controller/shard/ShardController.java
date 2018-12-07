@@ -105,7 +105,6 @@ public class ShardController extends AbstractController {
 			for (TableShardConfig tsConfig : shardConfig.getTableShardConfigs()) {
 				TableShardConfigDto tsConfigDto = new TableShardConfigDto();
 				tsConfigDto.setTableName(tsConfig.getTableName());
-				tsConfigDto.setGlobal(tsConfig.getGlobal());
 				tsConfigDto.setDimensionConfigs(tsConfig.getDimensionConfigs().getDimensionConfig());
 				tsConfigDtoList.add(tsConfigDto);
 			}

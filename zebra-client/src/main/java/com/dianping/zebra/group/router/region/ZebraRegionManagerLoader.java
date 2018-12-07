@@ -18,17 +18,34 @@
  */
 package com.dianping.zebra.group.router.region;
 
-public class ZebraRegionManagerLoader {
-	public static ZebraRegionManager getRegionManager(String configManagerType) {
-		return  LocalRegionManager.getInstance();
+import com.dianping.zebra.Constants;
+import com.dianping.zebra.config.ConfigService;
 
-		//TODO now only localregion con be used, you can realize remotemanager self.
-//		if (Constants.CONFIG_MANAGER_TYPE_LOCAL.equalsIgnoreCase(configManagerType)) {
-//			return LocalRegionManager.getInstance();
-//		} else if (Constants.CONFIG_MANAGER_TYPE_REMOTE.equalsIgnoreCase(configManagerType)) {
-//			return RemoteRegionManager.getInstance();
-//		} else {
-//			throw new ZebraConfigException(String.format("illegal configServiceType[%s]", configManagerType));
-//		}
+public class ZebraRegionManagerLoader {
+
+	private volatile static ZebraRegionManager regionManager;
+
+	public static ZebraRegionManager getRegionManager(String configManagerType, ConfigService configService) {
+		if (regionManager == null) {
+			synchronized (ZebraRegionManagerLoader.class) {
+				if (regionManager == null) {
+					ZebraRegionManager manager = new LocalRegionManager();
+					manager.init();
+
+					// ZebraRegionManager manager = null;
+					// if (Constants.CONFIG_MANAGER_TYPE_LOCAL.equalsIgnoreCase(configManagerType)) {
+					// manager = new LocalRegionManager();
+					// manager.init();
+					// } else {
+					// manager = new RemoteRegionManager(configManagerType, configService);
+					// manager.init();
+					// }
+
+					regionManager = manager;
+				}
+			}
+		}
+
+		return regionManager;
 	}
 }

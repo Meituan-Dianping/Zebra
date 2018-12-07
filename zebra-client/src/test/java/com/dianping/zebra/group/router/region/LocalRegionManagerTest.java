@@ -1,5 +1,6 @@
 package com.dianping.zebra.group.router.region;
 
+import com.dianping.zebra.Constants;
 import org.junit.Test;
 
 import junit.framework.Assert;
@@ -9,7 +10,8 @@ public class LocalRegionManagerTest {
     @Test
     public void test() throws Exception{
 
-        ZebraRegionManager instance = LocalRegionManager.getInstance();
+        ZebraRegionManager instance = new LocalRegionManager();
+        instance.init();
 
         Assert.assertEquals(false, instance.isInSameIdc("192.168.1.1", "192.168.1.3"));
         Assert.assertEquals(true, instance.isInSameIdc("192.20.1.1", "192.21.1.3"));
@@ -23,7 +25,8 @@ public class LocalRegionManagerTest {
 
     @Test
     public void testInitFromFile() {
-        LocalRegionManager manager = (LocalRegionManager)LocalRegionManager.getInstance();
+        LocalRegionManager manager = new LocalRegionManager();
+        manager.init();
 
         Assert.assertEquals(AbstractZebraRegionManager.NO_CENTER, manager.findCenter("122.75.255.255"));
         Assert.assertEquals(AbstractZebraRegionManager.NO_CENTER, manager.findCenter("111.67.1.213"));

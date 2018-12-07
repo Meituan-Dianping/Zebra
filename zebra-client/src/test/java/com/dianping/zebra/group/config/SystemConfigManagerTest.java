@@ -1,6 +1,8 @@
 package com.dianping.zebra.group.config;
 
 import com.dianping.zebra.Constants;
+import com.dianping.zebra.config.ConfigService;
+import com.dianping.zebra.config.ConfigServiceFactory;
 import com.dianping.zebra.config.ServiceConfigBuilder;
 import com.dianping.zebra.group.config.system.entity.SqlFlowControl;
 import junit.framework.Assert;
@@ -17,7 +19,8 @@ public class SystemConfigManagerTest {
 	public void testConfig() {
 		Map<String, Object> configs = ServiceConfigBuilder.newInstance()
 		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, DefaultSystemConfigManager.DEFAULT_LOCAL_CONFIG).getConfigs();
-		SystemConfigManager systemConfigManager = SystemConfigManagerFactory.getConfigManger("local", configs);
+		ConfigService configService = ConfigServiceFactory.getConfigService(Constants.CONFIG_MANAGER_TYPE_LOCAL, configs);
+		SystemConfigManager systemConfigManager = SystemConfigManagerFactory.getConfigManger(Constants.CONFIG_MANAGER_TYPE_LOCAL, configService);
 
 		SystemConfig config = systemConfigManager.getSystemConfig();
 		Assert.assertEquals(3, config.getRetryTimes());

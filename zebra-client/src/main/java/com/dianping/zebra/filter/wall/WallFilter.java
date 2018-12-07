@@ -26,6 +26,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.dianping.zebra.config.ConfigService;
+import com.dianping.zebra.config.ConfigServiceFactory;
 import com.dianping.zebra.filter.DefaultJdbcFilter;
 import com.dianping.zebra.filter.JdbcFilter;
 import com.dianping.zebra.filter.SQLProcessContext;
@@ -95,7 +97,8 @@ public class WallFilter extends DefaultJdbcFilter {
 	}
 
 	private void initFlowControl() {
-		this.systemConfigManager = SystemConfigManagerFactory.getConfigManger(configManagerType, configs);
+		ConfigService configService = ConfigServiceFactory.getConfigService(configManagerType, configs);
+		this.systemConfigManager = SystemConfigManagerFactory.getConfigManger(configManagerType, configService);
 		this.flowControl = this.systemConfigManager.getSqlFlowControlMap();
 
 		this.systemConfigManager.addListerner(new PropertyChangeListener() {

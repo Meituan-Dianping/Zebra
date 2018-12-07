@@ -5,17 +5,16 @@ exports.install = function (Vue, options) {
   Vue.prototype.initEnv = function () {
     let _this = this
     axios
-      .get('/i/system/env')
+      .get('/i/zkConfig/getEnv')
       .then(function (response) {
-        let envDto = response.data
-        _this.$store.state.envs = envDto.envs
+        _this.$store.state.envs = response.data
 
         var env = window.localStorage.getItem('env')
         let currentEnv = env && env != 'undefined' ? env : envDto.currentEnv
 
-        for (let i = 0; i < envDto.envs.length; ++i) {
-          if (currentEnv === envDto.envs[i]) {
-            _this.$store.state.currentEnv = envDto.envs[i]
+        for (let i = 0; i < _this.$store.state.envs.length; ++i) {
+          if (currentEnv === _this.$store.state.envs[i]) {
+            _this.$store.state.currentEnv = _this.$store.state.envs[i]
             break
           }
         }
@@ -27,7 +26,10 @@ exports.install = function (Vue, options) {
       })
   }
 
-
+  Vue.prototype.changeEnv = function(env) {
+      this.$store.state.env = env;
+      window.localStorage.setItem('env', env);
+  }
 
   Vue.prototype.validateParams = function (refName) {
     if (refName == null || refName.trim() == '') {

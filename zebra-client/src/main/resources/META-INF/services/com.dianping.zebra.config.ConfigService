@@ -1,2 +1,3 @@
 com.dianping.zebra.config.ZookeeperConfigService
 com.dianping.zebra.config.PropertyConfigService
+com.dianping.zebra.config.RemoteConfigService

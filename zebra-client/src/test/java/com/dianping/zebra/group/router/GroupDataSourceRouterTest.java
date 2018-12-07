@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.dianping.zebra.Constants;
+import com.dianping.zebra.config.ConfigService;
+import com.dianping.zebra.config.ConfigServiceFactory;
 import com.dianping.zebra.config.ServiceConfigBuilder;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,18 +25,23 @@ public class GroupDataSourceRouterTest {
 
 	private DataSourceRouter dataSourceRouter;
 
+	private ConfigService configService;
+
 	@Before
 	public void init() {
 		String dataSourceResourceId = "sample.ds.v2";
 		Map<String, Object> configs = ServiceConfigBuilder.newInstance()
-				.putValue(Constants.CONFIG_SERVICE_NAME_KEY, dataSourceResourceId).getConfigs();
-		this.dataSourceConfigManager = DataSourceConfigManagerFactory.getConfigManager(Constants.CONFIG_MANAGER_TYPE_LOCAL,
-				configs);
-		this.dataSourceRouter = new BackupDataSourceRouter(dataSourceConfigManager.getGroupDataSourceConfig().getDataSourceConfigs(), "local", "WeightRouter");
+		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, dataSourceResourceId).getConfigs();
+		this.configService = ConfigServiceFactory.getConfigService(Constants.CONFIG_MANAGER_TYPE_LOCAL, configs);
+		this.dataSourceConfigManager = DataSourceConfigManagerFactory
+		      .getConfigManager(dataSourceResourceId, configService);
+		this.dataSourceRouter = new BackupDataSourceRouter(
+		      dataSourceConfigManager.getGroupDataSourceConfig().getDataSourceConfigs(), "local", configService,
+		      "WeightRouter");
 	}
 
 	@Test
-	public void testPerformance(){
+	public void testPerformance() {
 		long now = System.currentTimeMillis();
 
 		for (int i = 0; i < 10000000; i++) {
@@ -72,11 +79,11 @@ public class GroupDataSourceRouterTest {
 	@Test
 	public void testSelectWeight0() {
 		Map<String, DataSourceConfig> dataSourceConfigs = dataSourceConfigManager.getGroupDataSourceConfig()
-				.getDataSourceConfigs();
+		      .getDataSourceConfigs();
 
 		dataSourceConfigs.get("db-n3-read").setWeight(0);
 
-		this.dataSourceRouter = new BackupDataSourceRouter(dataSourceConfigs, "local", "WeightRouter");
+		this.dataSourceRouter = new BackupDataSourceRouter(dataSourceConfigs, "local", configService, "WeightRouter");
 		RouterContext routerContext = new RouterContext();
 		routerContext.addExcludeTarget("db-n2-read");
 

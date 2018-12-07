@@ -23,8 +23,6 @@ public class DimensionConfig {
 
     private boolean isMaster;
 
-    private boolean needSync;
-
     public String getDbRule() {
         return dbRule;
     }
@@ -71,13 +69,5 @@ public class DimensionConfig {
 
     public void setIsMaster(boolean master) {
         isMaster = master;
-    }
-
-    public boolean getNeedSync() {
-        return needSync;
-    }
-
-    public void setNeedSync(boolean needSync) {
-        this.needSync = needSync;
     }
 }

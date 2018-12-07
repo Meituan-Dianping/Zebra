@@ -10,8 +10,6 @@ import java.util.List;
 public class TableShardConfigDto {
     private String tableName;
 
-    private boolean global;
-
     private List<DimensionConfig> dimensionConfigs;
 
     public String getTableName() {
@@ -20,14 +18,6 @@ public class TableShardConfigDto {
 
     public void setTableName(String tableName) {
         this.tableName = tableName;
-    }
-
-    public boolean isGlobal() {
-        return global;
-    }
-
-    public void setGlobal(boolean global) {
-        this.global = global;
     }
 
     public List<DimensionConfig> getDimensionConfigs() {

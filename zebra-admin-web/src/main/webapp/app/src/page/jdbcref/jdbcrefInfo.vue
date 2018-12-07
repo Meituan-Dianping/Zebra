@@ -82,10 +82,11 @@
         created() {
             if (this.$store.state.init && !this.dataInit) {
                 let _this = this;
+                _this.env = _this.$store.state.currentEnv;
                 axios.get('/i/jdbcref/findJdbcrefDetil', {
                     params: {
                         jdbcref: _this.jdbcref,
-                        　env: _this.$store.state.currentEnv
+                        env:  _this.env
                     }
                 }).then(function (response) {
                     if (response.status == 200) {
@@ -103,7 +104,6 @@
                     });
                 });
                 _this.dataInit = true;
-                _this.currentEnv = _this.$store.state.currentEnv;
             }
         },
         methods: {
@@ -112,7 +112,7 @@
                 axios.get('/i/jdbcref/findJdbcrefDetil', {
                     params: {
                         jdbcref: _this.jdbcref,
-                        env: _this.$store.state.currentEnv
+                        env: _this.env
                     }
                 }).then(function (response) {
                     if (response.status == 200) {
@@ -161,7 +161,7 @@
                 axios.get('/i/jdbcref/dsOffLine', {
                     params: {
                         dsName: row.dsName,
-                        env: _this.$store.state.currentEnv
+                        env: _this.env
                     }
                 }).then(function (response) {
                     _this.loadData();
@@ -177,7 +177,7 @@
                 axios.get('/i/jdbcref/dsOnLine', {
                     params: {
                         dsName: row.dsName,
-                        env: _this.$store.state.currentEnv
+                        env: _this.env
                     }
                 }).then(function (response) {
                     _this.loadData();
@@ -198,6 +198,7 @@
                 showDetilTable: false,
                 dsconfigModel: false,
                 propertiesModel: false,
+                env : this.$store.state.currentEnv,
                 dsConfig:{
                     jdbcref: null,
                     key: null,

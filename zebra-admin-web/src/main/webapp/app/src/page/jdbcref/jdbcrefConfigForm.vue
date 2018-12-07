@@ -74,16 +74,24 @@
                 DBAddresses: []
             }
         },
-        data: function () {
-            return {
-                envs: []
+        watch: {
+            init: function () {
+                if (this.$store.state.init && !this.dataInit) {
+                    this.envs = this.$store.state.envs;
+                    this.env = this.env ? _this.env : _this.$store.state.currentEnv;
+                    this.dataInit = true;
+                }
+            },
+            env: function () {
+               this.changeEnv(this.env);
             }
         },
-        created() {
-            let _this = this;
-            axios.get('/i/zkConfig/getEnv').then(function (response) {
-                _this.envs = response.data;
-            })
+        data: function () {
+            return {
+                dataInit : false,
+                env : this.$store.state.currentEnv,
+                envs: this.$store.state.envs,
+            }
         },
         methods: {
             addDB() {

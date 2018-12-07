@@ -18,6 +18,7 @@
  */
 package com.dianping.zebra.group.router;
 
+import com.dianping.zebra.config.ConfigService;
 import com.dianping.zebra.group.config.datasource.entity.DataSourceConfig;
 import com.dianping.zebra.group.router.region.ZebraRegionManager;
 import com.dianping.zebra.group.router.region.ZebraRegionManagerLoader;
@@ -37,9 +38,9 @@ public class CenterAwareRouter implements DataSourceRouter {
 
 	private List<WeightDataSourceRouter> priorityCenterIdcAwareRouters = new ArrayList<WeightDataSourceRouter>();
 
-	protected CenterAwareRouter(Map<String, DataSourceConfig> dataSourceConfigs, String configManagerType,
+	protected CenterAwareRouter(Map<String, DataSourceConfig> dataSourceConfigs, String configManagerType, ConfigService configService,
 	      boolean idcAware) {
-		this.regionManager = ZebraRegionManagerLoader.getRegionManager(configManagerType);
+		this.regionManager = ZebraRegionManagerLoader.getRegionManager(configManagerType, configService);
 		Map<String, DataSourceConfig> localIdcSourceConfigs = new HashMap<String, DataSourceConfig>();
 		Map<String, DataSourceConfig> localCenterSourceConfigs = new HashMap<String, DataSourceConfig>();
 		Map<String, Map<String, DataSourceConfig>> remoteCenterSourceConfigs = new HashMap<String, Map<String, DataSourceConfig>>();
@@ -84,7 +85,7 @@ public class CenterAwareRouter implements DataSourceRouter {
 		if (idcAware) {
 			localCenterSourceConfigs.putAll(localIdcSourceConfigs);
 			if (localCenterSourceConfigs.size() > 0) {
-				this.localCenterRouter = new IdcAwareRouter(localCenterSourceConfigs, configManagerType);
+				this.localCenterRouter = new IdcAwareRouter(localCenterSourceConfigs, configManagerType, configService);
 			}
 		} else {
 			String localCenter = regionManager.getLocalCenter();
