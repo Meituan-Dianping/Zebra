@@ -18,17 +18,17 @@
  */
 package com.dianping.zebra.group.router.region;
 
-import com.dianping.zebra.Constants;
-import com.dianping.zebra.exception.ZebraConfigException;
-
 public class ZebraRegionManagerLoader {
 	public static ZebraRegionManager getRegionManager(String configManagerType) {
-		if (Constants.CONFIG_MANAGER_TYPE_LOCAL.equalsIgnoreCase(configManagerType)) {
-			return LocalRegionManager.getInstance();
-		} else if (Constants.CONFIG_MANAGER_TYPE_REMOTE.equalsIgnoreCase(configManagerType)) {
-			return RemoteRegionManager.getInstance();
-		} else {
-			throw new ZebraConfigException(String.format("illegal configServiceType[%s]", configManagerType));
-		}
+		return  LocalRegionManager.getInstance();
+
+		//TODO now only localregion con be used, you can realize remotemanager self.
+//		if (Constants.CONFIG_MANAGER_TYPE_LOCAL.equalsIgnoreCase(configManagerType)) {
+//			return LocalRegionManager.getInstance();
+//		} else if (Constants.CONFIG_MANAGER_TYPE_REMOTE.equalsIgnoreCase(configManagerType)) {
+//			return RemoteRegionManager.getInstance();
+//		} else {
+//			throw new ZebraConfigException(String.format("illegal configServiceType[%s]", configManagerType));
+//		}
 	}
 }
