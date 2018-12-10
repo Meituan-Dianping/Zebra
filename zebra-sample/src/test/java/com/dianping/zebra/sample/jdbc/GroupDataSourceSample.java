@@ -85,7 +85,7 @@ public class GroupDataSourceSample {
 
 	private GroupDataSource buildDs() {
 		GroupDataSource ds = new GroupDataSource();
-		ds.setJdbcRef("zebra_sample");
+		ds.setJdbcRef("zebra");
 		ds.setPoolType("hikaricp");
 		ds.setConfigManagerType("zookeeper");
 		ds.setExtraJdbcUrlParams("useSSL=true");
