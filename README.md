@@ -1,7 +1,5 @@
 # Zebra
 
-[![Build Status](https://travis-ci.org/Meituan-Dianping/Zebra.svg?branch=master)](https://travis-ci.org/Meituan-Dianping/Zebra)
-
 ## Introduction
  Zebra是一个基于JDBC API协议上开发出的高可用、高性能的数据库访问层解决方案，是美团点评内部使用的数据库访问层中间件。具有以下的功能点：
  - 配置集中管理，动态刷新
