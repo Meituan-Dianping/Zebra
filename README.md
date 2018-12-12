@@ -32,7 +32,7 @@
  - [Apache2.0 License](https://github.com/Meituan-Dianping/Zebra/blob/master/LICENSE)
  
 ## Company
- ![](./image/white.jpeg)
+ ![](./wiki/image/white.jpeg)
  接入Zebra的公司欢迎在此[接入公司](https://github.com/Meituan-Dianping/Zebra/issues/18)留下联系方式, 谢谢。
  
 ## Contact us
