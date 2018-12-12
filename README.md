@@ -36,3 +36,4 @@
 ## Contact us
  - Mail: [zebra@sankuai.com](zebra@sankuai.com)
  - Issues : [https://github.com/Meituan-Dianping/Zebra/issues](https://github.com/Meituan-Dianping/Zebra/issues)
+ - WeChat : [Zebra微信交流群](https://github.com/Meituan-Dianping/Zebra/wiki/WeChat%E4%BA%A4%E6%B5%81%E7%BE%A4)
