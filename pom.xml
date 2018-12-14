@@ -335,7 +335,7 @@
         </repository>
         <repository>
             <id>unidal.releases</id>
-            <url>http://cat.meituan.com/nexus/content/repositories/releases/</url>
+            <url>http://unidal.org/nexus/content/repositories/releases/</url>
         </repository>
     </repositories>
 
