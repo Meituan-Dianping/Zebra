@@ -34,6 +34,6 @@
  接入Zebra的公司欢迎在此[接入公司](https://github.com/Meituan-Dianping/Zebra/issues/18)留下联系方式, 谢谢。
  
 ## Contact us
- - Mail: [zebra@sankuai.com](zebra@sankuai.com)
+ - Mail: [zebra@dianping.com](zebra@dianping.com)
  - Issues : [https://github.com/Meituan-Dianping/Zebra/issues](https://github.com/Meituan-Dianping/Zebra/issues)
  - WeChat : [Zebra微信交流群](https://github.com/Meituan-Dianping/Zebra/wiki/WeChat%E4%BA%A4%E6%B5%81%E7%BE%A4)
