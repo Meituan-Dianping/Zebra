@@ -13,7 +13,7 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DimensionConfigs {
 
-    @XmlElement(name = "dimensionConfig")
+    @XmlElement(name = "dimensionConfigs")
     private List<DimensionConfig> dimensionConfigs;
 
 

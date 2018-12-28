@@ -32,10 +32,6 @@ public class TableShardRule {
 
 	private final String tableName;
 
-	private String generatedPk;
-
-	private boolean global = false;
-
 	private List<DimensionRule> dimensions = new ArrayList<DimensionRule>();
 
 	private DimensionRule masterDimension;
@@ -177,22 +173,6 @@ public class TableShardRule {
 
 	public String getTableName() {
 		return tableName;
-	}
-
-	public String getGeneratedPk() {
-		return generatedPk;
-	}
-
-	public void setGeneratedPk(String generatedPk) {
-		this.generatedPk = generatedPk;
-	}
-
-	public boolean isGlobal() {
-		return global;
-	}
-
-	public void setGlobal(boolean global) {
-		this.global = global;
 	}
 
 	public boolean isForbidNoShardKeyWrite() {

@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 /**
  * Created by taochen on 2018/11/13.
  */
-@XmlRootElement(name = "dimensionConfig")
+@XmlRootElement(name = "tableShardDimensionConfig")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DimensionConfig {
 

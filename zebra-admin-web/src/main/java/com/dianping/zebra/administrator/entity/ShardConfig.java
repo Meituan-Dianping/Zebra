@@ -13,7 +13,7 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ShardConfig {
 
-    @XmlElement(name = "tableShardConfig")
+    @XmlElement(name = "tableShardConfigs")
     private List<TableShardConfig> tableShardConfigs;
 
     public List<TableShardConfig> getTableShardConfigs() {

@@ -4,18 +4,19 @@ import com.dianping.zebra.administrator.config.ZookeeperService;
 import com.dianping.zebra.administrator.dao.ShardMapper;
 import com.dianping.zebra.administrator.dto.shard.ShardConfigDto;
 import com.dianping.zebra.administrator.dto.shard.TableShardConfigDto;
-import com.dianping.zebra.administrator.entity.DimensionConfigs;
-import com.dianping.zebra.administrator.entity.ShardConfig;
-import com.dianping.zebra.administrator.entity.ShardEntity;
-import com.dianping.zebra.administrator.entity.TableShardConfig;
+import com.dianping.zebra.administrator.entity.*;
 import com.dianping.zebra.administrator.service.ShardService;
 import com.dianping.zebra.administrator.service.ZookeeperConfigService;
 import com.dianping.zebra.administrator.util.JaxbUtils;
+import com.dianping.zebra.shard.config.RouterRuleConfig;
+import com.dianping.zebra.shard.config.TableShardDimensionConfig;
+import com.dianping.zebra.shard.config.TableShardRuleConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static com.dianping.zebra.administrator.GlobalConstants.SHARD_CONFIG_NAME_PATTERN;
@@ -49,20 +50,30 @@ public class ShardServiceImpl extends BaseServiceImpl implements ShardService {
 
     @Override
     public void saveRuleNameConfig(ShardConfigDto shardConfigDto) {
-        ShardConfig shardConfig = new ShardConfig();
-        List<TableShardConfig> tsConfigList = new ArrayList<>();
+        RouterRuleConfig shardConfig = new RouterRuleConfig();
+        List<TableShardRuleConfig> tsConfigList = new LinkedList<>();
         for (TableShardConfigDto tsConfigDto : shardConfigDto.getTableShardConfigs()) {
-            TableShardConfig tsConfig = new TableShardConfig();
+            TableShardRuleConfig tsConfig = new TableShardRuleConfig();
+
+            List<TableShardDimensionConfig> dimensionConfigs = new LinkedList<>();
+            for(TableShardDimensionConfig dimensionConfigDto : tsConfigDto.getDimensionConfigs()) {
+                TableShardDimensionConfig dimensionConfig = new TableShardDimensionConfig();
+                dimensionConfig.setDbIndexes(dimensionConfigDto.getDbIndexes());
+                dimensionConfig.setDbRule(dimensionConfigDto.getDbRule());
+                dimensionConfig.setTbRule(dimensionConfigDto.getTbRule());
+                dimensionConfig.setTbSuffix(dimensionConfigDto.getTbSuffix());
+                dimensionConfig.setMaster(dimensionConfigDto.isMaster());
+                dimensionConfig.setTbSuffixZeroPadding(dimensionConfigDto.isTbSuffixZeroPadding());
+                dimensionConfig.setTableName(tsConfigDto.getTableName());
+                dimensionConfigs.add(dimensionConfig);
+            }
+
             tsConfig.setTableName(tsConfigDto.getTableName());
-
-            DimensionConfigs dimensionConfigs = new DimensionConfigs();
-            dimensionConfigs.setDimensionConfig(tsConfigDto.getDimensionConfigs());
             tsConfig.setDimensionConfigs(dimensionConfigs);
-
             tsConfigList.add(tsConfig);
         }
         shardConfig.setTableShardConfigs(tsConfigList);
-        byte[] shardData = JaxbUtils.jaxbWriteXml(ShardConfig.class, shardConfig);
+        byte[] shardData = JaxbUtils.jaxbWriteXml(RouterRuleConfig.class, shardConfig);
         //shardconfig存到zk中
         String shardConfigKey = String.format(SHARD_CONFIG_NAME_PATTERN, shardConfigDto.getRuleName());
 

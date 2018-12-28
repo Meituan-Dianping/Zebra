@@ -57,7 +57,7 @@ public class GroupDataSourceSample {
 		try {
 			conn = ds.getConnection();
 			stmt = conn.prepareStatement(
-			      "insert int `user` (`Name`,`Mis`,`Email`,`UpdateTime`,`CreateTime`) values (?, ?, ?, ?, ?)");
+			      "insert into `user` (`Name`,`Mis`,`Email`,`UpdateTime`,`CreateTime`) values (?, ?, ?, ?, ?)");
 			stmt.setString(1, "test_abc");
 			stmt.setString(2, "test_abc");
 			stmt.setString(3, "test_abc@123.com");

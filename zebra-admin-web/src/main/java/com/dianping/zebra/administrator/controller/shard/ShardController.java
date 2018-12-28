@@ -17,6 +17,7 @@ import com.dianping.zebra.administrator.service.ShardService;
 import com.dianping.zebra.administrator.service.ZookeeperConfigService;
 import com.dianping.zebra.administrator.util.JaxbUtils;
 import com.dianping.zebra.shard.config.RouterRuleConfig;
+import com.dianping.zebra.shard.config.TableShardRuleConfig;
 import com.dianping.zebra.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -94,18 +95,18 @@ public class ShardController extends AbstractController {
 	@ResponseBody
 	public ShardConfigDto findRuleName(@RequestParam String env, @RequestParam String ruleName) throws Exception {
 		ShardConfigDto result = new ShardConfigDto();
-		ShardConfig shardConfig = null;
+		RouterRuleConfig shardConfig = null;
 		String key = String.format(GlobalConstants.SHARD_CONFIG_NAME_PATTERN, ruleName);
 		String host = zkconfigService.getZKHostByName(env);
 		byte[] data = ZookeeperService.getConfig(host, key);
 		if (data != null) {
-			shardConfig = JaxbUtils.jaxbReadXml(ShardConfig.class, data);
+			shardConfig = JaxbUtils.jaxbReadXml(RouterRuleConfig.class, data);
 
 			List<TableShardConfigDto> tsConfigDtoList = new ArrayList<>();
-			for (TableShardConfig tsConfig : shardConfig.getTableShardConfigs()) {
+			for (TableShardRuleConfig tsConfig : shardConfig.getTableShardConfigs()) {
 				TableShardConfigDto tsConfigDto = new TableShardConfigDto();
 				tsConfigDto.setTableName(tsConfig.getTableName());
-				tsConfigDto.setDimensionConfigs(tsConfig.getDimensionConfigs().getDimensionConfig());
+				tsConfigDto.setDimensionConfigs(tsConfig.getDimensionConfigs());
 				tsConfigDtoList.add(tsConfigDto);
 			}
 			result.setTableShardConfigs(tsConfigDtoList);

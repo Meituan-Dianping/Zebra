@@ -1,6 +1,7 @@
 package com.dianping.zebra.administrator.dto.shard;
 
 import com.dianping.zebra.administrator.entity.DimensionConfig;
+import com.dianping.zebra.shard.config.TableShardDimensionConfig;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
 public class TableShardConfigDto {
     private String tableName;
 
-    private List<DimensionConfig> dimensionConfigs;
+    private List<TableShardDimensionConfig> dimensionConfigs;
 
     public String getTableName() {
         return tableName;
@@ -20,11 +21,11 @@ public class TableShardConfigDto {
         this.tableName = tableName;
     }
 
-    public List<DimensionConfig> getDimensionConfigs() {
+    public List<TableShardDimensionConfig> getDimensionConfigs() {
         return dimensionConfigs;
     }
 
-    public void setDimensionConfigs(List<DimensionConfig> dimensionConfigs) {
+    public void setDimensionConfigs(List<TableShardDimensionConfig> dimensionConfigs) {
         this.dimensionConfigs = dimensionConfigs;
     }
 }

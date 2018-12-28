@@ -267,7 +267,7 @@ public class DefaultShardRouter implements ShardRouter {
 			tableShardRuleList = new ArrayList<TableShardRule>();
 			for (String relatedTable : context.getTableSet()) {
 				TableShardRule tableShardRule = tableShardRules.get(relatedTable);
-				if (tableShardRule != null && !tableShardRule.isGlobal()) {
+				if (tableShardRule != null) {
 					tableShardRuleList.add(tableShardRule);
 				}
 			}

@@ -14,8 +14,6 @@ import java.util.List;
 public class TableShardConfig {
     private String tableName;
 
-    private boolean global;
-
     @XmlElement(name = "dimensionConfigs")
     private DimensionConfigs dimensionConfigs;
 
@@ -25,18 +23,6 @@ public class TableShardConfig {
 
     public void setTableName(String tableName) {
         this.tableName = tableName;
-    }
-
-    public boolean getGlobal() {
-        return global;
-    }
-
-    public void setGlobal(boolean global) {
-        this.global = global;
-    }
-
-    public boolean isGlobal() {
-        return global;
     }
 
     public DimensionConfigs getDimensionConfigs() {
