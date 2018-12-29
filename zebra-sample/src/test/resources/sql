@@ -4,7 +4,7 @@ CREATE TABLE `user` (
   `Mis` varchar(20) NOT NULL DEFAULT 'mtdp',
   `Email` varchar(64) DEFAULT NULL,
   `UpdateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `CrateTime` datetime DEFAULT NULL,
+  `CreateTime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `IX_Alias` (`Mis`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -17,7 +17,7 @@
 		NOW())
 	</insert>
 
-    <select id="searchUserById" resultType="FeedEntity" parameterType="map">
+    <select id="searchFeedByUid" resultType="FeedEntity" parameterType="map">
 		select * from `Feed` where Uid=#{uid};
 	</select>
 </mapper>
