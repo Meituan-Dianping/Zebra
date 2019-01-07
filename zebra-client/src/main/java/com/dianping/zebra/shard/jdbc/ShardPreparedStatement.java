@@ -518,6 +518,7 @@ public class ShardPreparedStatement extends UnsupportedShardPreparedStatement im
 		boolean isBatchInsert = routerTarget.isBatchInsert();
 
 		int affectedRows = 0;
+		int updateCount = 0;
 
 		if (isSingleTarget(routerTarget)) {
 			// if has only one sql,then serial execute it
@@ -540,6 +541,7 @@ public class ShardPreparedStatement extends UnsupportedShardPreparedStatement im
 					}
 					index++;
 					affectedRows += stmt.executeUpdate();
+					updateCount = stmt.getUpdateCount() == -1 ? -1 : affectedRows;
 
 					SqlType sqlType = SqlUtils.getSqlType(sql);
 					if ((SqlType.INSERT == sqlType || SqlType.REPLACE == sqlType)
@@ -664,6 +666,7 @@ public class ShardPreparedStatement extends UnsupportedShardPreparedStatement im
 				try {
 					UpdateResult updateResult = f.get();
 					affectedRows += updateResult.getAffectedRows();
+					updateCount = affectedRows;
 				} catch (Exception e) {
 					// normally can't be here
 					throw new SQLException(isBatchInsert ? new ShardBatchInsertException(e, taskExecuteResults) : e);
@@ -672,7 +675,7 @@ public class ShardPreparedStatement extends UnsupportedShardPreparedStatement im
 		}
 
 		this.results = null;
-		this.updateCount = affectedRows;
+		this.updateCount = updateCount;
 
 		return affectedRows;
 	}

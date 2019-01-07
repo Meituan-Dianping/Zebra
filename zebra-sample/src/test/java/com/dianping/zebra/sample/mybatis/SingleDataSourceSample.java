@@ -25,11 +25,15 @@ public class SingleDataSourceSample {
 		user.setMis("test_single");
 		user.setEmail("test_man@meituan.com");
 
-		userDao.insert(user);
-		UserEntity searchUser = userDao.searchUserById(user.getId());
+		try {
+			userDao.insert(user);
+			UserEntity searchUser = userDao.searchUserById(user.getId());
 
-		System.out.println(searchUser.getName());
-		System.out.println(searchUser.getMis());
-		System.out.println(searchUser.getEmail());
+			System.out.println(searchUser.getName());
+			System.out.println(searchUser.getMis());
+			System.out.println(searchUser.getEmail());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

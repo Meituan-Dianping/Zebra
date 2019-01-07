@@ -27,11 +27,15 @@ public class ShardDataSourceSample {
 		FeedEntity feed = new FeedEntity();
 		feed.setUid(uid);
 
-		feedDao.insert(feed);
+		try {
+			feedDao.insert(feed);
 
-		FeedEntity searchFeed = feedDao.searchFeedByUid(uid);
+			FeedEntity searchFeed = feedDao.searchFeedByUid(uid);
 
-		System.out.println(searchFeed.getUid());
-		System.out.println(searchFeed.getUpdateTime());
+			System.out.println(searchFeed.getUid());
+			System.out.println(searchFeed.getUpdateTime());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
