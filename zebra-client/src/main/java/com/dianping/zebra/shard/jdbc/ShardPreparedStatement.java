@@ -541,7 +541,7 @@ public class ShardPreparedStatement extends UnsupportedShardPreparedStatement im
 					}
 					index++;
 					affectedRows += stmt.executeUpdate();
-					updateCount = stmt.getUpdateCount() == -1 ? -1 : affectedRows;
+					updateCount = stmt.getUpdateCount();
 
 					SqlType sqlType = SqlUtils.getSqlType(sql);
 					if ((SqlType.INSERT == sqlType || SqlType.REPLACE == sqlType)
