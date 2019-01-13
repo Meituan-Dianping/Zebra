@@ -289,6 +289,18 @@ public class GroupConnection implements Connection {
 
 	@Override
 	public String getCatalog() throws SQLException {
+		if(rConnection != null) {
+			return rConnection.getCatalog();
+		}
+
+		if(wConnection != null) {
+			return wConnection.getCatalog();
+		}
+
+		if(RouterType.SLAVE_ONLY == routerType) {
+			return getReadConnection().getCatalog();
+		}
+
 		return getWriteConnection().getCatalog();
 	}
 
