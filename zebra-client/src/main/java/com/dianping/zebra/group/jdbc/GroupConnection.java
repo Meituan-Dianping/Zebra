@@ -337,11 +337,20 @@ public class GroupConnection implements Connection {
 	@Override
 	public DatabaseMetaData getMetaData() throws SQLException {
 		checkClosed();
+
 		if (rConnection != null) {
 			return rConnection.getMetaData();
-		} else {
-			return this.getWriteConnection().getMetaData();
 		}
+
+		if(wConnection != null) {
+			return wConnection.getMetaData();
+		}
+
+		if(RouterType.SLAVE_ONLY == routerType) {
+			return getReadConnection().getMetaData();
+		}
+
+		return this.getWriteConnection().getMetaData();
 	}
 
 	public int getNetworkTimeout() throws SQLException {
