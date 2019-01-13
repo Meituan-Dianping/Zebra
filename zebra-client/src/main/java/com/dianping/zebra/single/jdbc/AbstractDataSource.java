@@ -79,7 +79,11 @@ public abstract class AbstractDataSource implements DataSource {
 
 	@Override
 	public boolean isWrapperFor(Class<?> iface) throws SQLException {
-		return this.getClass().isAssignableFrom(iface);
+		if(iface == null) {
+			return false;
+		}
+
+		return iface.isAssignableFrom(this.getClass());
 	}
 
 	public void setConfigManagerType(String configManagerType) {
@@ -93,8 +97,16 @@ public abstract class AbstractDataSource implements DataSource {
 	@Override
 	@SuppressWarnings("unchecked")
 	public <T> T unwrap(Class<T> iface) throws SQLException {
+		if(iface == null) {
+			return null;
+		}
+
 		try {
-			return (T) this;
+			if(iface.isAssignableFrom(this.getClass())) {
+				return (T) this;
+			} else {
+				throw new SQLException(getClass().getName() + " Can not unwrap to" + iface.getName());
+			}
 		} catch (Exception e) {
 			throw new SQLException(e);
 		}
