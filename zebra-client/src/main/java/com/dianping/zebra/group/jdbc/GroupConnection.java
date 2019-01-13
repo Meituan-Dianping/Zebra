@@ -358,6 +358,17 @@ public class GroupConnection implements Connection {
 	}
 
 	public String getSchema() throws SQLException {
+		if(rConnection != null) {
+			return rConnection.getSchema();
+		}
+
+		if(wConnection != null) {
+			return wConnection.getSchema();
+		}
+
+		if(RouterType.SLAVE_ONLY == routerType) {
+			return getReadConnection().getSchema();
+		}
 		return getWriteConnection().getSchema();
 	}
 
