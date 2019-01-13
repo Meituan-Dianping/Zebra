@@ -40,11 +40,9 @@ public class RemoteRouterBuilder extends AbstractRouterBuilder implements Router
 
 	private boolean forbidNoShardKeyWrite;
 
-	public RemoteRouterBuilder(String ruleName, String defaultDatasource, boolean forbidNoShardKeyWrite,
-	      String configServiceType, Map<String, Object> configs) {
+	public RemoteRouterBuilder(String ruleName, String defaultDatasource, boolean forbidNoShardKeyWrite, ConfigService configService) {
 		this.defaultDatasource = defaultDatasource;
 		this.forbidNoShardKeyWrite = forbidNoShardKeyWrite;
-		ConfigService configService = ConfigServiceFactory.getConfigService(configServiceType, configs);
 		String property = configService.getProperty(LionKey.getShardConfigKey(ruleName));
 
 		if (StringUtils.isNotBlank(property)) {
@@ -54,9 +52,8 @@ public class RemoteRouterBuilder extends AbstractRouterBuilder implements Router
 		}
 	}
 
-	public RemoteRouterBuilder(String ruleName, String defaultDatasource, String configServiceType,
-	      Map<String, Object> configs) {
-		this(ruleName, defaultDatasource, false, configServiceType, configs);
+	public RemoteRouterBuilder(String ruleName, String defaultDatasource, ConfigService configService) {
+		this(ruleName, defaultDatasource, false, configService);
 	}
 
 	@Override

@@ -82,8 +82,7 @@ public class ShardDataSource extends ShardDataSourceConfigAdapter {
 			}
 
 			if (routerFactory == null) {
-				routerFactory = new RemoteRouterBuilder(ruleName, defaultDatasource, forbidNoShardKeyWrite,
-				      configManagerType, serviceConfigs);
+				routerFactory = new RemoteRouterBuilder(ruleName, defaultDatasource, forbidNoShardKeyWrite, configService);
 			}
 		} else {
 			if (dataSourcePool == null || dataSourcePool.isEmpty()) {
