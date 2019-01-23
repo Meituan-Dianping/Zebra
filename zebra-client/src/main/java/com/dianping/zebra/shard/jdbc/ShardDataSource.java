@@ -131,6 +131,7 @@ public class ShardDataSource extends ShardDataSourceConfigAdapter {
 		if (dataSourcePool != null) {
 			dataSourceRepository.init(dataSourcePool);
 		} else {
+			this.shardDataSourceCustomConfig.setConfigManagerType(this.configManagerType);
 			this.shardDataSourceCustomConfig.setDsConfigProperties(this.dsConfigProperties);
 			dataSourceRepository.init(this.router.getRouterRule(), this.shardDataSourceCustomConfig);
 		}
@@ -300,14 +301,5 @@ public class ShardDataSource extends ShardDataSourceConfigAdapter {
 
 	public void setOptimizeShardKeyInSql(boolean optimizeShardKeyInSql) {
 		this.optimizeShardKeyInSql = optimizeShardKeyInSql;
-	}
-
-	@Override
-	public void setConfigManagerType(String configManagerType) {
-		if (StringUtils.isNotBlank(configManagerType)) {
-			this.configManagerType = configManagerType;
-		}
-
-		this.shardDataSourceCustomConfig.setConfigManagerType(this.configManagerType);
 	}
 }
