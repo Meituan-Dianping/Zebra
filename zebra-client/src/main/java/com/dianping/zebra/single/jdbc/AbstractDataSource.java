@@ -39,7 +39,7 @@ public abstract class AbstractDataSource implements DataSource {
 
 	protected String configManagerType = LOCAL;
 
-	protected Map<String, Object> serviceConfigs = ServiceConfigBuilder.newInstance().getConfigs();
+	protected Map<String, Object> serviceConfigs = ServiceConfigBuilder.newInstance().build();
 
 	protected volatile List<JdbcFilter> filters;
 

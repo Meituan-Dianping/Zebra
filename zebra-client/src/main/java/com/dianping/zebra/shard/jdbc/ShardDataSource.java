@@ -26,6 +26,7 @@ import javax.sql.DataSource;
 
 import com.dianping.zebra.Constants;
 import com.dianping.zebra.config.ServiceConfigBuilder;
+import com.dianping.zebra.exception.ZebraException;
 import com.dianping.zebra.filter.DefaultJdbcFilterChain;
 import com.dianping.zebra.filter.FilterManagerFactory;
 import com.dianping.zebra.filter.JdbcFilter;
@@ -299,5 +300,15 @@ public class ShardDataSource extends ShardDataSourceConfigAdapter {
 
 	public void setOptimizeShardKeyInSql(boolean optimizeShardKeyInSql) {
 		this.optimizeShardKeyInSql = optimizeShardKeyInSql;
+	}
+
+	@Override
+	public void setConfigManagerType(String configManagerType) {
+		if (StringUtils.isBlank(configManagerType)) {
+			throw new ZebraException("configManagerType must not be blank");
+		}
+
+		this.configManagerType = configManagerType;
+		this.shardDataSourceCustomConfig.setConfigManagerType(configManagerType);
 	}
 }

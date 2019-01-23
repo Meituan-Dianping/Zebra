@@ -38,6 +38,8 @@ public class ShardDataSourceCustomConfig {
 
 	private String routerType;
 
+	private String configManagerType;
+
 	public String getPoolType() {
 		return poolType;
 	}
@@ -92,5 +94,13 @@ public class ShardDataSourceCustomConfig {
 
 	public void setRouterType(String routerType) {
 		this.routerType = routerType;
+	}
+
+	public String getConfigManagerType() {
+		return configManagerType;
+	}
+
+	public void setConfigManagerType(String configManagerType) {
+		this.configManagerType = configManagerType;
 	}
 }

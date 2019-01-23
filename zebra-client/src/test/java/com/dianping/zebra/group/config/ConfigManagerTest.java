@@ -17,7 +17,7 @@ public class ConfigManagerTest {
 	public void testManager() throws IOException, InterruptedException {
 		String resourceName = "sample.ds.v2";
 		Map<String, Object> configs = ServiceConfigBuilder.newInstance()
-		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, resourceName).getConfigs();
+		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, resourceName).build();
 		ConfigService configService = ConfigServiceFactory.getConfigService(Constants.CONFIG_MANAGER_TYPE_LOCAL, configs);
 		SystemConfigManager systemConfigManager = SystemConfigManagerFactory.getConfigManger(Constants.CONFIG_MANAGER_TYPE_LOCAL, configService);
 

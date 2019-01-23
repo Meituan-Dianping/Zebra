@@ -34,7 +34,7 @@ public class ServiceConfigBuilder {
 		return this;
 	}
 
-	public Map<String, Object> getConfigs() {
+	public Map<String, Object> build() {
 		return configMap;
 	}
 }
