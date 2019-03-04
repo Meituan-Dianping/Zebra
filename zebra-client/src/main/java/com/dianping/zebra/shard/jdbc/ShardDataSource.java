@@ -26,6 +26,7 @@ import javax.sql.DataSource;
 
 import com.dianping.zebra.Constants;
 import com.dianping.zebra.config.ServiceConfigBuilder;
+import com.dianping.zebra.exception.ZebraException;
 import com.dianping.zebra.filter.DefaultJdbcFilterChain;
 import com.dianping.zebra.filter.FilterManagerFactory;
 import com.dianping.zebra.filter.JdbcFilter;
@@ -130,6 +131,7 @@ public class ShardDataSource extends ShardDataSourceConfigAdapter {
 		if (dataSourcePool != null) {
 			dataSourceRepository.init(dataSourcePool);
 		} else {
+			this.shardDataSourceCustomConfig.setConfigManagerType(this.configManagerType);
 			this.shardDataSourceCustomConfig.setDsConfigProperties(this.dsConfigProperties);
 			dataSourceRepository.init(this.router.getRouterRule(), this.shardDataSourceCustomConfig);
 		}

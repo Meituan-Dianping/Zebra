@@ -19,7 +19,7 @@ public class LoadBalancedDataSourceTest {
 	public void test_init_fail_when_wrong_config() {
 		String resourceName = "sample.ds.error";
 		Map<String, Object> configs = ServiceConfigBuilder.newInstance()
-		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, resourceName).getConfigs();
+		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, resourceName).build();
 		ConfigService configService = ConfigServiceFactory.getConfigService(Constants.CONFIG_MANAGER_TYPE_LOCAL, configs);
 
 		DataSourceConfigManager dataSourceConfigManager = DataSourceConfigManagerFactory

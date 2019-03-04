@@ -47,7 +47,7 @@ public class DataSourceConfigManagerTest {
 	public void testConfig() throws SAXException, IOException {
 		String dataSourceResourceId = "sample.ds.v2";
 		Map<String, Object> configs = ServiceConfigBuilder.newInstance()
-		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, dataSourceResourceId).getConfigs();
+		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, dataSourceResourceId).build();
 		ConfigService configService = ConfigServiceFactory.getConfigService(Constants.CONFIG_MANAGER_TYPE_LOCAL, configs);
 		DataSourceConfigManager dataSourceConfigManager = DataSourceConfigManagerFactory
 		      .getConfigManager(dataSourceResourceId, configService);

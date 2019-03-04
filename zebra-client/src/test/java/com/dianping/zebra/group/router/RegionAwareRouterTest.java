@@ -32,7 +32,7 @@ public class RegionAwareRouterTest {
 	public void init() {
 		String dataSourceResourceId = "sample.ds.router";
 		Map<String, Object> confgis = ServiceConfigBuilder.newInstance()
-		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, dataSourceResourceId).getConfigs();
+		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, dataSourceResourceId).build();
 		this.configService = ConfigServiceFactory.getConfigService(Constants.CONFIG_MANAGER_TYPE_LOCAL, confgis);
 		this.dataSourceConfigManager = DataSourceConfigManagerFactory
 		      .getConfigManager(dataSourceResourceId, configService);

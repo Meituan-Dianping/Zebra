@@ -27,6 +27,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.sql.DataSource;
 
+import com.dianping.zebra.Constants;
+import com.dianping.zebra.config.ConfigServiceFactory;
+import com.dianping.zebra.config.ServiceConfigBuilder;
 import com.dianping.zebra.group.jdbc.GroupDataSource;
 import com.dianping.zebra.shard.config.ShardDataSourceCustomConfig;
 import com.dianping.zebra.shard.router.rule.RouterRule;
@@ -83,6 +86,7 @@ public class DataSourceRepository {
 					if (!dataSources.containsKey(jdbcRef)) {
 						GroupDataSource groupDataSource = new GroupDataSource(jdbcRef);
 
+						groupDataSource.setConfigManagerType(customConfig.getConfigManagerType());
 						groupDataSource.setPoolType(customConfig.getPoolType()); // use default pool
 						groupDataSource.setLazyInit(customConfig.isLazyInit());
 

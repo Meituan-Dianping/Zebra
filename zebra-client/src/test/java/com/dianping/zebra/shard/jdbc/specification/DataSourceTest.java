@@ -88,7 +88,7 @@ public class DataSourceTest extends BaseTestCase {
 				"setExtraJdbcUrlParams", "setDefaultDatasource", "getRuleName", "setLazyInit", "setRouterStrategy",
 				"setFilter", "setRouterType", "setRewriteConfigCheck", "setConcurrencyLevel", "setForbidNoShardKeyWrite",
 				"setReadWriteSplitPool", "setReadParallelCorePoolSize", "setReadParallelMaxPoolSize", "setReadParallelWorkQueueSize",
-				"setReadParallelExecuteTimeOut", "setOptimizeShardKeyInSql"};
+				"setReadParallelExecuteTimeOut", "setOptimizeShardKeyInSql", "setConfigManagerType"};
 	}
 
 	protected Object getTestObj() {

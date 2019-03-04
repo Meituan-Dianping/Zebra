@@ -28,7 +28,7 @@ public class LocalConfigServiceTest {
 	public void setup() throws IOException {
 		props = loadProperties(resourceId);
 		Map<String, Object> configs = ServiceConfigBuilder.newInstance()
-		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, resourceId).getConfigs();
+		      .putValue(Constants.CONFIG_SERVICE_NAME_KEY, resourceId).build();
 		localConfigService = ConfigServiceFactory.getConfigService(Constants.CONFIG_MANAGER_TYPE_LOCAL, configs);
 	}
 
