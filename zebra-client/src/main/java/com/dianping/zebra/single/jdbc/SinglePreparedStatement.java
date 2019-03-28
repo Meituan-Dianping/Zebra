@@ -74,7 +74,6 @@ import com.dianping.zebra.group.jdbc.param.TimestampParamContext;
 import com.dianping.zebra.group.jdbc.param.URLParamContext;
 import com.dianping.zebra.util.SqlType;
 import com.dianping.zebra.util.SqlUtils;
-import javafx.collections.transformation.SortedList;
 
 /**
  * @author hao.zhu
