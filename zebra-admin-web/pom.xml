@@ -10,7 +10,6 @@
     <packaging>war</packaging>
 
     <properties>
-        <spring.version>4.3.17.RELEASE</spring.version>
         <fastjson>1.2.29</fastjson>
     </properties>
 

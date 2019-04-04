@@ -13,7 +13,6 @@
 	<packaging>jar</packaging>
 	<properties>
 		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-		<spring.version>4.1.4.RELEASE</spring.version>
 	</properties>
 
 	<dependencies>
