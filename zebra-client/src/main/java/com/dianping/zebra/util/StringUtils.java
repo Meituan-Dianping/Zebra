@@ -194,7 +194,7 @@ public final class StringUtils {
 	}
 
 	public static String sha1(String input) throws NoSuchAlgorithmException {
-		MessageDigest mDigest = MessageDigest.getInstance("SHA1");
+		MessageDigest mDigest = MessageDigest.getInstance("SHA-1");
 		byte[] result = mDigest.digest(input.getBytes());
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < result.length; i++) {
