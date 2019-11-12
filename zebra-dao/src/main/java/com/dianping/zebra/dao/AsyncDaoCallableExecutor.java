@@ -26,7 +26,7 @@ import java.util.concurrent.Callable;
 
 public class AsyncDaoCallableExecutor implements Callable<Object> {
 
-	private Class<?> mapperInteface;
+	private Class<?> mapperInterface;
 
 	private Object mapper;
 
@@ -36,7 +36,7 @@ public class AsyncDaoCallableExecutor implements Callable<Object> {
 
 	public AsyncDaoCallableExecutor(Class<?> mapperInterface, Object mapper, Method method, Object[] args) {
 		super();
-		this.mapperInteface = mapperInterface;
+		this.mapperInterface = mapperInterface;
 		this.mapper = mapper;
 		this.method = method;
 		this.args = args;
@@ -45,7 +45,7 @@ public class AsyncDaoCallableExecutor implements Callable<Object> {
 	@Override
 	public Object call() throws Exception {
 		try {
-			DaoContextHolder.setSqlName(mapperInteface.getSimpleName() + "." + method.getName());
+			DaoContextHolder.setSqlName(mapperInterface.getSimpleName() + "." + method.getName());
 			return method.invoke(mapper, args);
 		} catch (InvocationTargetException e) {
 			throw (Exception) e.getCause();
