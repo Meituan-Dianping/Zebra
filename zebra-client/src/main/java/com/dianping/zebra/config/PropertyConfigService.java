@@ -60,10 +60,9 @@ public class PropertyConfigService implements ConfigService {
 	}
 
 	private long getLastModifiedTime() {
-		if (this.resourceFile.exists()) {
+		if (this.resourceFile != null && this.resourceFile.exists()) {
 			return this.resourceFile.lastModified();
 		} else {
-			logger.warn(String.format("config file[%s] doesn't exist.", this.resourceFileName));
 			return -1;
 		}
 	}
@@ -82,8 +81,7 @@ public class PropertyConfigService implements ConfigService {
 
 			String resourceName = String.valueOf(serviceConfigs.get(Constants.CONFIG_SERVICE_NAME_KEY));
 			this.resourceFileName = resourceName + ".properties";
-			this.resourceFile = FileUtils.getFile(resourceFileName);
-			this.props.set(FileUtils.loadProperties(resourceFile));
+			this.props.set(FileUtils.loadProperties(resourceFileName));
 			this.lastModifiedTime.set(getLastModifiedTime());
 
 			Thread updateTask = new Thread(new ConfigPeroidCheckerTask());
@@ -116,7 +114,7 @@ public class PropertyConfigService implements ConfigService {
 					long newModifiedTime = getLastModifiedTime();
 					if (newModifiedTime > lastModifiedTime.get()) {
 						Properties oldProps = props.get();
-						Properties newProps = FileUtils.loadProperties(resourceFile);
+						Properties newProps = FileUtils.loadProperties(resourceFileName);
 
 						for (String key : newProps.stringPropertyNames()) {
 							String oldValue = oldProps.getProperty(key);
