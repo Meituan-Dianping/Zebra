@@ -57,6 +57,24 @@ public final class FileUtils {
 		return prop;
 	}
 
+	public static Properties loadProperties(String fileName) {
+		URL url = FileUtils.class.getClassLoader().getResource(fileName);
+		if ("jar".equalsIgnoreCase(url.getProtocol())) {
+			InputStream stream = FileUtils.class.getClassLoader().getResourceAsStream(fileName);
+			Properties prop = new Properties();
+			try {
+				prop.load(stream);
+			} catch (IOException e) {
+				throw new ZebraConfigException(String.format("fail to read properties file[%s]", fileName), e);
+			} finally {
+				closeQuietly(stream);
+			}
+			return prop;
+		} else {
+			return loadProperties(toFile(url));
+		}
+	}
+
 	public static File toFile(URL url) {
 		if (url == null || !url.getProtocol().equals("file")) {
 			return null;
