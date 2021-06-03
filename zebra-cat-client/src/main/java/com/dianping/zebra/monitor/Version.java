@@ -19,5 +19,5 @@
 package com.dianping.zebra.monitor;
 
 public final class Version {
-	public static final String ZEBRA_VERSION = "2.9.1";
+	public static final String ZEBRA_VERSION = "2.9.2-SNAPSHOT";
 }
