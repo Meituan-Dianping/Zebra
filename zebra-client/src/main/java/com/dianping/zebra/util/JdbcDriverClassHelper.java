@@ -38,6 +38,8 @@ public class JdbcDriverClassHelper {
 			return "org.h2.Driver";
 		} else if(url.startsWith("jdbc:kylin:")) {
 			return "org.apache.kylin.jdbc.Driver";
+		} else if (url.startsWith("jdbc:oracle:")) {
+			return "oracle.jdbc.driver.OracleDriver";
 		} else {
 			return "";
 		}
