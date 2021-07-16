@@ -18,24 +18,29 @@
  */
 package com.dianping.zebra.shard.config;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.List;
 
-@XmlRootElement(name = "tableShardConfigs")
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement(name = "router-rule")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class RouterRuleConfig implements Serializable {
-   private static final long serialVersionUID = -3944193626687964466L;
+	@XmlTransient
+	private static final long serialVersionUID = -3944193626687964466L;
 
+	@XmlElement(name = "table-shard-rule")
 	private List<TableShardRuleConfig> tableShardConfigs;
 
-    public List<TableShardRuleConfig> getTableShardConfigs() {
-        return tableShardConfigs;
-    }
+	public List<TableShardRuleConfig> getTableShardConfigs() {
+		return tableShardConfigs;
+	}
 
-    public void setTableShardConfigs(List<TableShardRuleConfig> tableShardConfig) {
-        this.tableShardConfigs = tableShardConfig;
-    }
+	public void setTableShardConfigs(List<TableShardRuleConfig> tableShardConfig) {
+		this.tableShardConfigs = tableShardConfig;
+	}
 }

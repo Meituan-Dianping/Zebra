@@ -20,11 +20,20 @@ package com.dianping.zebra.shard.config;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name = "table-shard-rule")
+@XmlAccessorType(value = XmlAccessType.FIELD)
 public class TableShardRuleConfig implements Serializable {
 
+	@XmlAttribute(name = "table")
 	private String tableName;
 
+	@XmlElement(name = "shard-dimension")
 	private List<TableShardDimensionConfig> dimensionConfigs;
 
 	public String getTableName() {
