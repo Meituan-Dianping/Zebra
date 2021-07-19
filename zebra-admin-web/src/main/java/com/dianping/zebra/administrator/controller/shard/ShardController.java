@@ -18,7 +18,9 @@ import com.dianping.zebra.administrator.service.ZookeeperConfigService;
 import com.dianping.zebra.administrator.util.JaxbUtils;
 import com.dianping.zebra.shard.config.RouterRuleConfig;
 import com.dianping.zebra.shard.config.TableShardRuleConfig;
+import com.dianping.zebra.shard.util.ShardRuleParser;
 import com.dianping.zebra.util.StringUtils;
+import com.dianping.zebra.util.json.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -99,8 +101,9 @@ public class ShardController extends AbstractController {
 		String key = String.format(GlobalConstants.SHARD_CONFIG_NAME_PATTERN, ruleName);
 		String host = zkconfigService.getZKHostByName(env);
 		byte[] data = ZookeeperService.getConfig(host, key);
+		JsonObject jsonObject = new JsonObject(new String(data, "UTF-8"));
 		if (data != null) {
-			shardConfig = JaxbUtils.jaxbReadXml(RouterRuleConfig.class, data);
+			shardConfig = ShardRuleParser.parse(jsonObject);
 
 			List<TableShardConfigDto> tsConfigDtoList = new ArrayList<>();
 			for (TableShardRuleConfig tsConfig : shardConfig.getTableShardConfigs()) {
