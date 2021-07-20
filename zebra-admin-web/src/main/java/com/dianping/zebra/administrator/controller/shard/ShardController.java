@@ -101,9 +101,8 @@ public class ShardController extends AbstractController {
 		String key = String.format(GlobalConstants.SHARD_CONFIG_NAME_PATTERN, ruleName);
 		String host = zkconfigService.getZKHostByName(env);
 		byte[] data = ZookeeperService.getConfig(host, key);
-		JsonObject jsonObject = new JsonObject(new String(data, "UTF-8"));
 		if (data != null) {
-			shardConfig = ShardRuleParser.parse(jsonObject);
+			shardConfig = JaxbUtils.jaxbReadXml(RouterRuleConfig.class, data);
 
 			List<TableShardConfigDto> tsConfigDtoList = new ArrayList<>();
 			for (TableShardRuleConfig tsConfig : shardConfig.getTableShardConfigs()) {

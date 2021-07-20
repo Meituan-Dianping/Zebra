@@ -27,6 +27,7 @@ import com.dianping.zebra.shard.router.RouterBuilder;
 import com.dianping.zebra.shard.router.ShardRouter;
 import com.dianping.zebra.shard.router.rule.RouterRule;
 import com.dianping.zebra.shard.util.ShardRuleParser;
+import com.dianping.zebra.util.JaxbUtils;
 import com.dianping.zebra.util.StringUtils;
 import com.dianping.zebra.util.json.JsonObject;
 
@@ -44,12 +45,7 @@ public class RemoteRouterBuilder extends AbstractRouterBuilder implements Router
 		String property = configService.getProperty(LionKey.getShardConfigKey(ruleName));
 
 		if (StringUtils.isNotBlank(property)) {
-			try {
-				JsonObject jsonObject = new JsonObject(property);
-				routerConfig = ShardRuleParser.parse(jsonObject);
-			} catch (Exception e) {
-				throw new RuntimeException("分表规则解析失败" + property, e);
-			}
+			routerConfig = JaxbUtils.fromXml(property, RouterRuleConfig.class);
 		} else {
 			throw new ZebraConfigException("the shardrule of [" + ruleName + "] is empty!");
 		}
