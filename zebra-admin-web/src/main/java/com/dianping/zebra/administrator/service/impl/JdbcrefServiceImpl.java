@@ -77,7 +77,7 @@ public class JdbcrefServiceImpl extends BaseServiceImpl implements JdbcrefServic
         //删除zk记录
         String groupKey = String.format(GROUP_CONFIG_NAME_PATTERN, jdbcref);
         String host = zKConfigDao.getHostByName(env);
-        ZookeeperService.deleteConfig(host, host);
+        ZookeeperService.deleteConfig(host, groupKey);
     }
 
     @Override
