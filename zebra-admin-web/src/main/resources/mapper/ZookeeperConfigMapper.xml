@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.dianping.zebra.administrator.dao.ZookeeperConfigMapper">
+<mapper namespace="com.dianping.zebra.administrator.mapper.ZookeeperConfigMapper">
     <select id="findZKConfig" resultType="ZookeeperConfigEntity">
         SELECT `Id`,`Host`,`Name`,`Description` FROM ZookeeperConfig
     </select>

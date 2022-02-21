@@ -1,4 +1,4 @@
-package com.dianping.zebra.administrator.dao;
+package com.dianping.zebra.administrator.mapper;
 
 import com.dianping.zebra.administrator.entity.ShardEntity;
 import org.apache.ibatis.annotations.Param;

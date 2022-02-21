@@ -1,8 +1,8 @@
 package com.dianping.zebra.administrator.service.impl;
 
 import com.dianping.zebra.administrator.zookeeper.ZookeeperService;
-import com.dianping.zebra.administrator.dao.JdbcrefMapper;
-import com.dianping.zebra.administrator.dao.ZookeeperConfigMapper;
+import com.dianping.zebra.administrator.mapper.JdbcrefMapper;
+import com.dianping.zebra.administrator.mapper.ZookeeperConfigMapper;
 import com.dianping.zebra.administrator.dto.jdbcref.DBAddressDto;
 import com.dianping.zebra.administrator.dto.jdbcref.DBConfigInfoDto;
 import com.dianping.zebra.administrator.dto.jdbcref.JdbcrefConfigDto;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.dianping.zebra.administrator.GlobalConstants.*;
+import static com.dianping.zebra.administrator.constant.SystemConsts.*;
 
 /**
  * @author canhuang

@@ -2,7 +2,7 @@ package com.dianping.zebra.administrator.controller.group;
 
 import com.dianping.zebra.administrator.zookeeper.ZookeeperService;
 import com.dianping.zebra.administrator.controller.AbstractController;
-import com.dianping.zebra.administrator.dao.JdbcrefMapper;
+import com.dianping.zebra.administrator.mapper.JdbcrefMapper;
 import com.dianping.zebra.administrator.dto.ResultDto;
 import com.dianping.zebra.administrator.dto.jdbcref.*;
 import com.dianping.zebra.administrator.entity.DsConfigEntity;
@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-import static com.dianping.zebra.administrator.GlobalConstants.DS_CONFIG_PATTERN;
-import static com.dianping.zebra.administrator.GlobalConstants.GROUP_CONFIG_NAME_PATTERN;
+import static com.dianping.zebra.administrator.constant.SystemConsts.DS_CONFIG_PATTERN;
+import static com.dianping.zebra.administrator.constant.SystemConsts.GROUP_CONFIG_NAME_PATTERN;
 
 /**
  * @author Created by tong.xin on 18/3/7.

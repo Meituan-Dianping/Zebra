@@ -24,7 +24,7 @@ public class DAOConfig {
     @Bean
     public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
-        mapperScannerConfigurer.setBasePackage("com.dianping.zebra.administrator.dao");
+        mapperScannerConfigurer.setBasePackage("com.dianping.zebra.administrator.mapper");
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("zebraAdminSqlSessionFactory");
         return mapperScannerConfigurer;
     }

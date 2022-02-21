@@ -1,6 +1,6 @@
-package com.dianping.zebra.administrator;
+package com.dianping.zebra.administrator.constant;
 
-public class GlobalConstants {
+public class SystemConsts {
 
 	public static final String DEFAULR_CHARSET = "UTF-8";
 

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.dianping.zebra.administrator.dao.JdbcrefMapper">
+<mapper namespace="com.dianping.zebra.administrator.mapper.JdbcrefMapper">
 	<select id="findByEnv" parameterType="map" resultType="JdbcrefEntity">
 		SELECT `Jdbcref`,`Env`,`Owner`,`UpdateTime` FROM `Jdbcref` WHERE `Env`=#{env}
 	</select>

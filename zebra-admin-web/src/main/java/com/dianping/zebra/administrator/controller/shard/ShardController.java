@@ -1,9 +1,9 @@
 package com.dianping.zebra.administrator.controller.shard;
 
-import com.dianping.zebra.administrator.GlobalConstants;
+import com.dianping.zebra.administrator.constant.SystemConsts;
 import com.dianping.zebra.administrator.zookeeper.ZookeeperService;
 import com.dianping.zebra.administrator.controller.AbstractController;
-import com.dianping.zebra.administrator.dao.ShardMapper;
+import com.dianping.zebra.administrator.mapper.ShardMapper;
 import com.dianping.zebra.administrator.dto.ResultDto;
 import com.dianping.zebra.administrator.dto.shard.ShardConfigDto;
 import com.dianping.zebra.administrator.dto.shard.ShardDto;
@@ -93,7 +93,7 @@ public class ShardController extends AbstractController {
 	public ShardConfigDto findRuleName(@RequestParam String env, @RequestParam String ruleName) throws Exception {
 		ShardConfigDto result = new ShardConfigDto();
 		RouterRuleConfig shardConfig = null;
-		String key = String.format(GlobalConstants.SHARD_CONFIG_NAME_PATTERN, ruleName);
+		String key = String.format(SystemConsts.SHARD_CONFIG_NAME_PATTERN, ruleName);
 		String host = zkconfigService.getZKHostByName(env);
 		byte[] data = ZookeeperService.getConfig(host, key);
 		if (data != null) {
