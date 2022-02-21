@@ -1,6 +1,6 @@
 
 !*.java
-!*.gitignore
+!.gitignore
 !*.xml
 !*.jsp
 !*.html

@@ -1,13 +1,12 @@
 package com.dianping.zebra.administrator.service.impl;
 
-import com.dianping.zebra.administrator.dao.ZookeeperConfigMapper;
+import com.dianping.zebra.administrator.mapper.ZookeeperConfigMapper;
 import com.dianping.zebra.administrator.dto.zookeeperConfig.ZookeeperConfigDto;
 import com.dianping.zebra.administrator.entity.ZookeeperConfigEntity;
 import com.dianping.zebra.administrator.service.ZookeeperConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

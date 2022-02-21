@@ -1,26 +1,21 @@
 package com.dianping.zebra.administrator.controller.shard;
 
-import com.alibaba.fastjson.JSON;
-import com.dianping.zebra.administrator.GlobalConstants;
-import com.dianping.zebra.administrator.config.ZookeeperService;
+import com.dianping.zebra.administrator.constant.SystemConsts;
+import com.dianping.zebra.administrator.zookeeper.ZookeeperService;
 import com.dianping.zebra.administrator.controller.AbstractController;
-import com.dianping.zebra.administrator.dao.ShardMapper;
+import com.dianping.zebra.administrator.mapper.ShardMapper;
 import com.dianping.zebra.administrator.dto.ResultDto;
 import com.dianping.zebra.administrator.dto.shard.ShardConfigDto;
 import com.dianping.zebra.administrator.dto.shard.ShardDto;
 import com.dianping.zebra.administrator.dto.shard.ShardOverviewDto;
 import com.dianping.zebra.administrator.dto.shard.TableShardConfigDto;
-import com.dianping.zebra.administrator.entity.ShardConfig;
 import com.dianping.zebra.administrator.entity.ShardEntity;
-import com.dianping.zebra.administrator.entity.TableShardConfig;
 import com.dianping.zebra.administrator.service.ShardService;
 import com.dianping.zebra.administrator.service.ZookeeperConfigService;
 import com.dianping.zebra.administrator.util.JaxbUtils;
 import com.dianping.zebra.shard.config.RouterRuleConfig;
 import com.dianping.zebra.shard.config.TableShardRuleConfig;
-import com.dianping.zebra.shard.util.ShardRuleParser;
 import com.dianping.zebra.util.StringUtils;
-import com.dianping.zebra.util.json.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +29,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping(value = "shard")
+@RequestMapping(value = "/i/shard")
 public class ShardController extends AbstractController {
 	@Autowired
 	private ShardMapper shardDao;
@@ -98,7 +93,7 @@ public class ShardController extends AbstractController {
 	public ShardConfigDto findRuleName(@RequestParam String env, @RequestParam String ruleName) throws Exception {
 		ShardConfigDto result = new ShardConfigDto();
 		RouterRuleConfig shardConfig = null;
-		String key = String.format(GlobalConstants.SHARD_CONFIG_NAME_PATTERN, ruleName);
+		String key = String.format(SystemConsts.SHARD_CONFIG_NAME_PATTERN, ruleName);
 		String host = zkconfigService.getZKHostByName(env);
 		byte[] data = ZookeeperService.getConfig(host, key);
 		if (data != null) {

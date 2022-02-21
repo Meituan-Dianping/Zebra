@@ -1,12 +1,10 @@
-package com.dianping.zebra.administrator.config;
+package com.dianping.zebra.administrator.zookeeper;
 
 import com.dianping.zebra.util.StringUtils;
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
 
 /**
  * Created by taochen on 2018/10/28.
