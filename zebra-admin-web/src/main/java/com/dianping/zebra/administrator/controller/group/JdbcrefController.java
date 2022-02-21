@@ -1,6 +1,6 @@
 package com.dianping.zebra.administrator.controller.group;
 
-import com.dianping.zebra.administrator.config.ZookeeperService;
+import com.dianping.zebra.administrator.zookeeper.ZookeeperService;
 import com.dianping.zebra.administrator.controller.AbstractController;
 import com.dianping.zebra.administrator.dao.JdbcrefMapper;
 import com.dianping.zebra.administrator.dto.ResultDto;
@@ -29,7 +29,7 @@ import static com.dianping.zebra.administrator.GlobalConstants.GROUP_CONFIG_NAME
  */
 
 @RestController
-@RequestMapping(value = "jdbcref")
+@RequestMapping(value = "/i/jdbcref")
 public class JdbcrefController extends AbstractController {
 	@Autowired
 	private JdbcrefMapper jdbcrefDao;

@@ -1,6 +1,6 @@
 package com.dianping.zebra.administrator.service.impl;
 
-import com.dianping.zebra.administrator.config.ZookeeperService;
+import com.dianping.zebra.administrator.zookeeper.ZookeeperService;
 import com.dianping.zebra.administrator.dao.ShardMapper;
 import com.dianping.zebra.administrator.dto.shard.ShardConfigDto;
 import com.dianping.zebra.administrator.dto.shard.TableShardConfigDto;
@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 

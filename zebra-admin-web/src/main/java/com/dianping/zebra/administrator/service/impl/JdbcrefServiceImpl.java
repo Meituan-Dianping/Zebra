@@ -1,6 +1,6 @@
 package com.dianping.zebra.administrator.service.impl;
 
-import com.dianping.zebra.administrator.config.ZookeeperService;
+import com.dianping.zebra.administrator.zookeeper.ZookeeperService;
 import com.dianping.zebra.administrator.dao.JdbcrefMapper;
 import com.dianping.zebra.administrator.dao.ZookeeperConfigMapper;
 import com.dianping.zebra.administrator.dto.jdbcref.DBAddressDto;

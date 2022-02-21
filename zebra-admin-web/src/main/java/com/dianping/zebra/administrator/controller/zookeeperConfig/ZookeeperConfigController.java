@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping(value = "zkConfig")
+@RequestMapping(value = "/i/zkConfig")
 public class ZookeeperConfigController extends AbstractController {
 
     @Autowired

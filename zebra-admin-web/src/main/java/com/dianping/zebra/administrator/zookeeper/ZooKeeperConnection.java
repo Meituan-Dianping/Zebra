@@ -1,4 +1,4 @@
-package com.dianping.zebra.administrator.config;
+package com.dianping.zebra.administrator.zookeeper;
 
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
