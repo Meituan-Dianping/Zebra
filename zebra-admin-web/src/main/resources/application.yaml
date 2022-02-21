@@ -1,5 +1,10 @@
 spring:
   application:
     name: zebra-admin-web
+  datasource:
+    url: jdbc:mysql://localhost:3306/zebra?useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
 server:
   port: 8080
