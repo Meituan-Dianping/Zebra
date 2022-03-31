@@ -15,7 +15,7 @@
     <properties>
         <java.src.version>1.6</java.src.version>
         <java.target.version>1.6</java.target.version>
-        <spring.version>4.3.18.RELEASE</spring.version>
+        <spring.version>5.3.18</spring.version>
         <project.encoding>UTF-8</project.encoding>
         <groovy.version>2.3.9</groovy.version>
     </properties>
