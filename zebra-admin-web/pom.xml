@@ -10,7 +10,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <fastjson>1.2.29</fastjson>
+        <fastjson>1.2.83</fastjson>
     </properties>
 
     <name>zebra-admin-web</name>
